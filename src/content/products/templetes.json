@@ -1,0 +1,170 @@
+[
+    {
+      "id": "templete-30cm",
+      "name": "Templete de 30 cm de altura",
+      "description": "Templete profesional de 30 cm de altura, ideal para presentaciones, discursos o áreas ligeramente elevadas en eventos.",
+      "images": ["/images/templetes/30cm-1.jpg", "/images/templetes/30cm-2.jpg"],
+      "category": "Templetes",
+      "specifications": {
+        "altura": "30 cm",
+        "material": "Estructura metálica con cubierta de madera",
+        "capacidad": "400 kg/m²",
+        "acabado": "Pintura negra o faldón decorativo",
+        "setupTime": "Según área"
+      },
+      "pricing": {
+        "unit": "m²",
+        "pricePerUnit": 125
+      },
+      "features": [
+        "Altura ideal para presentaciones pequeñas",
+        "Estructura estable y segura",
+        "Opciones de acabado según necesidades",
+        "Fácil acceso sin necesidad de escaleras"
+      ]
+    },
+    {
+      "id": "templete-50cm",
+      "name": "Templete de 50 cm de altura",
+      "description": "Templete profesional de 50 cm de altura, perfecto para presentaciones más visibles o áreas destacadas en eventos medianos.",
+      "images": ["/images/templetes/50cm-1.jpg", "/images/templetes/50cm-2.jpg"],
+      "category": "Templetes",
+      "specifications": {
+        "altura": "50 cm",
+        "material": "Estructura metálica con cubierta de madera",
+        "capacidad": "400 kg/m²",
+        "acabado": "Pintura negra o faldón decorativo",
+        "setupTime": "Según área"
+      },
+      "pricing": {
+        "unit": "m²",
+        "pricePerUnit": 125
+      },
+      "features": [
+        "Altura media para mejor visibilidad",
+        "Estructura estable y segura",
+        "Compatible con diferentes tipos de eventos",
+        "Acceso cómodo con escalón opcional"
+      ]
+    },
+    {
+      "id": "templete-70cm",
+      "name": "Templete de 70 cm de altura",
+      "description": "Templete profesional de 70 cm de altura, ideal para presentaciones destacadas y eventos donde se requiere buena visibilidad.",
+      "images": ["/images/templetes/70cm-1.jpg", "/images/templetes/70cm-2.jpg"],
+      "category": "Templetes",
+      "specifications": {
+        "altura": "70 cm",
+        "material": "Estructura metálica con cubierta de madera",
+        "capacidad": "400 kg/m²",
+        "acabado": "Pintura negra o faldón decorativo",
+        "setupTime": "Según área"
+      },
+      "pricing": {
+        "unit": "m²",
+        "pricePerUnit": 125
+      },
+      "features": [
+        "Excelente visibilidad para presentaciones",
+        "Estructura robusta para usos diversos",
+        "Incluye escalones de acceso",
+        "Ideal para escenarios de presentación"
+      ]
+    },
+    {
+      "id": "templete-100cm",
+      "name": "Templete de 100 cm de altura",
+      "description": "Templete profesional de 100 cm de altura, perfecto para escenarios principales y presentaciones donde la visibilidad es crucial.",
+      "images": ["/images/templetes/100cm-1.jpg", "/images/templetes/100cm-2.jpg"],
+      "category": "Templetes",
+      "specifications": {
+        "altura": "100 cm",
+        "material": "Estructura metálica con cubierta de madera",
+        "capacidad": "400 kg/m²",
+        "acabado": "Pintura negra o faldón decorativo",
+        "setupTime": "Según área"
+      },
+      "pricing": {
+        "unit": "m²",
+        "pricePerUnit": 125
+      },
+      "features": [
+        "Altura ideal para escenarios principales",
+        "Máxima visibilidad para presentaciones",
+        "Incluye escalera de acceso segura",
+        "Perfecto para eventos de mayor escala"
+      ]
+    },
+    {
+      "id": "templete-120cm",
+      "name": "Templete de 120 cm de altura",
+      "description": "Templete profesional de 120 cm de altura, ideal para escenarios principales en eventos grandes donde la visibilidad es fundamental.",
+      "images": ["/images/templetes/120cm-1.jpg", "/images/templetes/120cm-2.jpg"],
+      "category": "Templetes",
+      "specifications": {
+        "altura": "120 cm",
+        "material": "Estructura metálica con cubierta de madera",
+        "capacidad": "400 kg/m²",
+        "acabado": "Pintura negra o faldón decorativo",
+        "setupTime": "Según área"
+      },
+      "pricing": {
+        "unit": "m²",
+        "pricePerUnit": 150
+      },
+      "features": [
+        "Máxima altura para visibilidad óptima",
+        "Estructura reforzada para total seguridad",
+        "Incluye escalera de acceso con pasamanos",
+        "Ideal para conciertos y eventos masivos"
+      ]
+    },
+    {
+      "id": "templete-150cm",
+      "name": "Templete de 150 cm de altura",
+      "description": "Templete profesional de 150 cm de altura, diseñado para escenarios principales en eventos de gran escala con necesidades específicas de visibilidad.",
+      "images": ["/images/templetes/150cm-1.jpg", "/images/templetes/150cm-2.jpg"],
+      "category": "Templetes",
+      "specifications": {
+        "altura": "150 cm",
+        "material": "Estructura metálica con cubierta de madera",
+        "capacidad": "400 kg/m²",
+        "acabado": "Pintura negra o faldón decorativo",
+        "setupTime": "Según área"
+      },
+      "pricing": {
+        "unit": "m²",
+        "pricePerUnit": 150
+      },
+      "features": [
+        "Altura superior para máxima visibilidad",
+        "Estructura altamente reforzada",
+        "Incluye escalera de acceso profesional con barandal",
+        "Especial para conciertos y eventos masivos"
+      ]
+    },
+    {
+      "id": "estrado-novios",
+      "name": "Estrado para novios o quinceañera",
+      "description": "Estrado especial diseñado para novios o quinceañeras, con acabados elegantes y características específicas para estos eventos especiales.",
+      "images": ["/images/templetes/estrado-novios-1.jpg", "/images/templetes/estrado-novios-2.jpg"],
+      "category": "Templetes",
+      "specifications": {
+        "altura": "Variable según necesidad",
+        "material": "Estructura metálica con cubierta de madera",
+        "acabado": "Pintado o cubierto según temática",
+        "tamaño": "Personalizable",
+        "setupTime": "1 día"
+      },
+      "pricing": {
+        "unit": "m²",
+        "pricePerUnit": 135
+      },
+      "features": [
+        "Diseño especial para protagonistas del evento",
+        "Acabados elegantes coordinados con la decoración",
+        "Personalizable según temática",
+        "Estructura estable y segura"
+      ]
+    }
+  ]

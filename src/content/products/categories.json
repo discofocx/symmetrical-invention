@@ -1,18 +1,58 @@
 [
-    {
-      "id": "carpas",
-      "name": "Carpas",
-      "description": "Carpas disponibles en varios tamaños y estilos para todo tipo de eventos.",
-      "featuredImage": "/images/carpas/featured.jpg",
-      "slug": "carpas",
-      "featured": true
-    },
-    {
-      "id": "pistas",
-      "name": "Pistas de Baile",
-      "description": "Pistas de baile en diferentes materiales y acabados.",
-      "featuredImage": "/images/pistas/featured.jpg",
-      "slug": "pistas",
-      "featured": true
-    }
-  ]
+  {
+    "id": "carpas",
+    "name": "Carpas",
+    "description": "Carpas disponibles en varios tamaños y estilos para todo tipo de eventos, con opciones de plafón liso, alemanas, en olas y transparentes.",
+    "featuredImage": "/images/carpas/featured.jpg",
+    "slug": "carpas",
+    "featured": true
+  },
+  {
+    "id": "pistas",
+    "name": "Pistas de Baile",
+    "description": "Pistas de baile profesionales en diferentes materiales: laminado, charol, pintadas y con diseños personalizados.",
+    "featuredImage": "/images/pistas/featured.jpg",
+    "slug": "pistas",
+    "featured": true
+  },
+  {
+    "id": "entarimados",
+    "name": "Entarimados",
+    "description": "Entarimados con acabado profesional, nivelados al piso y con opciones de personalización.",
+    "featuredImage": "/images/entarimados/featured.jpg",
+    "slug": "entarimados",
+    "featured": false
+  },
+  {
+    "id": "templetes",
+    "name": "Templetes",
+    "description": "Templetes en diversas alturas para escenarios, presentaciones y eventos especiales.",
+    "featuredImage": "/images/templetes/featured.jpg",
+    "slug": "templetes",
+    "featured": false
+  },
+  {
+    "id": "graderias",
+    "name": "Graderías",
+    "description": "Graderías modulares para espectadores y fotografía con capacidad variable.",
+    "featuredImage": "/images/graderias/featured.jpg",
+    "slug": "graderias",
+    "featured": false
+  },
+  {
+    "id": "plantas",
+    "name": "Plantas de Luz",
+    "description": "Plantas de luz profesionales para asegurar el suministro eléctrico en cualquier evento.",
+    "featuredImage": "/images/plantas/featured.jpg",
+    "slug": "plantas",
+    "featured": false
+  },
+  {
+    "id": "especiales",
+    "name": "Servicios Especiales",
+    "description": "Soluciones especializadas como tapado de albercas y otras adaptaciones a la medida.",
+    "featuredImage": "/images/especiales/featured.jpg",
+    "slug": "especiales",
+    "featured": false
+  }
+]

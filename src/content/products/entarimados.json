@@ -1,0 +1,26 @@
+[
+    {
+      "id": "entarimado-estandar",
+      "name": "Entarimado con pintura nueva",
+      "description": "Entarimado profesional con acabado de pintura nueva, enmascarillado y nivelado al piso. Ideal para crear áreas elevadas para mesas, zonas de estar o espacios funcionales.",
+      "images": ["/images/entarimados/estandar-1.jpg", "/images/entarimados/estandar-2.jpg"],
+      "category": "Entarimados",
+      "specifications": {
+        "material": "Madera estructural",
+        "acabado": "Pintura nueva",
+        "altura": "Variable según necesidad",
+        "capacidad": "400 kg/m²",
+        "setupTime": "Según área"
+      },
+      "pricing": {
+        "unit": "m²",
+        "pricePerUnit": 85
+      },
+      "features": [
+        "Acabado profesional con pintura nueva",
+        "Nivelado al piso para máxima estabilidad",
+        "Enmascarillado para un aspecto limpio y uniforme",
+        "Estructura robusta y segura"
+      ]
+    }
+  ]

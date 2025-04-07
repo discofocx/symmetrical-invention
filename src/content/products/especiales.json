@@ -1,0 +1,52 @@
+[
+    {
+      "id": "tapado-alberca-pintado",
+      "name": "Tapado de alberca - Acabado pintado",
+      "description": "Servicio profesional de tapado de albercas con acabado pintado, permitiendo aprovechar el espacio de la piscina para su evento. Solución segura y estética.",
+      "images": ["/images/especiales/alberca-pintado-1.jpg", "/images/especiales/alberca-pintado-2.jpg"],
+      "category": "Servicios Especiales",
+      "specifications": {
+        "material": "Estructura metálica con cubierta de madera",
+        "acabado": "Pintado en color a elección",
+        "capacidad": "350-400 kg/m²",
+        "instalación": "Personalizada según alberca",
+        "setupTime": "1-2 días según tamaño"
+      },
+      "pricing": {
+        "unit": "m²",
+        "pricePerUnit": 200
+      },
+      "features": [
+        "Aprovechamiento total del espacio de la alberca",
+        "Instalación segura y resistente",
+        "Acabado pintado que puede coordinarse con la decoración",
+        "Adaptable a cualquier forma y tamaño de alberca",
+        "Incluye asesoría técnica previa"
+      ]
+    },
+    {
+      "id": "tapado-alberca-charol",
+      "name": "Tapado de alberca - Acabado en charol",
+      "description": "Servicio premium de tapado de albercas con acabado en charol, ideal para eventos elegantes. Transforma el espacio de la alberca en una superficie brillante y distintiva.",
+      "images": ["/images/especiales/alberca-charol-1.jpg", "/images/especiales/alberca-charol-2.jpg"],
+      "category": "Servicios Especiales",
+      "specifications": {
+        "material": "Estructura metálica con cubierta especial",
+        "acabado": "Charol negro brillante",
+        "capacidad": "350-400 kg/m²",
+        "instalación": "Personalizada según alberca",
+        "setupTime": "1-2 días según tamaño"
+      },
+      "pricing": {
+        "unit": "m²",
+        "pricePerUnit": 225
+      },
+      "features": [
+        "Acabado elegante de alto impacto visual",
+        "Perfecto para pistas de baile sobre albercas",
+        "Instalación segura y resistente",
+        "Efecto visual espectacular para fotografía y video",
+        "Incluye asesoría técnica y visita previa"
+      ]
+    }
+  ]

@@ -1,0 +1,55 @@
+[
+    {
+      "id": "planta-45kva",
+      "name": "Planta de luz de 45 KVA",
+      "description": "Planta de luz profesional de 45 KVA, ideal para eventos medianos. Incluye cable de 30m y centro de carga para una distribución eléctrica segura y eficiente.",
+      "images": ["/images/plantas/45kva-1.jpg", "/images/plantas/45kva-2.jpg"],
+      "category": "Plantas de Luz",
+      "specifications": {
+        "potencia": "45 KVA",
+        "combustible": "Diésel",
+        "autonomía": "8-10 horas a plena carga",
+     "nivel de ruido": "Bajo/Insonorizada",
+     "incluye": "Cable de 30m y centro de carga"
+   },
+   "pricing": {
+     "unit": "hora",
+     "pricePerUnit": 687.5,
+     "minUnits": 8
+   },
+   "features": [
+     "Potencia ideal para eventos medianos",
+     "Operación silenciosa que no interfiere con el evento",
+     "Incluye cableado y centro de distribución",
+     "Monitoreo técnico durante el evento",
+     "Combustible incluido para 8 horas de operación"
+   ]
+ },
+ {
+   "id": "planta-70kva",
+   "name": "Planta de luz de 70 KVA",
+   "description": "Planta de luz profesional de 70 KVA para eventos grandes con mayores necesidades eléctricas. Incluye cable de 30m y centro de carga para una distribución eléctrica segura y eficiente.",
+   "images": ["/images/plantas/70kva-1.jpg", "/images/plantas/70kva-2.jpg"],
+   "category": "Plantas de Luz",
+   "specifications": {
+     "potencia": "70 KVA",
+     "combustible": "Diésel",
+     "autonomía": "8-10 horas a plena carga",
+     "nivel de ruido": "Bajo/Insonorizada",
+     "incluye": "Cable de 30m y centro de carga"
+   },
+   "pricing": {
+     "unit": "hora",
+     "pricePerUnit": 750,
+     "minUnits": 8
+   },
+   "features": [
+     "Alta potencia para eventos grandes",
+     "Capacidad para sistemas de sonido, iluminación y climatización",
+     "Operación silenciosa que no interfiere con el evento",
+     "Incluye cableado y centro de distribución",
+     "Monitoreo técnico durante todo el evento",
+     "Combustible incluido para 8 horas de operación"
+   ]
+ }
+]

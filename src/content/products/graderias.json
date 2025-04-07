@@ -1,0 +1,50 @@
+[
+    {
+      "id": "graderia-fotografia",
+      "name": "Gradería para fotografía",
+      "description": "Gradería especialmente diseñada para fotografía grupal, con capacidad para 40 personas distribuidas en diferentes niveles para una visibilidad óptima en las fotografías.",
+      "images": ["/images/graderias/fotografia-1.jpg", "/images/graderias/fotografia-2.jpg"],
+      "category": "Graderías",
+      "specifications": {
+        "capacidad": "40 personas por módulo",
+        "niveles": "4-5 niveles",
+        "material": "Estructura metálica con bases de madera",
+        "dimensiones": "Modular según necesidad",
+        "setupTime": "Según configuración"
+      },
+      "pricing": {
+        "unit": "módulo",
+        "pricePerUnit": 2000
+      },
+      "features": [
+        "Diseño optimizado para fotografía grupal",
+        "Niveles escalonados para visibilidad de todos los participantes",
+        "Estructura estable y segura",
+        "Fácil acceso y colocación de personas"
+      ]
+    },
+    {
+      "id": "graderia-espectadores",
+      "name": "Gradería para espectadores",
+      "description": "Gradería profesional para espectadores en eventos deportivos, presentaciones o espectáculos, con capacidad para 25 personas por módulo en una disposición cómoda y segura.",
+      "images": ["/images/graderias/espectadores-1.jpg", "/images/graderias/espectadores-2.jpg"],
+      "category": "Graderías",
+      "specifications": {
+        "capacidad": "25 personas por módulo",
+        "niveles": "3-4 niveles",
+        "material": "Estructura metálica con asientos",
+        "dimensiones": "Modular según necesidad",
+        "setupTime": "Según configuración"
+      },
+      "pricing": {
+        "unit": "módulo",
+        "pricePerUnit": 2000
+      },
+      "features": [
+        "Diseño enfocado en la comodidad para eventos prolongados",
+        "Estructura robusta para máxima seguridad",
+        "Fácil acceso mediante pasillos laterales",
+        "Modular y adaptable a diferentes espacios"
+      ]
+    }
+  ]
