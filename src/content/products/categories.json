@@ -1,0 +1,18 @@
+[
+    {
+      "id": "carpas",
+      "name": "Carpas",
+      "description": "Carpas disponibles en varios tamaños y estilos para todo tipo de eventos.",
+      "featuredImage": "/images/carpas/featured.jpg",
+      "slug": "carpas",
+      "featured": true
+    },
+    {
+      "id": "pistas",
+      "name": "Pistas de Baile",
+      "description": "Pistas de baile en diferentes materiales y acabados.",
+      "featuredImage": "/images/pistas/featured.jpg",
+      "slug": "pistas",
+      "featured": true
+    }
+  ]

@@ -1,0 +1,25 @@
+[
+    {
+      "id": "carpa-plafon-liso-blanco",
+      "name": "Carpa con plafón liso blanco",
+      "description": "Carpa elegante con plafón liso blanco, ideal para bodas y eventos formales.",
+      "images": ["/images/carpas/plafon-liso-blanco-1.jpg", "/images/carpas/plafon-liso-blanco-2.jpg"],
+      "category": "Carpas",
+      "specifications": {
+        "width": 15,
+        "height": 4,
+        "plafondType": "Liso blanco",
+        "color": "Blanco",
+        "setupTime": "1 día"
+      },
+      "pricing": {
+        "unit": "m²",
+        "pricePerUnit": 65
+      },
+      "features": [
+        "Elegante acabado liso",
+        "Excelente para eventos formales",
+        "Fácil personalización con iluminación"
+      ]
+    }
+  ]
