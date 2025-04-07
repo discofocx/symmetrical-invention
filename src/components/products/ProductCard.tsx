@@ -1,4 +1,5 @@
 // src/components/products/ProductCard.tsx
+
 import { Product } from '@/types/product';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,7 +10,9 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { id, name, description, images, category, pricing } = product;
-  const slug = id.toLowerCase().replace(/ /g, '-');
+  
+  // Create proper slugs for routing
+  const productSlug = id.toLowerCase().replace(/ /g, '-');
   const categorySlug = category.toLowerCase().replace(/ /g, '-');
 
   return (
@@ -37,7 +40,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <p className="text-forest/80 mb-4 line-clamp-3">{description}</p>
         <div className="mt-auto">
           <Link 
-            href={`/productos/${categorySlug}/${slug}`}
+            href={`/productos/${categorySlug}/${productSlug}`}
             className="font-medium text-peach hover:text-peach/80 transition-colors"
           >
             Ver detalles
