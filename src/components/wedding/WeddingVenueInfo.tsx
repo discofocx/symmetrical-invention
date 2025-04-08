@@ -1,0 +1,59 @@
+import React from 'react';
+import type { VenueInfo } from '../../types/wedding-packages-types';
+
+interface WeddingVenueInfoProps {
+  venue: VenueInfo;
+}
+
+export default function WeddingVenueInfo({ venue }: WeddingVenueInfoProps) {
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency: 'MXN',
+      maximumFractionDigits: 0
+    }).format(price);
+  };
+
+  return (
+    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+      <div className="md:flex">
+        <div className="md:w-1/2">
+          {venue.image ? (
+            <img 
+              src={venue.image} 
+              alt={venue.name} 
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="bg-teal/20 w-full h-full min-h-60 flex items-center justify-center">
+              <span className="text-teal font-medium">Imagen de {venue.name}</span>
+            </div>
+          )}
+        </div>
+        <div className="p-6 md:w-1/2">
+          <div className="flex justify-between items-start mb-4">
+            <h2 className="text-2xl font-bold text-forest">{venue.name}</h2>
+            <div className="bg-peach/10 px-3 py-1 rounded text-forest font-medium">
+              {formatPrice(venue.price)}
+            </div>
+          </div>
+          
+          <p className="text-forest/80 mb-4">{venue.description}</p>
+          
+          <h3 className="font-medium text-forest mb-2">Incluye:</h3>
+          <ul className="list-disc list-inside text-forest/80 space-y-1">
+            {venue.features.map((feature, index) => (
+              <li key={index}>{feature}</li>
+            ))}
+          </ul>
+          
+          <div className="mt-6">
+            <p className="text-sm text-forest/70 italic">
+              El costo del espacio es fijo y se suma al paquete de infraestructura seleccionado.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
