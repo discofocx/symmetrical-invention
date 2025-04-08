@@ -3,6 +3,7 @@
 import { Product } from '@/types/product';
 import Image from 'next/image';
 import Link from 'next/link';
+import { slugify } from '@/lib/content/products';
 
 interface ProductCardProps {
   product: Product;
@@ -11,11 +12,11 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { id, name, description, images, category, pricing } = product;
   
-  // Create proper slugs for routing
-  const productSlug = id.toLowerCase().replace(/ /g, '-');
+  // Create proper slugs for routing with our utility function
+  const productSlug = slugify(id);
   
-  // For the category slug, use the category name which is more URL-friendly
-  const categorySlug = category.toLowerCase().replace(/ /g, '-');
+  // For the category slug, use our utility function
+  const categorySlug = slugify(category);
 
   return (
     <div className="bg-cream rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md group">

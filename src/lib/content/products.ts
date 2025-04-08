@@ -6,50 +6,90 @@ import { Product, ProductCategory } from '@/types/product';
 
 const productsDirectory = path.join(process.cwd(), 'src/content/products');
 
-// Map between URL slugs and content file names
+// Map between URL slugs and content file names (all normalized)
 const categoryFileMapping: Record<string, string> = {
+  // Direct mappings by ID and slug
   'carpas': 'carpas',
   'pistas-de-baile': 'pistas',
+  'pistas': 'pistas',
   'entarimados': 'entarimados',
   'templetes': 'templetes',
+  // Graderías variations (with and without accents)
   'graderias': 'graderias',
+  'graderías': 'graderias',
+  // These handle both form of the URL
   'plantas-de-luz': 'plantas',
-  'servicios-especiales': 'especiales'
+  'plantas': 'plantas',
+  'servicios-especiales': 'especiales',
+  'especiales': 'especiales'
 };
 
-// Utilities for slug handling and normalization
-function normalizeString(str: string): string {
-  return str.toLowerCase().trim();
+// Enhanced utilities for slug handling and normalization
+export function normalizeString(str: string): string {
+  return str.toLowerCase()
+    .trim()
+    // Remove accents/diacritics
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-function slugify(str: string): string {
-  return normalizeString(str).replace(/\s+/g, '-');
+export function slugify(str: string): string {
+  return str.toLowerCase()
+    .trim()
+    // Remove accents/diacritics
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    // Replace spaces with hyphens
+    .replace(/\s+/g, '-')
+    // Remove any remaining non-alphanumeric characters (except hyphens)
+    .replace(/[^a-z0-9\-]/g, '')
+    // Remove repeated hyphens
+    .replace(/-+/g, '-');
 }
 
-function deslugify(slug: string): string {
-  return normalizeString(slug).replace(/-+/g, ' ');
+export function deslugify(slug: string): string {
+  return slug.toLowerCase()
+    .trim()
+    // Remove accents/diacritics if any
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    // Replace hyphens with spaces
+    .replace(/-+/g, ' ');
 }
 
 // Category resolvers
 export function getCategoryBySlug(slug: string): ProductCategory | null {
   try {
     const categories = getProductCategories();
-    const normalizedSlug = normalizeString(slug);
     
-    // Try to find by exact slug match first
-    let category = categories.find(c => normalizeString(c.slug) === normalizedSlug);
+    // First try direct match with the original slug
+    let category = categories.find(c => c.slug === slug);
     
-    // If not found, try by ID
     if (!category) {
-      category = categories.find(c => normalizeString(c.id) === normalizedSlug);
-    }
-    
-    // If still not found, try by name
-    if (!category) {
-      const deslugifiedName = deslugify(normalizedSlug);
-      category = categories.find(c => 
-        normalizeString(c.name) === deslugifiedName
-      );
+      const normalizedSlug = normalizeString(slug);
+      
+      // Try to find by normalized slug match
+      category = categories.find(c => normalizeString(c.slug) === normalizedSlug);
+      
+      // If not found, try by normalized ID
+      if (!category) {
+        category = categories.find(c => normalizeString(c.id) === normalizedSlug);
+      }
+      
+      // If still not found, try by normalized name
+      if (!category) {
+        const deslugifiedName = deslugify(normalizedSlug);
+        category = categories.find(c => 
+          normalizeString(c.name) === deslugifiedName
+        );
+      }
+      
+      // Last attempt: try slugified category name
+      if (!category) {
+        categories.forEach(c => {
+          const slugifiedName = slugify(c.name);
+          if (normalizeString(slugifiedName) === normalizedSlug) {
+            category = c;
+          }
+        });
+      }
     }
     
     return category || null;
@@ -60,14 +100,25 @@ export function getCategoryBySlug(slug: string): ProductCategory | null {
 }
 
 export function getCategoryFileName(categoryIdentifier: string): string | null {
-  // Check if we have a direct mapping first
-  const directMatch = categoryFileMapping[normalizeString(categoryIdentifier)];
+  // First, try with the original string (for explicit accented entries)
+  if (categoryFileMapping[categoryIdentifier]) {
+    return categoryFileMapping[categoryIdentifier];
+  }
+  
+  // Then check if we have a direct mapping with normalized string
+  const normalizedIdentifier = normalizeString(categoryIdentifier);
+  const directMatch = categoryFileMapping[normalizedIdentifier];
   if (directMatch) return directMatch;
   
   // Try to find category and get its ID
   const category = getCategoryBySlug(categoryIdentifier);
   if (category) {
-    // Check if category ID is in the mapping
+    // Try the category ID directly first
+    if (categoryFileMapping[category.id]) {
+      return categoryFileMapping[category.id];
+    }
+    
+    // Check if normalized category ID is in the mapping
     const mappedFile = categoryFileMapping[normalizeString(category.id)];
     if (mappedFile) return mappedFile;
     
@@ -75,31 +126,45 @@ export function getCategoryFileName(categoryIdentifier: string): string | null {
     return normalizeString(category.id);
   }
   
-  // Last resort, return the input itself
-  return normalizeString(categoryIdentifier);
+  // Last resort, return the normalized input
+  return normalizedIdentifier;
 }
 
 // Product resolver
 export function getProductBySlug(slug: string): Product | null {
   try {
-    // Normalize the slug
-    const normalizedSlug = normalizeString(slug);
-    const deslugifiedName = deslugify(normalizedSlug);
-    
-    // Get all products
+    // First try with the original slug (exact match)
     const allProducts = getAllProducts();
+    let product = allProducts.find(p => p.id === slug);
     
-    // Try to find by ID first
-    let product = allProducts.find(p => normalizeString(p.id) === normalizedSlug);
-    
-    // If not found, try by ID with spaces instead of hyphens
     if (!product) {
-      product = allProducts.find(p => normalizeString(p.id) === deslugifiedName);
-    }
-    
-    // If still not found, try by name
-    if (!product) {
-      product = allProducts.find(p => normalizeString(p.name) === deslugifiedName);
+      // Normalize the slug
+      const normalizedSlug = normalizeString(slug);
+      const deslugifiedName = deslugify(normalizedSlug);
+      
+      // Try to find by normalized ID
+      product = allProducts.find(p => normalizeString(p.id) === normalizedSlug);
+      
+      // If not found, try by ID with spaces instead of hyphens
+      if (!product) {
+        product = allProducts.find(p => normalizeString(p.id) === deslugifiedName);
+      }
+      
+      // If still not found, try by normalized name
+      if (!product) {
+        product = allProducts.find(p => normalizeString(p.name) === deslugifiedName);
+      }
+      
+      // Last attempt: try by slugified name
+      if (!product) {
+        for (const p of allProducts) {
+          const slugifiedName = slugify(p.name);
+          if (normalizeString(slugifiedName) === normalizedSlug) {
+            product = p;
+            break;
+          }
+        }
+      }
     }
     
     return product || null;
