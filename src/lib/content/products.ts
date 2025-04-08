@@ -17,6 +17,9 @@ const categoryFileMapping: Record<string, string> = {
   // Graderías variations (with and without accents)
   'graderias': 'graderias',
   'graderías': 'graderias',
+  // This is missing from the categories.json file - the original ID
+  'gradería': 'graderias',
+  'graderia': 'graderias',
   // These handle both form of the URL
   'plantas-de-luz': 'plantas',
   'plantas': 'plantas',

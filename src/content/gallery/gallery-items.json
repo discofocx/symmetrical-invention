@@ -1,0 +1,126 @@
+[
+  {
+    "id": "boda-hacienda-2023",
+    "title": "Boda en Hacienda San Miguel",
+    "description": "Elegante boda para 250 invitados con carpa transparente y pista de baile personalizada.",
+    "category": ["bodas"],
+    "imageSrc": "/images/gallery/wedding-1.jpg",
+    "date": "2023-10-15",
+    "location": "Hacienda San Miguel, Querétaro",
+    "featured": true,
+    "tags": ["carpa transparente", "pista personalizada", "iluminación"]
+  },
+  {
+    "id": "boda-jardin-vip",
+    "title": "Boda VIP en Jardín Quinta El Refugio",
+    "description": "Boda íntima para 120 invitados con carpa plafón liso y decoración minimalista.",
+    "category": ["bodas"],
+    "imageSrc": "/images/gallery/wedding-2.jpg",
+    "date": "2023-08-20",
+    "location": "Quinta El Refugio, Querétaro",
+    "featured": true,
+    "tags": ["carpa plafón liso", "luces colgantes", "minimalista"]
+  },
+  {
+    "id": "evento-corporativo-tech",
+    "title": "Evento Corporativo TechSummit",
+    "description": "Montaje para exposición de tecnología con carpa de 450m² y escenario central.",
+    "category": ["corporativos"],
+    "imageSrc": "/images/gallery/corporate-1.jpg",
+    "date": "2023-05-10",
+    "location": "Centro de Congresos, Querétaro",
+    "featured": true,
+    "tags": ["carpa grande", "escenario", "tecnología"]
+  },
+  {
+    "id": "lanzamiento-producto-automotriz",
+    "title": "Lanzamiento de Nuevo Modelo Automotriz",
+    "description": "Evento de lanzamiento con carpa tipo hangar y plataforma giratoria para exhibición.",
+    "category": ["corporativos"],
+    "imageSrc": "/images/gallery/corporate-2.jpg",
+    "date": "2023-03-25",
+    "location": "Parque Industrial Bernardo Quintana",
+    "tags": ["carpa tipo hangar", "plataforma giratoria", "automotriz"]
+  },
+  {
+    "id": "quinceanos-jardin",
+    "title": "Fiesta de XV Años en Jardín",
+    "description": "Celebración para 200 invitados con carpa plafón en olas y pista iluminada.",
+    "category": ["sociales"],
+    "imageSrc": "/images/gallery/social-1.jpg",
+    "date": "2023-09-05",
+    "location": "Jardín Las Fuentes, Querétaro",
+    "tags": ["xv años", "plafón en olas", "pista iluminada"]
+  },
+  {
+    "id": "graduacion-universidad",
+    "title": "Graduación Universitaria",
+    "description": "Ceremonia de graduación con graderías, templetes y carpas para 500 asistentes.",
+    "category": ["sociales"],
+    "imageSrc": "/images/gallery/social-2.jpg",
+    "date": "2023-06-30",
+    "location": "Campus Universitario, Querétaro",
+    "tags": ["graduación", "graderías", "templetes"]
+  },
+  {
+    "id": "tapado-alberca-jardin",
+    "title": "Tapado de Alberca para Evento Residencial",
+    "description": "Transformación de área de alberca en espacio para evento con piso nivelado.",
+    "category": ["especiales"],
+    "imageSrc": "/images/gallery/special-1.jpg",
+    "date": "2023-07-22",
+    "location": "Residencia Privada, Juriquilla",
+    "featured": true,
+    "tags": ["tapado alberca", "piso nivelado", "residencial"]
+  },
+  {
+    "id": "escenario-concierto",
+    "title": "Escenario para Concierto en Plaza",
+    "description": "Montaje de escenario con techo, graderías laterales y sistema de sonido.",
+    "category": ["especiales"],
+    "imageSrc": "/images/gallery/special-2.jpg",
+    "date": "2023-04-18",
+    "location": "Plaza Principal, San Juan del Río",
+    "tags": ["escenario", "concierto", "graderías"]
+  },
+  {
+    "id": "boda-hacienda-colonial",
+    "title": "Boda en Hacienda Colonial",
+    "description": "Evento para 300 invitados con carpa alemana y pista de baile charol.",
+    "category": ["bodas"],
+    "imageSrc": "/images/gallery/wedding-3.jpg",
+    "date": "2023-11-05",
+    "location": "Hacienda Colonial, Corregidora",
+    "tags": ["carpa alemana", "pista charol", "hacienda"]
+  },
+  {
+    "id": "congreso-medico",
+    "title": "Congreso Médico Nacional",
+    "description": "Carpa de 600m² con divisiones internas para conferencias y exposición.",
+    "category": ["corporativos"],
+    "imageSrc": "/images/gallery/corporate-3.jpg",
+    "date": "2023-02-10",
+    "location": "Hotel Grand, Querétaro",
+    "tags": ["congreso", "divisiones", "exposición"]
+  },
+  {
+    "id": "boda-jardin-vintage",
+    "title": "Boda Vintage en Jardín",
+    "description": "Decoración estilo vintage con carpa de plafón liso y pista iluminada.",
+    "category": ["bodas"],
+    "imageSrc": "/images/gallery/wedding-4.jpg",
+    "date": "2023-04-22",
+    "location": "Jardín Los Laureles, Tequisquiapan",
+    "tags": ["vintage", "plafón liso", "pista iluminada"]
+  },
+  {
+    "id": "feria-artesanal",
+    "title": "Feria Artesanal Municipal",
+    "description": "Sistema de carpas individuales para 50 expositores con pasillos centrales.",
+    "category": ["especiales"],
+    "imageSrc": "/images/gallery/special-3.jpg",
+    "date": "2023-10-01",
+    "location": "Centro Histórico, Querétaro",
+    "tags": ["feria", "artesanías", "carpas múltiples"]
+  }
+]

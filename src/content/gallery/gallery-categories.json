@@ -1,0 +1,30 @@
+[
+  {
+    "id": "bodas",
+    "title": "Bodas",
+    "description": "Carpas, pistas y montajes especiales para bodas y ceremonias.",
+    "featuredImage": "/images/gallery/categories/weddings.jpg",
+    "featured": true
+  },
+  {
+    "id": "corporativos",
+    "title": "Eventos Corporativos",
+    "description": "Estructuras para conferencias, exposiciones y eventos empresariales.",
+    "featuredImage": "/images/gallery/categories/corporate.jpg",
+    "featured": true
+  },
+  {
+    "id": "sociales",
+    "title": "Eventos Sociales",
+    "description": "Soluciones para fiestas, graduaciones y celebraciones especiales.",
+    "featuredImage": "/images/gallery/categories/social.jpg",
+    "featured": false
+  },
+  {
+    "id": "especiales",
+    "title": "Proyectos Especiales",
+    "description": "Adaptaciones únicas y soluciones a medida para desafíos específicos.",
+    "featuredImage": "/images/gallery/categories/special.jpg",
+    "featured": true
+  }
+]

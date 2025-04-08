@@ -2,11 +2,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card } from '@/components/ui/Card';
+import { FeaturedGallery } from '@/components/gallery/FeaturedGallery';
 import { getProductCategories } from '@/lib/content/products';
+import { getFeaturedGalleryItems } from '@/lib/content/gallery';
 
 export default function Home() {
   // This would typically be fetched from the backend
   const categories = getProductCategories();
+  const featuredGalleryItems = getFeaturedGalleryItems(4);
   
   // Sample testimonials
   const testimonials = [
@@ -189,6 +192,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      {/* Featured Gallery Section */}
+      <FeaturedGallery
+        items={featuredGalleryItems}
+        title="Proyectos Destacados"
+        description="Explora algunos de nuestros trabajos más recientes y emblemáticos."
+      />
       
       {/* CTA Section */}
       <section className="py-16 bg-forest text-cream">
