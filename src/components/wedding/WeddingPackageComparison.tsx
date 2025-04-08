@@ -1,5 +1,6 @@
 import React from 'react';
-import type { WeddingPackageData } from '../../types/wedding-packages-types';
+import type { WeddingPackageData } from '@/types/wedding-packages-types';
+import { formatPrice } from '@/lib/utils/formatting';
 
 interface WeddingPackageComparisonProps {
   packageData: WeddingPackageData;
@@ -10,12 +11,7 @@ export default function WeddingPackageComparison({
   packageData,
   onSelectPackage
 }: WeddingPackageComparisonProps) {
-  // Use a more consistent price formatting approach to avoid hydration issues
-  const formatPrice = (price: number) => {
-    // Format price as MXN currency with no decimal places
-    // Handle server/client differences by using a simple string manipulation approach
-    return `$${price.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
-  };
+  // Using the shared formatting utility for consistency
 
   // Get the base pricing for 150 guests to display in the comparison
   const getBasePrice = (packageId: string) => {

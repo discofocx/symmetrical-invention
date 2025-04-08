@@ -1,4 +1,4 @@
-import { WeddingPackageData } from "../types/wedding-packages-types";
+import { WeddingPackageData } from "@/types/wedding-packages-types";
 
 export const weddingPackageData: WeddingPackageData = {
   venue: {

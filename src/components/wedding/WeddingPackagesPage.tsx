@@ -1,11 +1,11 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import WeddingCalculator from './WeddingCalculator';
-import WeddingPackageComparison from './WeddingPackageComparison';
-import WeddingVenueInfo from './WeddingVenueInfo';
-import WeddingTestimonials from './WeddingTestimonials';
-import WeddingFeaturesHighlight from './WeddingFeaturesHighlight';
-import { weddingPackageData } from '../../data/wedding-packages-data';
+import WeddingCalculator from '@/components/wedding/WeddingCalculator';
+import WeddingPackageComparison from '@/components/wedding/WeddingPackageComparison';
+import WeddingVenueInfo from '@/components/wedding/WeddingVenueInfo';
+import WeddingTestimonials from '@/components/wedding/WeddingTestimonials';
+import WeddingFeaturesHighlight from '@/components/wedding/WeddingFeaturesHighlight';
+import { weddingPackageData } from '@/data/wedding-packages-data';
 
 export default function WeddingPackagesPage() {
   // Using a ref to track if we're in the initial hydration phase

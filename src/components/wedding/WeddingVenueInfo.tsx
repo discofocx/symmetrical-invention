@@ -1,18 +1,13 @@
 import React from 'react';
-import type { VenueInfo } from '../../types/wedding-packages-types';
+import type { VenueInfo } from '@/types/wedding-packages-types';
+import { formatPrice } from '@/lib/utils/formatting';
 
 interface WeddingVenueInfoProps {
   venue: VenueInfo;
 }
 
 export default function WeddingVenueInfo({ venue }: WeddingVenueInfoProps) {
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('es-MX', {
-      style: 'currency',
-      currency: 'MXN',
-      maximumFractionDigits: 0
-    }).format(price);
-  };
+  // Using the shared formatting utility
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">

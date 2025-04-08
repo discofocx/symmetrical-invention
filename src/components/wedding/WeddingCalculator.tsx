@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import type { WeddingPackageData, CalculatorState, CalculationResult, WeddingAddOn } from '../../types/wedding-packages-types';
+import type { WeddingPackageData, CalculatorState, CalculationResult, WeddingAddOn } from '@/types/wedding-packages-types';
+import { formatPrice } from '@/lib/utils/formatting';
 
 interface WeddingCalculatorProps {
   packageData: WeddingPackageData;
@@ -116,13 +117,6 @@ export default function WeddingCalculator({ packageData }: WeddingCalculatorProp
         selectedAddOns
       };
     });
-  };
-
-  // Use a more consistent price formatting approach to avoid hydration issues
-  const formatPrice = (price: number) => {
-    // Format price as MXN currency with no decimal places
-    // Handle server/client differences by using a simple string manipulation approach
-    return `$${price.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
   };
 
   // Find the selected package
