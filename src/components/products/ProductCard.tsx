@@ -1,4 +1,4 @@
-// src/components/products/ProductCard.tsx
+// src/components/products/ProductCard.tsx (update)
 
 import { Product } from '@/types/product';
 import Image from 'next/image';
@@ -13,6 +13,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   
   // Create proper slugs for routing
   const productSlug = id.toLowerCase().replace(/ /g, '-');
+  
+  // For the category slug, use the category name which is more URL-friendly
   const categorySlug = category.toLowerCase().replace(/ /g, '-');
 
   return (

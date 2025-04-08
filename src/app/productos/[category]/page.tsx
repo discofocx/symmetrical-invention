@@ -1,8 +1,7 @@
-// src/app/productos/[category]/page.tsx
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ProductGrid } from '@/components/products/ProductGrid';
-import { getProductCategories, getProductsByCategory } from '@/lib/content/products';
+import { getCategoryBySlug, getProductsByCategory } from '@/lib/content/products';
 
 interface CategoryPageProps {
   params: {
@@ -11,8 +10,7 @@ interface CategoryPageProps {
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-  const categories = getProductCategories();
-  const category = categories.find(c => c.slug === params.category);
+  const category = getCategoryBySlug(params.category);
   
   if (!category) {
     return {
@@ -26,22 +24,15 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   };
 }
 
-export async function generateStaticParams() {
-  const categories = getProductCategories();
-  
-  return categories.map(category => ({
-    category: category.slug,
-  }));
-}
-
 export default function CategoryPage({ params }: CategoryPageProps) {
-  const categories = getProductCategories();
-  const category = categories.find(c => c.slug === params.category);
+  // Use our resolver to find the category
+  const category = getCategoryBySlug(params.category);
   
   if (!category) {
     notFound();
   }
   
+  // Use the category ID to get products
   const products = getProductsByCategory(category.id);
   
   return (
@@ -79,15 +70,15 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 No hay productos disponibles en esta categoría en este momento.
               </p>
               <a 
-               href="/productos"
-               className="bg-peach text-forest px-4 py-2 rounded-full font-medium transition-colors hover:bg-peach/90"
-             >
-               Ver todas las categorías
-             </a>
-           </div>
-         )}
-       </div>
-     </section>
+                href="/productos"
+                className="bg-peach text-forest px-4 py-2 rounded-full font-medium transition-colors hover:bg-peach/90"
+              >
+                Ver todas las categorías
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
      
      {/* Category Features */}
      {category.id === 'carpas' && (

@@ -1,10 +1,9 @@
-// src/app/productos/[category]/[product]/page.tsx
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ProductCard } from '@/components/products/ProductCard';
-import { getProductById, getProductsByCategory, getProductCategories, getRelatedProducts } from '@/lib/content/products';
+import { getCategoryBySlug, getProductBySlug, getRelatedProducts } from '@/lib/content/products';
 
 interface ProductPageProps {
   params: {
@@ -14,7 +13,7 @@ interface ProductPageProps {
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = getProductById(params.product);
+  const product = getProductBySlug(params.product);
   
   if (!product) {
     return {
@@ -28,43 +27,26 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   };
 }
 
-export async function generateStaticParams() {
-  const categories = getProductCategories();
-  const paths: { category: string; product: string }[] = [];
-  
-  categories.forEach(category => {
-    const products = getProductsByCategory(category.id);
-    products.forEach(product => {
-      paths.push({
-        category: category.slug,
-        product: product.id.toLowerCase().replace(/ /g, '-'),
-      });
-    });
-  });
-  
-  return paths;
-}
-
 export default function ProductPage({ params }: ProductPageProps) {
-  console.log('Product page params:', params); // For debugging
-  const product = getProductById(params.product);
+  // Use our resolver to find the product
+  const product = getProductBySlug(params.product);
   
   if (!product) {
     console.error(`Product not found: ${params.product}`);
     notFound();
   }
   
-  const categorySlug = product.category.toLowerCase().replace(/ /g, '-');
-  const categories = getProductCategories();
-  const category = categories.find(c => c.id.toLowerCase() === product.category.toLowerCase());
+  // Ensure we have the correct category
+  const category = getCategoryBySlug(params.category);
   
-  // More detailed product debugging
-  console.log('Found product:', {
-    id: product.id,
-    name: product.name,
-    category: product.category
-  });
-
+  if (!category) {
+    console.error(`Category not found: ${params.category}`);
+    notFound();
+  }
+  
+  // Get the related products
+  const relatedProducts = getRelatedProducts(product.id, 4);
+  
   return (
     <>
       {/* Breadcrumb */}
@@ -75,8 +57,8 @@ export default function ProductPage({ params }: ProductPageProps) {
               Productos
             </Link>
             <span className="mx-2 text-forest/50">/</span>
-            <Link href={`/productos/${categorySlug}`} className="text-forest/70 hover:text-forest transition-colors">
-              {product.category}
+            <Link href={`/productos/${category.slug}`} className="text-forest/70 hover:text-forest transition-colors">
+              {category.name}
             </Link>
             <span className="mx-2 text-forest/50">/</span>
             <span className="text-forest">{product.name}</span>
@@ -252,7 +234,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             Productos Relacionados
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {getRelatedProducts(product.id, 4).map((relatedProduct) => (
+            {relatedProducts.map(relatedProduct => (
               <ProductCard key={relatedProduct.id} product={relatedProduct} />
             ))}
           </div>
