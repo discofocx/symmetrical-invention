@@ -1,5 +1,6 @@
 // src/components/layout/Footer.tsx
 import Link from 'next/link';
+import { slugify } from '@/lib/content/products';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,11 +39,11 @@ export const Footer = () => {
           <div>
             <h3 className="font-boska text-xl mb-4">Productos</h3>
             <ul className="space-y-2">
-              <li><Link href="/productos/carpas" className="hover:text-peach transition-colors">Carpas</Link></li>
-              <li><Link href="/productos/pistas" className="hover:text-peach transition-colors">Pistas de Baile</Link></li>
-              <li><Link href="/productos/graderias" className="hover:text-peach transition-colors">Graderías</Link></li>
-              <li><Link href="/productos/plantas" className="hover:text-peach transition-colors">Plantas de Luz</Link></li>
-              <li><Link href="/productos/especiales" className="hover:text-peach transition-colors">Servicios Especiales</Link></li>
+              <li><Link href={`/productos/${slugify('Carpas')}`} className="hover:text-peach transition-colors">Carpas</Link></li>
+              <li><Link href={`/productos/${slugify('Pistas de Baile')}`} className="hover:text-peach transition-colors">Pistas de Baile</Link></li>
+              <li><Link href={`/productos/${slugify('Graderías')}`} className="hover:text-peach transition-colors">Graderías</Link></li>
+              <li><Link href={`/productos/${slugify('Plantas de Luz')}`} className="hover:text-peach transition-colors">Plantas de Luz</Link></li>
+              <li><Link href={`/productos/${slugify('Servicios Especiales')}`} className="hover:text-peach transition-colors">Servicios Especiales</Link></li>
             </ul>
           </div>
 
