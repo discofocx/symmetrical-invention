@@ -1,0 +1,158 @@
+flowchart TD
+    subgraph "Content Sources"
+        StaticFiles[Markdown & JSON Files]
+        ConfigFiles[Configuration Files]
+        ProductData[Product Data]
+        GalleryData[Gallery Data]
+        FAQData[FAQ Data]
+        PackageData[Wedding Package Data]
+    end
+    
+    subgraph "Content Loaders"
+        FileSystem[File System Access]
+        ContentParsers[Content Parsers]
+        DataTransformers[Data Transformers]
+        SEOEnhancers[SEO Data Enhancers]
+        TypeValidation[Type Validation]
+    end
+    
+    subgraph "Static Generation"
+        GetStaticProps[getStaticProps]
+        GetStaticPaths[getStaticPaths]
+        MetadataGeneration[Metadata Generation]
+        ISRRevalidation[ISR Revalidation]
+    end
+    
+    subgraph "Server Components"
+        AsyncServer[Async Components]
+        DataFetching[Data Fetching]
+        ServerRender[Server Rendering]
+        ReactServer[React Server Components]
+    end
+    
+    subgraph "Client State"
+        ReactState[React useState]
+        ContextAPI[React Context]
+        QueryParams[URL Query Parameters]
+        LocalStorage[Browser Storage]
+    end
+    
+    subgraph "Interactive Features"
+        FilterState[Filter State]
+        PaginationState[Pagination State]
+        FormState[Form State]
+        CalculatorState[Calculator State]
+        ModalState[Modal State]
+    end
+    
+    %% Content Flow
+    StaticFiles --> FileSystem
+    ConfigFiles --> FileSystem
+    ProductData --> FileSystem
+    GalleryData --> FileSystem
+    FAQData --> FileSystem
+    PackageData --> FileSystem
+    
+    FileSystem --> ContentParsers
+    ContentParsers --> DataTransformers
+    DataTransformers --> TypeValidation
+    TypeValidation --> SEOEnhancers
+    
+    %% Static Generation
+    FileSystem --> GetStaticProps
+    GetStaticProps --> GetStaticPaths
+    SEOEnhancers --> MetadataGeneration
+    GetStaticProps --> ISRRevalidation
+    
+    %% Server Components
+    DataTransformers --> AsyncServer
+    AsyncServer --> DataFetching
+    DataFetching --> ServerRender
+    ServerRender --> ReactServer
+    
+    %% Client State Management
+    ReactState --> FilterState
+    ReactState --> PaginationState
+    ReactState --> FormState
+    ReactState --> CalculatorState
+    ReactState --> ModalState
+    
+    ContextAPI --> FilterState
+    QueryParams --> FilterState
+    QueryParams --> PaginationState
+    LocalStorage --> FilterState
+    LocalStorage --> CalculatorState
+    
+    %% Data Flow to Features
+    ProductData --> FilterState
+    GalleryData --> PaginationState
+    PackageData --> CalculatorState
+    
+    %% Server to Client Hydration
+    ReactServer --> ReactState
+    GetStaticProps --> ReactState
+    
+    %% Specific Implementation Patterns
+    subgraph "Implementation Patterns"
+        IslandsStrategy[Islands Architecture]
+        StaticDynamic[Static + Dynamic Sections]
+        SharedStateStrategy[Shared State Strategy]
+        StaleWhileRevalidate[Stale-While-Revalidate]
+        ProgressiveLoad[Progressive Loading]
+    end
+    
+    IslandsStrategy --> FilterState
+    IslandsStrategy --> ModalState
+    StaticDynamic --> AsyncServer
+    StaticDynamic --> ReactState
+    SharedStateStrategy --> ContextAPI
+    StaleWhileRevalidate --> ISRRevalidation
+    ProgressiveLoad --> ServerRender
+    
+    %% Content Update Strategy
+    subgraph "Content Update Strategy"
+        GitFlow[Git-based Content Flow]
+        BuildHooks[Build Hooks]
+        StaticRegeneration[Static Regeneration]
+        OnDemandRevalidation[On-demand Revalidation]
+    end
+    
+    StaticFiles --> GitFlow
+    GitFlow --> BuildHooks
+    BuildHooks --> StaticRegeneration
+    StaticRegeneration --> OnDemandRevalidation
+    
+    %% Feature-specific State Management
+    subgraph "Feature-specific State"
+        ProductFilters[Product Filter System]
+        GalleryBrowsing[Gallery Browsing System]
+        BudgetCalculation[Budget Calculation System]
+        FormSubmission[Form Submission System]
+    end
+    
+    FilterState --> ProductFilters
+    PaginationState --> GalleryBrowsing
+    ModalState --> GalleryBrowsing
+    CalculatorState --> BudgetCalculation
+    FormState --> FormSubmission
+    
+    %% Styling
+    classDef contentSources fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef loaders fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef staticGen fill:#EF9C82,stroke:#123332,color:#123332;
+    classDef serverComp fill:#1D4241,stroke:#123332,color:#F9EEE7;
+    classDef clientState fill:#123332,stroke:#123332,color:#F9EEE7;
+    classDef features fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef patterns fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef updateStrategy fill:#EF9C82,stroke:#123332,color:#123332;
+    classDef featureState fill:#1D4241,stroke:#123332,color:#F9EEE7;
+    
+    class StaticFiles,ConfigFiles,ProductData,GalleryData,FAQData,PackageData contentSources;
+    class FileSystem,ContentParsers,DataTransformers,SEOEnhancers,TypeValidation loaders;
+    class GetStaticProps,GetStaticPaths,MetadataGeneration,ISRRevalidation staticGen;
+    class AsyncServer,DataFetching,ServerRender,ReactServer serverComp;
+    class ReactState,ContextAPI,QueryParams,LocalStorage clientState;
+    class FilterState,PaginationState,FormState,CalculatorState,ModalState features;
+    class IslandsStrategy,StaticDynamic,SharedStateStrategy,StaleWhileRevalidate,ProgressiveLoad patterns;
+    class GitFlow,BuildHooks,StaticRegeneration,OnDemandRevalidation updateStrategy;
+    class ProductFilters,GalleryBrowsing,BudgetCalculation,FormSubmission featureState;

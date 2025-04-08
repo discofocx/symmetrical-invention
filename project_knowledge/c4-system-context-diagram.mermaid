@@ -1,0 +1,20 @@
+C4Context
+    title System Context diagram for Altivento Website
+
+    Person(customer, "Customer", "A person looking to rent event infrastructure")
+    Person(contentAdmin, "Content Administrator", "Altivento staff member who updates content")
+    
+    System(altiventoWebsite, "Altivento Website", "Allows customers to browse products, request quotes, and contact Altivento")
+    
+    System_Ext(emailService, "Email Service", "Handles form submissions and notifications")
+    System_Ext(whatsappAPI, "WhatsApp Business API", "Provides direct messaging capabilities")
+    System_Ext(analytics, "Analytics Services", "Tracks user behavior and site performance")
+    System_Ext(vercel, "Vercel Platform", "Hosts the website and handles deployment")
+    
+    Rel(customer, altiventoWebsite, "Views products, requests quotes, contacts staff")
+    Rel(contentAdmin, altiventoWebsite, "Updates content through static file changes")
+    
+    Rel(altiventoWebsite, emailService, "Sends form submissions via")
+    Rel(altiventoWebsite, whatsappAPI, "Initiates chat via")
+    Rel(altiventoWebsite, analytics, "Sends usage data to")
+    Rel(vercel, altiventoWebsite, "Hosts and serves")

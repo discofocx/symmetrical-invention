@@ -1,0 +1,80 @@
+graph TD
+    Home[Home] --> About[Nosotros]
+    Home --> Products[Productos y Servicios]
+    Home --> Weddings[Paquetes para Bodas]
+    Home --> Gallery[Galería de Proyectos]
+    Home --> FAQ[Preguntas Frecuentes]
+    Home --> Contact[Contacto]
+    Home --> Blog[Blog] 
+    
+    About --> AboutHistory[Historia y Experiencia]
+    About --> AboutValues[Valores de Marca]
+    About --> AboutTeam[Equipo]
+    About --> AboutAdvantages[Ventajas Competitivas]
+    About --> AboutTestimonials[Testimonios]
+    
+    Products --> Carpas[Carpas]
+    Products --> Pistas[Pistas de Baile]
+    Products --> Graderias[Graderías y Entarimados]
+    Products --> Pasarelas[Pasarelas]
+    Products --> Plantas[Plantas de Luz]
+    Products --> Especiales[Servicios Especiales]
+    
+    Carpas --> CarpasLiso[Carpas Plafón Liso]
+    Carpas --> CarpasAleman[Carpas Alemanas]
+    Carpas --> CarpasOlas[Carpas Plafón en Olas]
+    Carpas --> CarpasBoton[Carpas Plafón de Botón]
+    Carpas --> CarpasTransparente[Carpas Transparentes]
+    
+    Pistas --> PistasLaminado[Pistas de Piso Laminado]
+    Pistas --> PistasCharol[Pistas de Charol]
+    Pistas --> PistasPintada[Pistas Pintadas]
+    Pistas --> PistasCustom[Pistas con Diseño Personalizado]
+    
+    Graderias --> Entarimados[Entarimados]
+    Graderias --> Templetes[Templetes]
+    Graderias --> EstradosEspeciales[Estrados Especiales]
+    Graderias --> GraderiasModulos[Graderías por Módulos]
+    
+    Especiales --> TapadoAlbercas[Tapado de Albercas]
+    
+    Weddings --> WeddingsPackages[Paquetes]
+    Weddings --> WeddingsCalculator[Calculadora]
+    Weddings --> WeddingsGallery[Galería de Bodas]
+    Weddings --> WeddingsFAQ[FAQ de Bodas]
+    Weddings --> WeddingsContact[Formulario Especializado]
+    
+    WeddingsPackages --> Package1[Paquete Esencial]
+    WeddingsPackages --> Package2[Paquete Plus]
+    WeddingsPackages --> Package3[Paquete Premium]
+    WeddingsPackages --> Package4[Paquete Lujo]
+    
+    Gallery --> GalleryWeddings[Bodas]
+    Gallery --> GalleryCorporate[Eventos Corporativos]
+    Gallery --> GallerySocial[Eventos Sociales]
+    Gallery --> GallerySpecial[Proyectos Especiales]
+    
+    FAQ --> FAQOrdering[Condiciones de Renta]
+    FAQ --> FAQInstallation[Instalación y Desmontaje]
+    FAQ --> FAQProducts[Preguntas sobre Productos]
+    FAQ --> FAQPayment[Pagos y Cancelaciones]
+    
+    Contact --> ContactForm[Formulario de Contacto]
+    Contact --> ContactMap[Mapa de Ubicación]
+    Contact --> ContactInfo[Información de Contacto]
+    
+    Blog --> BlogTrends[Tendencias en Eventos]
+    Blog --> BlogTips[Consejos de Planificación]
+    Blog --> BlogCases[Casos de Éxito]
+    Blog --> BlogSeasons[Recomendaciones por Temporada]
+    
+    %% Phase markers
+    classDef phase1 fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef phase2 fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef phase3 fill:#EF9C82,stroke:#123332,color:#123332;
+    
+    class Home,About,Products,Weddings,Gallery,FAQ,Contact,AboutHistory,AboutValues,AboutTeam,AboutAdvantages,Carpas,Pistas,Graderias,Plantas,Especiales,WeddingsPackages,WeddingsCalculator,WeddingsGallery,ContactForm,ContactMap,ContactInfo,CarpasLiso,CarpasAleman,CarpasOlas,CarpasBoton,CarpasTransparente,PistasLaminado,PistasCharol,PistasPintada,PistasCustom,Entarimados,Templetes,EstradosEspeciales,GraderiasModulos,TapadoAlbercas,Package1,Package2,Package3,Package4 phase1;
+    
+    class AboutTestimonials,WeddingsFAQ,WeddingsContact,FAQOrdering,FAQInstallation,FAQProducts,FAQPayment,GalleryWeddings,GalleryCorporate,GallerySocial,GallerySpecial,Pasarelas phase2;
+    
+    class Blog,BlogTrends,BlogTips,BlogCases,BlogSeasons phase3;

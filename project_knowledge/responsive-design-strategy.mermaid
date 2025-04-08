@@ -1,0 +1,119 @@
+flowchart LR
+    subgraph "Design Approach"
+        MobileFirst[Mobile-First Design]
+        FluidLayouts[Fluid Layouts]
+        BreakpointSystem[Breakpoint System]
+        ResponsiveTypography[Responsive Typography]
+        ComponentVariants[Component Variants by Screen]
+    end
+    
+    subgraph "Breakpoints"
+        SM[sm: 640px]
+        MD[md: 768px]
+        LG[lg: 1024px]
+        XL[xl: 1280px]
+        XXL[2xl: 1536px]
+        Custom3XL[3xl: 1920px]
+    end
+    
+    subgraph "Layout Changes"
+        SingleColumn[Single Column]
+        TwoColumn[Two Column]
+        ThreeColumn[Three Column]
+        ComplexLayouts[Complex Multi-Column]
+    end
+    
+    subgraph "Navigation Changes"
+        MobileMenu[Mobile Menu]
+        TabletNav[Tablet Navigation]
+        DesktopNav[Desktop Navigation]
+        MegaMenu[Mega Menu]
+    end
+    
+    subgraph "Component Adaptations"
+        CardStacking[Card Stacking]
+        GalleryGrid[Gallery Grid Changes]
+        TableResponsive[Responsive Tables]
+        FormLayout[Form Layout Shifts]
+    end
+    
+    subgraph "Critical Components"
+        ProductGrid[Product Grid]
+        ProductDetail[Product Detail]
+        BudgetCalc[Budget Calculator]
+        CategoryNav[Category Navigation]
+    end
+    
+    %% Relationships
+    MobileFirst --> SingleColumn
+    FluidLayouts --> ResponsiveTypography
+    BreakpointSystem --> SM
+    BreakpointSystem --> MD
+    BreakpointSystem --> LG
+    BreakpointSystem --> XL
+    BreakpointSystem --> XXL
+    BreakpointSystem --> Custom3XL
+    
+    SM --> TwoColumn
+    MD --> ThreeColumn
+    LG --> ComplexLayouts
+    
+    SingleColumn --> MobileMenu
+    TwoColumn --> TabletNav
+    ThreeColumn --> DesktopNav
+    ComplexLayouts --> MegaMenu
+    
+    MobileFirst --> CardStacking
+    TwoColumn --> GalleryGrid
+    ThreeColumn --> TableResponsive
+    ComponentVariants --> FormLayout
+    
+    CardStacking --> ProductGrid
+    GalleryGrid --> ProductDetail
+    TableResponsive --> BudgetCalc
+    FormLayout --> CategoryNav
+    
+    subgraph "Implementation Strategies"
+        TailwindClasses[Tailwind Responsive Classes]
+        CSSContainerQueries[CSS Container Queries]
+        ReactHooks[React Responsive Hooks]
+        DynamicImports[Dynamic Component Imports]
+    end
+    
+    BreakpointSystem --> TailwindClasses
+    ComponentVariants --> CSSContainerQueries
+    MobileFirst --> ReactHooks
+    ComponentVariants --> DynamicImports
+    
+    %% Product Grid Responsive Views
+    subgraph "Product Grid Example"
+        direction TB
+        Mobile[Mobile: 1 Column]
+        Tablet[Tablet: 2 Columns]
+        Desktop[Desktop: 3 Columns]
+        Large[Large Desktop: 4 Columns]
+    end
+    
+    SingleColumn --> Mobile
+    TwoColumn --> Tablet
+    ThreeColumn --> Desktop
+    ComplexLayouts --> Large
+    
+    %% Styling
+    classDef approach fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef breakpoints fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef layouts fill:#EF9C82,stroke:#123332,color:#123332;
+    classDef navChanges fill:#1D4241,stroke:#123332,color:#F9EEE7;
+    classDef compAdapt fill:#123332,stroke:#123332,color:#F9EEE7;
+    classDef critComps fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef strategies fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef example fill:#EF9C82,stroke:#123332,color:#123332;
+    
+    class MobileFirst,FluidLayouts,BreakpointSystem,ResponsiveTypography,ComponentVariants approach;
+    class SM,MD,LG,XL,XXL,Custom3XL breakpoints;
+    class SingleColumn,TwoColumn,ThreeColumn,ComplexLayouts layouts;
+    class MobileMenu,TabletNav,DesktopNav,MegaMenu navChanges;
+    class CardStacking,GalleryGrid,TableResponsive,FormLayout compAdapt;
+    class ProductGrid,ProductDetail,BudgetCalc,CategoryNav critComps;
+    class TailwindClasses,CSSContainerQueries,ReactHooks,DynamicImports strategies;
+    class Mobile,Tablet,Desktop,Large example;

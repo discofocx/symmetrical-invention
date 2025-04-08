@@ -1,0 +1,90 @@
+altivento-website/
+├── .next/                   # Next.js build output (generated)
+├── node_modules/            # Dependencies (generated)
+├── public/                  # Static assets
+│   ├── favicon.ico
+│   ├── images/
+│   │   ├── carpas/          # Tent images
+│   │   ├── pistas/          # Dance floor images
+│   │   ├── graderias/       # Bleachers images
+│   │   ├── logos/           # Logo variations
+│   │   └── events/          # Photos of past events
+│   └── fonts/
+├── src/
+│   ├── app/                 # Next.js App Router pages
+│   │   ├── page.tsx         # Home page
+│   │   ├── layout.tsx       # Root layout
+│   │   ├── nosotros/        # About us
+│   │   │   └── page.tsx
+│   │   ├── bodas/           # Wedding packages
+│   │   │   └── page.tsx
+│   │   ├── productos/       # Products and services
+│   │   │   ├── page.tsx     # Main catalog page
+│   │   │   ├── carpas/      # Tents page
+│   │   │   │   └── page.tsx
+│   │   │   ├── pistas/      # Dance floors page
+│   │   │   │   └── page.tsx
+│   │   │   └── [...slug]/   # Dynamic product pages
+│   │   │       └── page.tsx
+│   │   ├── galeria/         # Project gallery
+│   │   │   └── page.tsx
+│   │   ├── faq/             # FAQ page
+│   │   │   └── page.tsx
+│   │   └── contacto/        # Contact page
+│   │       └── page.tsx
+│   ├── components/          # Reusable components
+│   │   ├── ui/              # Basic UI components
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   ├── Form.tsx
+│   │   │   └── ...
+│   │   ├── layout/          # Layout components
+│   │   │   ├── Header.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Navigation.tsx
+│   │   │   └── ...
+│   │   ├── products/        # Product-related components
+│   │   │   ├── ProductCard.tsx
+│   │   │   ├── ProductFilter.tsx
+│   │   │   ├── CategoryList.tsx
+│   │   │   └── ...
+│   │   ├── gallery/         # Gallery components
+│   │   │   ├── GalleryGrid.tsx
+│   │   │   ├── ImageModal.tsx
+│   │   │   └── ...
+│   │   ├── forms/           # Form components
+│   │   │   ├── ContactForm.tsx
+│   │   │   ├── QuoteForm.tsx
+│   │   │   └── ...
+│   │   └── calculator/      # Budget calculator components
+│   │       ├── BudgetCalculator.tsx
+│   │       ├── PackageSelector.tsx
+│   │       └── ...
+│   ├── lib/                 # Utilities and services
+│   │   ├── content/         # Content loading utilities
+│   │   │   ├── products.ts
+│   │   │   ├── gallery.ts
+│   │   │   └── ...
+│   │   ├── hooks/           # Custom React hooks
+│   │   ├── api/             # API utilities
+│   │   └── utils/           # Helper functions
+│   ├── types/               # TypeScript type definitions
+│   │   ├── product.ts
+│   │   ├── gallery.ts
+│   │   └── ...
+│   ├── styles/              # Global CSS and Tailwind configuration
+│   │   ├── globals.css      # Global styles with Tailwind imports
+│   │   └── ...
+│   └── content/             # Static content in Markdown/JSON
+│       ├── products/        # Product data
+│       │   ├── carpas.json
+│       │   ├── pistas.json
+│       │   └── ...
+│       ├── gallery/         # Gallery metadata
+│       ├── faq/             # FAQ content
+│       └── settings/        # Site-wide settings
+├── tailwind.config.js       # Tailwind CSS configuration
+├── next.config.js           # Next.js configuration
+├── package.json             # Project dependencies and scripts
+├── tsconfig.json            # TypeScript configuration
+└── README.md                # Project documentation

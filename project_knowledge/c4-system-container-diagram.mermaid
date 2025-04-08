@@ -1,0 +1,29 @@
+C4Container
+    title Container diagram for Altivento Website
+
+    Person(customer, "Customer", "A person looking to rent event infrastructure")
+    Person(contentAdmin, "Content Administrator", "Altivento staff member who updates content")
+    
+    System_Boundary(altiventoWebsite, "Altivento Website") {
+        Container(nextApp, "Next.js Application", "Next.js 14+, TypeScript, React", "Delivers the web application with static and interactive components")
+        Container(apiRoutes, "API Routes", "Next.js API Routes", "Handles form submissions and dynamic data requests")
+        Container(staticContent, "Static Content", "Markdown, JSON files", "Stores website content that's updated between deployments")
+        Container(tailwindStyles, "Tailwind CSS Styles", "TailwindCSS v4", "Provides styling for the website components")
+    }
+    
+    System_Ext(emailService, "Email Service", "Handles form submissions and notifications")
+    System_Ext(whatsappAPI, "WhatsApp Business API", "Provides direct messaging capabilities")
+    System_Ext(analytics, "Analytics Services", "Tracks user behavior and site performance")
+    System_Ext(vercel, "Vercel Platform", "Hosts the website and handles deployment")
+    
+    Rel(customer, nextApp, "Visits website using HTTPS")
+    Rel(contentAdmin, staticContent, "Updates via Git repository")
+    
+    Rel(nextApp, apiRoutes, "Calls for dynamic operations")
+    Rel(nextApp, staticContent, "Reads content from")
+    Rel(nextApp, tailwindStyles, "Is styled using")
+    
+    Rel(apiRoutes, emailService, "Sends form data to")
+    Rel(nextApp, whatsappAPI, "Initiates chat via")
+    Rel(nextApp, analytics, "Sends usage data to")
+    Rel(vercel, nextApp, "Builds and serves")

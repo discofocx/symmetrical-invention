@@ -1,0 +1,80 @@
+graph TD
+    ContentSources[Content Sources] --> StaticContent[Static Content]
+    ContentSources --> SemiDynamicContent[Semi-Dynamic Content]
+    ContentSources --> DynamicContent[Dynamic Content]
+    
+    StaticContent --> SiteConfig[Site Configuration]
+    StaticContent --> SiteText[Site Text]
+    StaticContent --> CategoryDefinitions[Category Definitions]
+    
+    SemiDynamicContent --> ProductCatalog[Product Catalog]
+    SemiDynamicContent --> ProjectGallery[Project Gallery]
+    SemiDynamicContent --> FAQContent[FAQ Content]
+    SemiDynamicContent --> WeddingPackages[Wedding Packages]
+    
+    DynamicContent --> UserSubmissions[User Form Submissions]
+    DynamicContent --> BlogPosts[Blog Posts]
+    
+    %% Content Format
+    SiteConfig --> ConfigJSON[JSON Files]
+    SiteText --> TextMD[Markdown Files]
+    CategoryDefinitions --> CategoriesJSON[JSON Files]
+    
+    ProductCatalog --> ProductsJSON[JSON Files]
+    ProjectGallery --> GalleryJSON[JSON Files]
+    FAQContent --> FAQMD[Markdown Files]
+    WeddingPackages --> PackagesJSON[JSON Files]
+    
+    UserSubmissions --> APIStorage[API Storage]
+    BlogPosts --> BlogMD[Markdown Files]
+    
+    %% Update Frequency & Process
+    subgraph "Update Frequency"
+        direction LR
+        Rarely[Rarely Updated]
+        Monthly[Monthly Updates]
+        Weekly[Weekly Updates]
+        Daily[Daily Activity]
+    end
+    
+    subgraph "Update Process"
+        direction LR
+        Git[Git Commit]
+        Rebuild[Rebuild Site]
+        ISR[Incremental Static Regeneration]
+        API[API Routes]
+    end
+    
+    SiteConfig --> Rarely
+    SiteText --> Rarely
+    CategoryDefinitions --> Rarely
+    
+    ProductCatalog --> Monthly
+    WeddingPackages --> Monthly
+    
+    ProjectGallery --> Weekly
+    FAQContent --> Weekly
+    
+    UserSubmissions --> Daily
+    BlogPosts --> Weekly
+    
+    Rarely --> Git
+    Monthly --> Git
+    Weekly --> Git
+    
+    Git --> Rebuild
+    Rebuild --> ISR
+    Daily --> API
+    
+    %% Build Strategy
+    Rebuild --> StaticGen[Static Generation]
+    ISR --> IncrementalRegen[Incremental Regeneration]
+    API --> ServerRendered[Server Functions]
+    
+    class StaticContent,SiteConfig,SiteText,CategoryDefinitions,ConfigJSON,TextMD,CategoriesJSON primaryStatic;
+    class SemiDynamicContent,ProductCatalog,ProjectGallery,FAQContent,WeddingPackages,ProductsJSON,GalleryJSON,FAQMD,PackagesJSON primarySemiDynamic;
+    class DynamicContent,UserSubmissions,BlogPosts,APIStorage,BlogMD primaryDynamic;
+    
+    classDef primaryStatic fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef primarySemiDynamic fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef primaryDynamic fill:#EF9C82,stroke:#123332,color:#123332;

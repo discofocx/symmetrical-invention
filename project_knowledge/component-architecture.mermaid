@@ -1,0 +1,178 @@
+graph TD
+    %% Component Layers
+    subgraph UI[UI Components]
+        Button[Button]
+        Card[Card]
+        Input[Input]
+        Select[Select]
+        Checkbox[Checkbox]
+        RadioGroup[Radio Group]
+        Modal[Modal]
+        Tabs[Tabs]
+        Carousel[Carousel]
+        Accordion[Accordion]
+        ImageWithFallback[Image With Fallback]
+        Badge[Badge]
+        Tag[Tag]
+        Icon[Icon System]
+        LoadingSpinner[Loading Spinner]
+        Alert[Alert]
+        Tooltip[Tooltip]
+    end
+    
+    subgraph Layout[Layout Components]
+        Header[Header]
+        Footer[Footer]
+        Navigation[Navigation]
+        MobileMenu[Mobile Menu]
+        PageContainer[Page Container]
+        Section[Section]
+        Grid[Grid]
+        SplitLayout[Split Layout]
+        Sidebar[Sidebar]
+        HeroSection[Hero Section]
+    end
+    
+    subgraph Feature[Feature Components]
+        ProductCard[Product Card]
+        ProductGrid[Product Grid]
+        ProductFilter[Product Filter]
+        ProductDetail[Product Detail]
+        GalleryGrid[Gallery Grid]
+        GalleryModal[Gallery Modal]
+        ContactForm[Contact Form]
+        QuoteForm[Quote Form]
+        Testimonial[Testimonial]
+        TestimonialCarousel[Testimonial Carousel]
+        FAQItem[FAQ Item]
+        FAQSection[FAQ Section]
+        BudgetCalculator[Budget Calculator]
+        CategoryNavigation[Category Navigation]
+        SocialShare[Social Share]
+        CallToAction[Call To Action]
+        WhatsAppButton[WhatsApp Button]
+    end
+    
+    subgraph Page[Page Components]
+        HomePage[Home Page]
+        AboutPage[About Page]
+        ProductsPage[Products Page]
+        ProductCategoryPage[Product Category Page]
+        ProductDetailPage[Product Detail Page]
+        WeddingPackagesPage[Wedding Packages Page]
+        GalleryPage[Gallery Page]
+        ContactPage[Contact Page]
+        FAQPage[FAQ Page]
+        BlogPage[Blog Page]
+        BlogPostPage[Blog Post Page]
+        NotFoundPage[404 Page]
+    end
+    
+    %% Composition Relationships
+    
+    %% UI to Feature
+    Button --> CallToAction
+    Button --> ProductFilter
+    Button --> ContactForm
+    Button --> QuoteForm
+    
+    Card --> ProductCard
+    Card --> Testimonial
+    
+    Input --> ContactForm
+    Input --> QuoteForm
+    Input --> ProductFilter
+    
+    Select --> ProductFilter
+    Select --> BudgetCalculator
+    Select --> ContactForm
+    
+    Carousel --> TestimonialCarousel
+    Carousel --> ProductDetail
+    
+    Accordion --> FAQSection
+    
+    ImageWithFallback --> ProductCard
+    ImageWithFallback --> GalleryGrid
+    
+    %% Layout to Page
+    Header --> HomePage
+    Header --> AboutPage
+    Header --> ProductsPage
+    Header --> ProductCategoryPage
+    Header --> ProductDetailPage
+    Header --> WeddingPackagesPage
+    Header --> GalleryPage
+    Header --> ContactPage
+    Header --> FAQPage
+    
+    Footer --> HomePage
+    Footer --> AboutPage
+    Footer --> ProductsPage
+    Footer --> ProductCategoryPage
+    Footer --> ProductDetailPage
+    Footer --> WeddingPackagesPage
+    Footer --> GalleryPage
+    Footer --> ContactPage
+    Footer --> FAQPage
+    
+    Navigation --> Header
+    
+    PageContainer --> HomePage
+    PageContainer --> AboutPage
+    PageContainer --> ProductsPage
+    PageContainer --> ProductCategoryPage
+    PageContainer --> ProductDetailPage
+    PageContainer --> WeddingPackagesPage
+    PageContainer --> GalleryPage
+    PageContainer --> ContactPage
+    PageContainer --> FAQPage
+    
+    HeroSection --> HomePage
+    
+    %% Feature to Page
+    ProductCard --> ProductGrid
+    ProductGrid --> ProductsPage
+    ProductGrid --> ProductCategoryPage
+    
+    ProductDetail --> ProductDetailPage
+    
+    ProductFilter --> ProductsPage
+    ProductFilter --> ProductCategoryPage
+    
+    GalleryGrid --> GalleryPage
+    GalleryGrid --> WeddingPackagesPage
+    
+    ContactForm --> ContactPage
+    
+    FAQSection --> FAQPage
+    FAQSection --> WeddingPackagesPage
+    
+    BudgetCalculator --> WeddingPackagesPage
+    
+    CategoryNavigation --> ProductsPage
+    
+    CallToAction --> HomePage
+    CallToAction --> ProductDetailPage
+    CallToAction --> WeddingPackagesPage
+    
+    WhatsAppButton --> HomePage
+    WhatsAppButton --> AboutPage
+    WhatsAppButton --> ProductsPage
+    WhatsAppButton --> ProductCategoryPage
+    WhatsAppButton --> ProductDetailPage
+    WhatsAppButton --> WeddingPackagesPage
+    WhatsAppButton --> GalleryPage
+    WhatsAppButton --> ContactPage
+    WhatsAppButton --> FAQPage
+
+    %% Styling
+    classDef uiComponents fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef layoutComponents fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef featureComponents fill:#EF9C82,stroke:#123332,color:#123332;
+    classDef pageComponents fill:#1D4241,stroke:#123332,color:#F9EEE7;
+    
+    class Button,Card,Input,Select,Checkbox,RadioGroup,Modal,Tabs,Carousel,Accordion,ImageWithFallback,Badge,Tag,Icon,LoadingSpinner,Alert,Tooltip uiComponents;
+    class Header,Footer,Navigation,MobileMenu,PageContainer,Section,Grid,SplitLayout,Sidebar,HeroSection layoutComponents;
+    class ProductCard,ProductGrid,ProductFilter,ProductDetail,GalleryGrid,GalleryModal,ContactForm,QuoteForm,Testimonial,TestimonialCarousel,FAQItem,FAQSection,BudgetCalculator,CategoryNavigation,SocialShare,CallToAction,WhatsAppButton featureComponents;
+    class HomePage,AboutPage,ProductsPage,ProductCategoryPage,ProductDetailPage,WeddingPackagesPage,GalleryPage,ContactPage,FAQPage,BlogPage,BlogPostPage,NotFoundPage pageComponents;

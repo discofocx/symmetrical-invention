@@ -1,0 +1,125 @@
+flowchart TD
+    subgraph "Theme Configuration"
+        ThemeColors[Custom Color Palette]
+        ThemeSpacing[Spacing System]
+        ThemeFonts[Typography System]
+        ThemeExtensions[Extensions]
+        DesignTokens[CSS Variables]
+    end
+    
+    subgraph "Tailwind V4 Features"
+        CSSFirst[CSS-First Configuration]
+        NativeVariables[CSS Theme Variables]
+        DynamicUtilities[Dynamic Utility Values]
+        P3Colors[P3 Color Palette]
+        ContainerQueries[Container Queries]
+        Transform3D[3D Transform Support]
+        GradientAPI[Enhanced Gradient APIs]
+        StartingStyle[Starting Style Support]
+        NotVariant[Not Variant Support]
+    end
+    
+    subgraph "Component Styling Strategy"
+        UtilityFirst[Utility-First Approach]
+        ConsistentPatterns[Consistent Patterns]
+        ComponentClasses[Component Classes]
+        ResponsiveModifiers[Responsive Modifiers]
+        StateModifiers[State Modifiers]
+        TokenUsage[Design Token Usage]
+    end
+    
+    subgraph "Organizational Approach"
+        GlobalStyles[Global Styles]
+        BaseStyles[Base Styles]
+        ComponentStyles[Component Styles]
+        UtilityLayer[Utility Layer]
+        PresetConfigs[Presets & Configs]
+    end
+    
+    subgraph "Altivento Custom Setup"
+        CustomColors[Altivento Color System]
+        FontImplementation[Boska + Switzer Setup]
+        GradientSystem[Gradient System]
+        CardSystem[Card Component System]
+        ButtonSystem[Button Variants]
+    end
+    
+    %% Configuration Relationships
+    ThemeColors --> CustomColors
+    ThemeFonts --> FontImplementation
+    DesignTokens --> TokenUsage
+    ThemeExtensions --> GradientSystem
+    
+    %% V4 Feature Usage
+    CSSFirst --> GlobalStyles
+    NativeVariables --> TokenUsage
+    DynamicUtilities --> ComponentStyles
+    P3Colors --> CustomColors
+    ContainerQueries --> ResponsiveModifiers
+    Transform3D --> ComponentStyles
+    GradientAPI --> GradientSystem
+    StartingStyle --> ComponentStyles
+    NotVariant --> StateModifiers
+    
+    %% Styling Strategy Implementation
+    UtilityFirst --> GlobalStyles
+    ConsistentPatterns --> ComponentClasses
+    ResponsiveModifiers --> ButtonSystem
+    StateModifiers --> CardSystem
+    
+    %% Custom Implementation Details
+    CustomColors --> PresetConfigs
+    FontImplementation --> GlobalStyles
+    GradientSystem --> ComponentStyles
+    CardSystem --> ComponentClasses
+    ButtonSystem --> ComponentClasses
+    
+    %% Key Custom Implementations
+    subgraph "Key Custom Components"
+        ProductCardStyles[Product Card Styles]
+        GalleryStyles[Gallery Component Styles]
+        FormStyles[Form Element Styles]
+        NavigationStyles[Navigation Styles]
+        CallToActionStyles[CTA Component Styles]
+    end
+    
+    CardSystem --> ProductCardStyles
+    GradientSystem --> GalleryStyles
+    ButtonSystem --> FormStyles
+    ButtonSystem --> CallToActionStyles
+    ResponsiveModifiers --> NavigationStyles
+    
+    %% CSS Import Structure
+    subgraph "CSS Implementation"
+        MainCSS["globals.css"]
+        ComponentCSS["components.css"]
+        UtilitiesCSS["utilities.css"]
+        ThemeCSS["theme.css"]
+    end
+    
+    GlobalStyles --> MainCSS
+    BaseStyles --> MainCSS
+    ComponentStyles --> ComponentCSS
+    UtilityLayer --> UtilitiesCSS
+    DesignTokens --> ThemeCSS
+    
+    MainCSS --> ComponentCSS
+    ThemeCSS --> MainCSS
+    ComponentCSS --> UtilitiesCSS
+    
+    %% Styling
+    classDef themeConfig fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef v4Features fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef stylingStrategy fill:#EF9C82,stroke:#123332,color:#123332;
+    classDef orgApproach fill:#1D4241,stroke:#123332,color:#F9EEE7;
+    classDef customSetup fill:#123332,stroke:#123332,color:#F9EEE7;
+    classDef keyComponents fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef cssImpl fill:#FFD9BE,stroke:#123332,color:#123332;
+    
+    class ThemeColors,ThemeSpacing,ThemeFonts,ThemeExtensions,DesignTokens themeConfig;
+    class CSSFirst,NativeVariables,DynamicUtilities,P3Colors,ContainerQueries,Transform3D,GradientAPI,StartingStyle,NotVariant v4Features;
+    class UtilityFirst,ConsistentPatterns,ComponentClasses,ResponsiveModifiers,StateModifiers,TokenUsage stylingStrategy;
+    class GlobalStyles,BaseStyles,ComponentStyles,UtilityLayer,PresetConfigs orgApproach;
+    class CustomColors,FontImplementation,GradientSystem,CardSystem,ButtonSystem customSetup;
+    class ProductCardStyles,GalleryStyles,FormStyles,NavigationStyles,CallToActionStyles keyComponents;
+    class MainCSS,ComponentCSS,UtilitiesCSS,ThemeCSS cssImpl;

@@ -1,0 +1,120 @@
+flowchart TD
+    subgraph "Next.js App Router"
+        AppDir[app/ Directory]
+        Layouts[Layouts]
+        Pages[Pages]
+        ServerComponents[Server Components]
+        ClientComponents[Client Components]
+        Metadata[Metadata]
+    end
+    
+    subgraph "Rendering Strategies"
+        SSG[Static Site Generation]
+        ISR[Incremental Static Regeneration]
+        APIRoutes[API Routes]
+        ServerActions[Server Actions]
+    end
+    
+    subgraph "Data Management"
+        StaticContent[Static Content Files]
+        ContentLoaders[Content Loaders]
+        TypeValidation[Type Validation]
+        DataTransformation[Data Transformation]
+    end
+    
+    subgraph "UI Components"
+        ReactComponents[React Components]
+        TailwindCSS[TailwindCSS v4]
+        ClientSideUtils[Client-side Utilities]
+        InteractiveElements[Interactive Elements]
+    end
+    
+    subgraph "Performance Optimization"
+        ImageOptimization[Image Optimization]
+        FontOptimization[Font Optimization]
+        LazyLoading[Lazy Loading]
+        CodeSplitting[Code Splitting]
+        Prefetching[Route Prefetching]
+    end
+    
+    subgraph "Development Tools"
+        TypeScript[TypeScript]
+        ESLint[ESLint]
+        Prettier[Prettier]
+        Testing[Testing Framework]
+    end
+    
+    %% Connections between app router components
+    AppDir --> Layouts
+    AppDir --> Pages
+    Layouts --> ServerComponents
+    Layouts --> ClientComponents
+    Pages --> ServerComponents
+    Pages --> ClientComponents
+    Pages --> Metadata
+    
+    %% Connections between app router and rendering
+    ServerComponents --> SSG
+    ServerComponents --> ISR
+    ClientComponents --> APIRoutes
+    Pages --> ServerActions
+    
+    %% Data connections
+    SSG --> StaticContent
+    ISR --> StaticContent
+    StaticContent --> ContentLoaders
+    ContentLoaders --> TypeValidation
+    ContentLoaders --> DataTransformation
+    ServerComponents --> ContentLoaders
+    
+    %% UI connections
+    ServerComponents --> ReactComponents
+    ClientComponents --> ReactComponents
+    ReactComponents --> TailwindCSS
+    ClientComponents --> InteractiveElements
+    InteractiveElements --> ClientSideUtils
+    
+    %% Performance connections
+    ServerComponents --> ImageOptimization
+    ClientComponents --> LazyLoading
+    Pages --> CodeSplitting
+    AppDir --> Prefetching
+    ServerComponents --> FontOptimization
+    
+    %% Development connections
+    ServerComponents --> TypeScript
+    ClientComponents --> TypeScript
+    TypeScript --> ESLint
+    TypeScript --> Prettier
+    ServerComponents --> Testing
+    ClientComponents --> Testing
+    
+    %% Key feature implementations
+    subgraph "Key Implementation Features"
+        IslandsArch[Islands Architecture]
+        ProgressiveHydration[Progressive Hydration]
+        StaticFirstDynamic[Static-first with Dynamic Islands]
+        PartialHydration[Partial Hydration]
+    end
+    
+    ClientComponents --> IslandsArch
+    IslandsArch --> ProgressiveHydration
+    SSG --> StaticFirstDynamic
+    StaticFirstDynamic --> PartialHydration
+    
+    %% Styling
+    classDef nextAppRouter fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef renderStrategies fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef dataManagement fill:#EF9C82,stroke:#123332,color:#123332;
+    classDef uiComponents fill:#1D4241,stroke:#123332,color:#F9EEE7;
+    classDef perfOptimization fill:#123332,stroke:#123332,color:#F9EEE7;
+    classDef devTools fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef keyFeatures fill:#FFD9BE,stroke:#123332,color:#123332;
+    
+    class AppDir,Layouts,Pages,ServerComponents,ClientComponents,Metadata nextAppRouter;
+    class SSG,ISR,APIRoutes,ServerActions renderStrategies;
+    class StaticContent,ContentLoaders,TypeValidation,DataTransformation dataManagement;
+    class ReactComponents,TailwindCSS,ClientSideUtils,InteractiveElements uiComponents;
+    class ImageOptimization,FontOptimization,LazyLoading,CodeSplitting,Prefetching perfOptimization;
+    class TypeScript,ESLint,Prettier,Testing devTools;
+    class IslandsArch,ProgressiveHydration,StaticFirstDynamic,PartialHydration keyFeatures;

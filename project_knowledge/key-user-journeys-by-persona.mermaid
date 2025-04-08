@@ -1,0 +1,214 @@
+flowchart TD
+    subgraph "User Personas"
+        WeddingPlanner[Wedding Planner - Carolina]
+        CorporateEvent[Corporate Event Director - Miguel]
+        EngagedCouple[Engaged Couple - Ana & Roberto]
+        EventProducer[Event Producer - Javier]
+        PrivateClient[Private Client - Sophia]
+    end
+    
+    subgraph "Entry Points"
+        SearchEngine[Search Engine]
+        SocialMedia[Social Media]
+        DirectTraffic[Direct Traffic]
+        Referral[Referral Links]
+    end
+    
+    subgraph "Home Page Actions"
+        HeroSection[Hero Section]
+        QuickNav[Quick Navigation]
+        FeaturedProducts[Featured Products]
+        Testimonials[Testimonials]
+        CTAButtons[CTA Buttons]
+    end
+    
+    subgraph "Browse Phase"
+        ProductCatalog[Product Catalog]
+        WeddingPackages[Wedding Packages Page]
+        GalleryBrowse[Gallery Browsing]
+        AboutPage[About Us Page]
+    end
+    
+    subgraph "Detail Phase"
+        ProductDetails[Product Details]
+        PackageComparison[Package Comparison]
+        BudgetCalculator[Budget Calculator]
+        GalleryDeepDive[Project Gallery Detail]
+    end
+    
+    subgraph "Conversion Phase"
+        ContactForm[Contact Form Submission]
+        WhatsAppContact[WhatsApp Direct Contact]
+        QuoteRequest[Quote Request]
+        FAQConsultation[FAQ Consultation]
+    end
+    
+    %% Entry Points
+    SearchEngine --> HeroSection
+    SocialMedia --> GalleryBrowse
+    DirectTraffic --> QuickNav
+    Referral --> FeaturedProducts
+    
+    %% Persona Starting Points
+    WeddingPlanner --> SearchEngine
+    WeddingPlanner --> DirectTraffic
+    CorporateEvent --> SearchEngine
+    CorporateEvent --> DirectTraffic
+    EngagedCouple --> SocialMedia
+    EngagedCouple --> SearchEngine
+    EventProducer --> DirectTraffic
+    EventProducer --> Referral
+    PrivateClient --> SocialMedia
+    PrivateClient --> SearchEngine
+    
+    %% Home Page Navigation
+    HeroSection --> ProductCatalog
+    HeroSection --> WeddingPackages
+    QuickNav --> ProductCatalog
+    QuickNav --> GalleryBrowse
+    QuickNav --> AboutPage
+    FeaturedProducts --> ProductDetails
+    Testimonials --> GalleryBrowse
+    CTAButtons --> ContactForm
+    
+    %% Browse Phase Navigation
+    ProductCatalog --> ProductDetails
+    WeddingPackages --> PackageComparison
+    WeddingPackages --> BudgetCalculator
+    GalleryBrowse --> GalleryDeepDive
+    AboutPage --> ContactForm
+    
+    %% Detail Phase Navigation
+    ProductDetails --> QuoteRequest
+    ProductDetails --> FAQConsultation
+    PackageComparison --> BudgetCalculator
+    BudgetCalculator --> QuoteRequest
+    GalleryDeepDive --> ProductDetails
+    GalleryDeepDive --> WhatsAppContact
+    
+    %% Persona-Specific Journeys
+    subgraph "Wedding Planner Journey"
+        WP1[Product Research]
+        WP2[Package Comparison]
+        WP3[Technical Specifications]
+        WP4[Quote Request]
+    end
+    
+    subgraph "Corporate Event Journey"
+        CE1[Corporate Solutions]
+        CE2[Case Studies]
+        CE3[Equipment Specifications]
+        CE4[Contact Form]
+    end
+    
+    subgraph "Engaged Couple Journey"
+        EC1[Wedding Gallery]
+        EC2[Package Calculator]
+        EC3[Budget Estimation]
+        EC4[WhatsApp Contact]
+    end
+    
+    subgraph "Event Producer Journey"
+        EP1[Technical Specs]
+        EP2[Custom Solutions]
+        EP3[Service Details]
+        EP4[Quote Request]
+    end
+    
+    subgraph "Private Client Journey"
+        PC1[Visual Browsing]
+        PC2[Simple Packages]
+        PC3[FAQ Review]
+        PC4[WhatsApp Contact]
+    end
+    
+    %% Wedding Planner Flow
+    WeddingPlanner --> WP1
+    WP1 --> ProductCatalog
+    ProductCatalog --> WP2
+    WP2 --> PackageComparison
+    PackageComparison --> WP3
+    WP3 --> ProductDetails
+    ProductDetails --> WP4
+    WP4 --> QuoteRequest
+    
+    %% Corporate Event Flow
+    CorporateEvent --> CE1
+    CE1 --> ProductCatalog
+    ProductCatalog --> CE2
+    CE2 --> GalleryDeepDive
+    GalleryDeepDive --> CE3
+    CE3 --> ProductDetails
+    ProductDetails --> CE4
+    CE4 --> ContactForm
+    
+    %% Engaged Couple Flow
+    EngagedCouple --> EC1
+    EC1 --> GalleryBrowse
+    GalleryBrowse --> EC2
+    EC2 --> WeddingPackages
+    WeddingPackages --> EC3
+    EC3 --> BudgetCalculator
+    BudgetCalculator --> EC4
+    EC4 --> WhatsAppContact
+    
+    %% Event Producer Flow
+    EventProducer --> EP1
+    EP1 --> ProductDetails
+    ProductDetails --> EP2
+    EP2 --> ProductCatalog
+    ProductCatalog --> EP3
+    EP3 --> FAQConsultation
+    FAQConsultation --> EP4
+    EP4 --> QuoteRequest
+    
+    %% Private Client Flow
+    PrivateClient --> PC1
+    PC1 --> GalleryBrowse
+    GalleryBrowse --> PC2
+    PC2 --> WeddingPackages
+    WeddingPackages --> PC3
+    PC3 --> FAQConsultation
+    FAQConsultation --> PC4
+    PC4 --> WhatsAppContact
+    
+    %% Conversion Success Metrics
+    subgraph "Success Metrics"
+        LeadGeneration[Lead Generation]
+        DirectContact[Direct Contact]
+        InformationGathering[Information Gathering]
+        ReturnVisits[Return Visits]
+    end
+    
+    ContactForm --> LeadGeneration
+    QuoteRequest --> LeadGeneration
+    WhatsAppContact --> DirectContact
+    FAQConsultation --> InformationGathering
+    BudgetCalculator --> ReturnVisits
+    
+    %% Styling
+    classDef personas fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef entry fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef home fill:#EF9C82,stroke:#123332,color:#123332;
+    classDef browse fill:#1D4241,stroke:#123332,color:#F9EEE7;
+    classDef detail fill:#123332,stroke:#123332,color:#F9EEE7;
+    classDef conversion fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef wpJourney fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef ceJourney fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef ecJourney fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef epJourney fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef pcJourney fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef metrics fill:#EF9C82,stroke:#123332,color:#123332;
+    
+    class WeddingPlanner,CorporateEvent,EngagedCouple,EventProducer,PrivateClient personas;
+    class SearchEngine,SocialMedia,DirectTraffic,Referral entry;
+    class HeroSection,QuickNav,FeaturedProducts,Testimonials,CTAButtons home;
+    class ProductCatalog,WeddingPackages,GalleryBrowse,AboutPage browse;
+    class ProductDetails,PackageComparison,BudgetCalculator,GalleryDeepDive detail;
+    class ContactForm,WhatsAppContact,QuoteRequest,FAQConsultation conversion;
+    class WP1,WP2,WP3,WP4 wpJourney;
+    class CE1,CE2,CE3,CE4 ceJourney;
+    class EC1,EC2,EC3,EC4 ecJourney;
+    class EP1,EP2,EP3,EP4 epJourney;
+    class PC1,PC2,PC3,PC4 pcJourney;
+    class LeadGeneration,DirectContact,InformationGathering,ReturnVisits metrics;

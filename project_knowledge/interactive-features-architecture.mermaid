@@ -1,0 +1,109 @@
+flowchart TD
+    subgraph "Client-Side Interactivity"
+        ReactHooks[React Hooks]
+        StateManagement[State Management]
+        EventHandling[Event Handling]
+        Validation[Form Validation]
+        ClientAPI[Client-Side API Calls]
+    end
+    
+    subgraph "Server-Side Processing"
+        ServerComponents[Server Components]
+        ServerActions[Server Actions]
+        APIRoutes[API Routes]
+        FormProcessing[Form Processing]
+        DataFetching[Data Fetching]
+    end
+    
+    subgraph "Key Interactive Features"
+        ProductFilter[Product Filter System]
+        GalleryViewer[Gallery Modal & Navigation]
+        BudgetCalculator[Wedding Budget Calculator]
+        ContactForm[Smart Contact Form]
+        WhatsAppButton[WhatsApp Direct Connect]
+    end
+    
+    %% Client-Side Implementation
+    ReactHooks --> StateManagement
+    StateManagement --> EventHandling
+    EventHandling --> Validation
+    Validation --> ClientAPI
+    
+    %% Server-Side Implementation
+    ServerComponents --> ServerActions
+    ServerActions --> DataFetching
+    APIRoutes --> FormProcessing
+    FormProcessing --> DataFetching
+    
+    %% Connection between client and server
+    ClientAPI --> APIRoutes
+    
+    %% Feature Implementation
+    StateManagement --> ProductFilter
+    EventHandling --> GalleryViewer
+    ReactHooks --> BudgetCalculator
+    Validation --> ContactForm
+    ClientAPI --> WhatsAppButton
+    
+    APIRoutes --> ContactForm
+    ServerActions --> BudgetCalculator
+    DataFetching --> ProductFilter
+    
+    subgraph "Implementation Strategy"
+        IslandsArchitecture[Islands of Interactivity]
+        ProgressiveEnhancement[Progressive Enhancement]
+        HydrationStrategy[Selective Hydration]
+        ClientComponents[Client Components]
+        StaticSSG[Static SSG Elements]
+    end
+    
+    IslandsArchitecture --> ProductFilter
+    IslandsArchitecture --> GalleryViewer
+    IslandsArchitecture --> BudgetCalculator
+    IslandsArchitecture --> ContactForm
+    
+    ProgressiveEnhancement --> StaticSSG
+    StaticSSG --> ClientComponents
+    ClientComponents --> HydrationStrategy
+    
+    subgraph "Performance Considerations"
+        LazyLoading[Lazy Loading]
+        CodeSplitting[Code Splitting]
+        IntersectionObserver[Intersection Observer]
+        MinimalDependencies[Minimal Dependencies]
+    end
+    
+    HydrationStrategy --> LazyLoading
+    LazyLoading --> CodeSplitting
+    IntersectionObserver --> LazyLoading
+    MinimalDependencies --> CodeSplitting
+    
+    subgraph "User Experience Patterns"
+        OptimisticUI[Optimistic UI Updates]
+        SkeletonLoaders[Skeleton Loaders]
+        ErrorHandling[Graceful Error Handling]
+        FormWizards[Multi-step Form Wizards]
+        LoadingStates[Loading States]
+    end
+    
+    OptimisticUI --> ContactForm
+    SkeletonLoaders --> ProductFilter
+    SkeletonLoaders --> GalleryViewer
+    ErrorHandling --> BudgetCalculator
+    FormWizards --> ContactForm
+    LoadingStates --> ProductFilter
+    
+    %% Styling
+    classDef clientSide fill:#F9EEE7,stroke:#123332,color:#123332;
+    classDef serverSide fill:#FFD9BE,stroke:#123332,color:#123332;
+    classDef features fill:#EF9C82,stroke:#123332,color:#123332;
+    classDef strategy fill:#1D4241,stroke:#123332,color:#F9EEE7;
+    classDef perf fill:#123332,stroke:#123332,color:#F9EEE7;
+    classDef ux fill:#F9EEE7,stroke:#123332,color:#123332;
+    
+    class ReactHooks,StateManagement,EventHandling,Validation,ClientAPI clientSide;
+    class ServerComponents,ServerActions,APIRoutes,FormProcessing,DataFetching serverSide;
+    class ProductFilter,GalleryViewer,BudgetCalculator,ContactForm,WhatsAppButton features;
+    class IslandsArchitecture,ProgressiveEnhancement,HydrationStrategy,ClientComponents,StaticSSG strategy;
+    class LazyLoading,CodeSplitting,IntersectionObserver,MinimalDependencies perf;
+    class OptimisticUI,SkeletonLoaders,ErrorHandling,FormWizards,LoadingStates ux;

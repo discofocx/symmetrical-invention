@@ -1,0 +1,29 @@
+C4Component
+    title Component diagram for Altivento Next.js Application
+
+    Container_Boundary(nextApp, "Next.js Application") {
+        Component(pages, "Page Components", "Next.js Pages, React", "Static pages with hydrated interactive components")
+        Component(layoutSystem, "Layout System", "React", "Handles common layout elements like header, footer, and page structure")
+        Component(productCatalog, "Product Catalog", "React, TypeScript", "Manages product display, filtering, and category navigation")
+        Component(gallerySystem, "Gallery System", "React, Next/Image", "Optimized image gallery with filtering and lazy loading")
+        Component(forms, "Form Components", "React, TypeScript", "Smart forms with validation and submission handling")
+        Component(calculator, "Budget Calculator", "React, TypeScript", "Interactive calculator for wedding packages")
+        Component(contentLoader, "Content Loader", "TypeScript", "Loads and processes markdown/JSON content")
+        Component(seoSystem, "SEO System", "React, Next/Head", "Manages metadata, structured data, and SEO elements")
+    }
+    
+    Container(apiRoutes, "API Routes", "Next.js API Routes", "Handles form submissions and dynamic data requests")
+    Container(staticContent, "Static Content", "Markdown, JSON files", "Stores website content")
+    
+    Rel(pages, layoutSystem, "Uses")
+    Rel(pages, productCatalog, "Includes")
+    Rel(pages, gallerySystem, "Includes")
+    Rel(pages, forms, "Includes")
+    Rel(pages, calculator, "Includes")
+    Rel(pages, seoSystem, "Uses")
+    
+    Rel(productCatalog, contentLoader, "Retrieves data via")
+    Rel(gallerySystem, contentLoader, "Retrieves image data via")
+    Rel(forms, apiRoutes, "Submits data to")
+    
+    Rel(contentLoader, staticContent, "Reads from")
