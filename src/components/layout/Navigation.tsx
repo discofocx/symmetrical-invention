@@ -13,6 +13,7 @@ export const Navigation = () => {
     { label: 'Productos', href: '/productos' },
     { label: 'Bodas', href: '/bodas' },
     { label: 'Galería', href: '/galeria' },
+    { label: 'FAQ', href: '/faq' },
     { label: 'Contacto', href: '/contacto' },
   ];
   

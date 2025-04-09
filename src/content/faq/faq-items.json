@@ -1,0 +1,164 @@
+[
+  {
+    "category": "general",
+    "title": "Información General",
+    "description": "Preguntas comunes sobre nuestros servicios y empresa",
+    "items": [
+      {
+        "question": "¿Qué servicios ofrece Altivento?",
+        "answer": "En Altivento ofrecemos alquiler de estructuras para eventos, incluyendo carpas de diferentes tamaños y estilos, pistas de baile, entarimados, templetes, graderías, plantas de luz y servicios especiales como tapado de albercas. Nuestros servicios incluyen instalación profesional, mantenimiento y desmontaje."
+      },
+      {
+        "question": "¿Desde cuándo opera Altivento?",
+        "answer": "Altivento cuenta con más de 30 años de experiencia en el sector, empezando operaciones a principios de la década de 1990. Nuestra larga trayectoria nos ha permitido perfeccionar nuestros productos y servicios para ofrecer la máxima calidad y confiabilidad."
+      },
+      {
+        "question": "¿En qué zonas prestan sus servicios?",
+        "answer": "Atendemos principalmente el estado de Querétaro y sus alrededores, incluyendo San Miguel de Allende, Ciudad de México, Guanajuato y Michoacán. Para eventos en otras localidades, por favor contáctenos para verificar disponibilidad y condiciones especiales."
+      },
+      {
+        "question": "¿Qué tipos de eventos cubren?",
+        "answer": "Nuestros servicios son ideales para todo tipo de eventos: bodas, fiestas sociales, eventos corporativos, ferias, exposiciones, eventos deportivos, graduaciones, y cualquier ocasión que requiera estructuras temporales de calidad."
+      },
+      {
+        "question": "¿Puedo visitar sus instalaciones para ver los productos?",
+        "answer": "¡Por supuesto! Contamos con instalaciones en Querétaro donde puede ver algunos de nuestros productos. Por favor, agende una cita a través de nuestro formulario de contacto o llamando directamente para asegurarnos de atenderle adecuadamente."
+      }
+    ]
+  },
+  {
+    "category": "carpas",
+    "title": "Carpas y Toldos",
+    "description": "Información sobre nuestras carpas, tamaños y características",
+    "items": [
+      {
+        "question": "¿Qué tamaños de carpas tienen disponibles?",
+        "answer": "Disponemos de carpas en anchos de 10, 15 y 20 metros, con largos en incrementos de 5 metros (por ejemplo: 10×10, 10×15, 15×20, etc.). La altura estándar es de 4 metros, aunque también ofrecemos opciones de 5 metros para eventos que requieren mayor espacio vertical."
+      },
+      {
+        "question": "¿Qué tipos de plafones ofrecen para las carpas?",
+        "answer": "Ofrecemos varios estilos de plafones: liso (blanco o negro), en V plisado (estilo alemán), en olas, de botón y transparente. Cada estilo aporta una estética diferente para adaptarse al tipo de evento y decoración deseada."
+      },
+      {
+        "question": "¿Las carpas son resistentes a las condiciones climáticas?",
+        "answer": "Sí, nuestras carpas están diseñadas para resistir diferentes condiciones climáticas, incluyendo lluvia y viento moderado. El material es impermeable y las estructuras se instalan con anclajes adecuados según el terreno. Sin embargo, en condiciones extremas pueden requerirse medidas adicionales que evaluamos en cada caso."
+      },
+      {
+        "question": "¿Puedo personalizar la carpa con decoración e iluminación?",
+        "answer": "Absolutamente. Nuestras carpas permiten la instalación de diferentes elementos decorativos e iluminación. Podemos asesorarle sobre las mejores opciones según el tipo de carpa y evento, o trabajar con su decorador para lograr el ambiente deseado."
+      },
+      {
+        "question": "¿Las carpas incluyen paredes laterales?",
+        "answer": "Las carpas pueden instalarse con o sin paredes laterales según sus necesidades. Ofrecemos paredes sólidas, con ventanas de vinil transparente, o completamente transparentes. La decisión dependerá del clima esperado, la privacidad deseada y el estilo del evento."
+      }
+    ]
+  },
+  {
+    "category": "pisos",
+    "title": "Pistas de Baile y Entarimados",
+    "description": "Detalles sobre nuestras pistas de baile, entarimados y templetes",
+    "items": [
+      {
+        "question": "¿Qué tipos de pistas de baile ofrecen?",
+        "answer": "Ofrecemos pistas de baile en varios acabados: laminado (blanco, negro o madera), charol (blanco o negro), pintadas a color y con diseños personalizados. Todas nuestras pistas son modulares y pueden adaptarse a diferentes tamaños según sus necesidades."
+      },
+      {
+        "question": "¿Cuál es el tamaño mínimo y máximo de las pistas de baile?",
+        "answer": "Nuestras pistas son modulares y pueden instalarse desde 3×3 metros (para espacios pequeños) hasta dimensiones mucho mayores para eventos grandes. El tamaño recomendado depende del número de invitados: como regla general, calculamos 0.5m² por cada 3 invitados para asegurar comodidad."
+      },
+      {
+        "question": "¿Los entarimados son ajustables en altura?",
+        "answer": "Sí, nuestros entarimados pueden ajustarse a diferentes alturas según las necesidades específicas del evento. Ofrecemos opciones desde 10cm hasta 1 metro de altura, ideal para diferentes configuraciones como escenarios, pasarelas o áreas elevadas."
+      },
+      {
+        "question": "¿Puedo instalar una pista de baile sobre césped o terreno irregular?",
+        "answer": "Absolutamente. Nuestros sistemas incluyen una base nivelante que permite instalar pistas de baile y entarimados sobre prácticamente cualquier superficie, incluyendo césped, tierra o terrenos con ligeras irregularidades, garantizando siempre una superficie plana y estable."
+      },
+      {
+        "question": "¿Qué capacidad de peso soportan los entarimados y templetes?",
+        "answer": "Nuestros entarimados y templetes están diseñados para soportar cargas importantes. Los entarimados estándar soportan hasta 500 kg/m², suficiente para uso normal incluyendo mobiliario, personas y equipos. Para necesidades especiales como equipamiento pesado, disponemos de refuerzos adicionales."
+      }
+    ]
+  },
+  {
+    "category": "reservas",
+    "title": "Reservas y Contratación",
+    "description": "Proceso de reserva, pagos y consideraciones contractuales",
+    "items": [
+      {
+        "question": "¿Con cuánta anticipación debo reservar?",
+        "answer": "Recomendamos reservar con al menos 1-2 meses de anticipación, especialmente para temporada alta (primavera y otoño) y fines de semana. Para eventos grandes o fechas muy solicitadas (como diciembre), es aconsejable reservar con 3-6 meses de antelación para garantizar disponibilidad."
+      },
+      {
+        "question": "¿Cuál es el proceso de reserva y pago?",
+        "answer": "El proceso inicia con una cotización personalizada según sus necesidades. Para confirmar la reserva, solicitamos un anticipo del 30% del total. El saldo restante debe cubrirse al menos 2 días antes del evento. Aceptamos transferencias bancarias, depósitos, pagos con tarjeta y efectivo."
+      },
+      {
+        "question": "¿Qué incluye el precio de alquiler?",
+        "answer": "Nuestros precios incluyen el alquiler del equipo, transporte dentro de la zona metropolitana de Querétaro, instalación, supervisión durante el evento si es necesario, y desmontaje. Para zonas fuera de la ciudad, se aplica un cargo adicional por kilometraje."
+      },
+      {
+        "question": "¿Cuál es la política de cancelación?",
+        "answer": "En caso de cancelación con más de 30 días de anticipación, se reembolsa el 70% del anticipo. Con 15-30 días de anticipación, se reembolsa el 50%. Para cancelaciones con menos de 15 días, no hay reembolso del anticipo, pero puede utilizarse como crédito para un evento futuro dentro de los siguientes 6 meses."
+      },
+      {
+        "question": "¿Requiero algún permiso municipal para instalar una carpa?",
+        "answer": "Depende de la ubicación y tamaño del evento. Para eventos privados en propiedades particulares, generalmente no se requieren permisos especiales. Para eventos en espacios públicos o de gran escala, sí pueden requerirse permisos municipales. Podemos asesorarle sobre los requisitos específicos según su caso."
+      }
+    ]
+  },
+  {
+    "category": "logistica",
+    "title": "Logística e Instalación",
+    "description": "Información sobre tiempos, requisitos y proceso de instalación",
+    "items": [
+      {
+        "question": "¿Cuánto tiempo toma la instalación?",
+        "answer": "El tiempo de instalación varía según el tipo y tamaño de estructura. Como referencia: una carpa mediana (10×15m) toma aproximadamente 4-6 horas; una pista de baile estándar 2-3 horas. Generalmente programamos la instalación 1-2 días antes del evento para asegurar todo esté perfecto."
+      },
+      {
+        "question": "¿Qué requisitos tiene el espacio para instalar una carpa?",
+        "answer": "Necesitamos un espacio plano ligeramente mayor al tamaño de la carpa (aproximadamente 1 metro adicional por lado), acceso para vehículos de carga, altura libre sin obstáculos (cables, ramas), y la posibilidad de anclar la estructura al suelo o usar contrapesos en caso de superficies pavimentadas."
+      },
+      {
+        "question": "¿Puedo modificar mi pedido después de confirmarlo?",
+        "answer": "Sí es posible realizar modificaciones, sujetas a disponibilidad. Ampliaciones o cambios menores se pueden acomodar hasta 7 días antes del evento. Reducciones significativas con menos de 15 días de anticipación pueden estar sujetas a cargos parciales según nuestra política de cancelación."
+      },
+      {
+        "question": "¿Qué sucede en caso de mal tiempo?",
+        "answer": "Nuestras estructuras están diseñadas para resistir condiciones climáticas normales. En caso de pronóstico de condiciones severas, evaluamos la situación y podemos recomendar refuerzos adicionales o, en casos extremos, posponer la instalación por seguridad. Mantenemos comunicación constante con nuestros clientes ante estas situaciones."
+      },
+      {
+        "question": "¿Pueden instalar sobre una alberca?",
+        "answer": "Sí, ofrecemos servicios especializados de tapado de albercas con entarimados seguros y resistentes. Esto requiere una evaluación previa del espacio para determinar el sistema más adecuado según las dimensiones y características específicas de la alberca."
+      }
+    ]
+  },
+  {
+    "category": "bodas",
+    "title": "Bodas y Eventos Especiales",
+    "description": "Información específica para bodas y colaboración con Quinta El Refugio",
+    "items": [
+      {
+        "question": "¿Ofrecen paquetes especiales para bodas?",
+        "answer": "Sí, contamos con paquetes específicos para bodas que incluyen carpa, pista de baile, entarimado para mesa principal, y opciones adicionales como iluminación básica. Estos paquetes son personalizables según el número de invitados, estilo de la boda y presupuesto disponible."
+      },
+      {
+        "question": "¿Trabajan en colaboración con Quinta El Refugio?",
+        "answer": "Efectivamente, mantenemos una alianza estratégica con Quinta El Refugio para ofrecer soluciones integrales en bodas y eventos sociales. Conocemos perfectamente sus espacios y ofrecemos paquetes especiales diseñados específicamente para sus instalaciones."
+      },
+      {
+        "question": "¿Pueden coordinar con mi wedding planner?",
+        "answer": "Absolutamente. Estamos acostumbrados a trabajar en conjunto con wedding planners y decoradores. Podemos coordinar directamente con ellos los detalles técnicos, espacios y tiempos para asegurar que todo se integre perfectamente con la visión general del evento."
+      },
+      {
+        "question": "¿Qué opciones recomiendan para una boda al aire libre?",
+        "answer": "Para bodas al aire libre recomendamos carpas con plafón elegante (tipo V plisado o de botón), paredes laterales disponibles en caso de cambios climáticos, pista de baile con acabado que complemente la decoración, y entarimados para la mesa principal y DJ. También sugerimos considerar plantas de luz como respaldo."
+      },
+      {
+        "question": "¿Puedo visitar una instalación similar antes de decidir?",
+        "answer": "Cuando es posible, organizamos visitas a instalaciones que tenemos montadas para otros eventos (con autorización previa). Alternativamente, podemos mostrarle nuestro amplio portafolio de fotografías de eventos similares y proporcionarle referencias de clientes anteriores."
+      }
+    ]
+  }
+]
