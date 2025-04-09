@@ -10,14 +10,44 @@ import { weddingPackageData } from '@/data/wedding-packages-data';
 export default function WeddingPackagesPage() {
   // Using a ref to track if we're in the initial hydration phase
   const hasMounted = React.useRef(false);
+  const contentWrapperRef = React.useRef<HTMLDivElement>(null);
+  const tabsSectionRef = React.useRef<HTMLDivElement>(null);
+  const testimonialsRef = React.useRef<HTMLDivElement>(null);
   
   // Set initial state values for server rendering
   const [activeSection, setActiveSection] = useState<'comparison' | 'calculator'>('comparison');
   const [selectedPackage, setSelectedPackage] = useState(weddingPackageData.packages[0].id);
+  const [isTabsVisible, setIsTabsVisible] = useState(true);
   
   // Set the mounted flag after initial render on client
   useEffect(() => {
     hasMounted.current = true;
+    
+    // Set up intersection observer to detect when user scrolls past the relevant sections
+    if (typeof window !== 'undefined' && contentWrapperRef.current && testimonialsRef.current) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // If testimonials section is visible, hide the tabs
+          if (entry.target === testimonialsRef.current) {
+            setIsTabsVisible(!entry.isIntersecting);
+          }
+          
+          // If content wrapper becomes not visible (scrolled out of view), hide tabs
+          if (entry.target === contentWrapperRef.current) {
+            if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+              setIsTabsVisible(false);
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(testimonialsRef.current);
+      observer.observe(contentWrapperRef.current);
+      
+      return () => {
+        observer.disconnect();
+      };
+    }
   }, []);
 
   const handleSelectPackage = (packageId: string) => {
@@ -42,36 +72,35 @@ export default function WeddingPackagesPage() {
             <h1 className="text-4xl md:text-5xl font-boska font-bold text-forest mb-6">
               Paquetes para Bodas
             </h1>
-            <p className="text-lg text-forest/80 mb-8">
+            <p className="text-lg text-forest/80 mb-4">
               Hemos diseñado paquetes integrales para tu boda, combinando la infraestructura de Altivento con el hermoso espacio de Quinta El Refugio.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button 
-                onClick={() => setActiveSection('comparison')}
-                className={`px-6 py-3 rounded-full text-forest font-medium transition-colors ${
-                  activeSection === 'comparison' 
-                    ? 'bg-white shadow-md' 
-                    : 'bg-peach hover:bg-peach/90'
-                }`}
-              >
-                Ver Comparativa
-              </button>
-              <button 
-                onClick={() => setActiveSection('calculator')}
-                className={`px-6 py-3 rounded-full text-forest font-medium transition-colors ${
-                  activeSection === 'calculator' 
-                    ? 'bg-white shadow-md' 
-                    : 'bg-peach hover:bg-peach/90'
-                }`}
-              >
-                Calcular Presupuesto
-              </button>
-            </div>
+            <p className="text-base text-forest/70 mb-4">
+              Descubre nuestras opciones de paquetes y calcula un presupuesto personalizado para tu evento.
+            </p>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {/* Fixed navigation indicator for packages sections */}
+          <div className={`fixed bottom-6 right-6 z-20 transition-opacity duration-300 ${isTabsVisible ? 'opacity-0' : 'opacity-100'}`}>
+            <button
+              onClick={() => {
+                if (contentWrapperRef.current) {
+                  contentWrapperRef.current.scrollIntoView({ behavior: 'smooth' });
+                  // Make sure we re-enable the tabs when manually scrolling to the section
+                  setIsTabsVisible(true);
+                }
+              }}
+              className="bg-peach text-forest p-4 rounded-full shadow-lg hover:bg-peach/90 transition-colors"
+              aria-label="Volver a paquetes"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+            </button>
+          </div>
           <section className="mb-16">
             <h2 className="text-3xl font-boska font-bold text-forest mb-6">
               Colaboración con Quinta El Refugio
@@ -86,38 +115,99 @@ export default function WeddingPackagesPage() {
             </div>
           </section>
 
-          {/* Comparison section */}
-          <section 
-            className="mb-16"
-            style={{ display: activeSection === 'comparison' ? 'block' : 'none' }}
+          {/* Tabs for Wedding Packages Content */}
+          <div 
+            ref={tabsSectionRef}
+            className={`transition-all duration-300 mb-8 bg-sand/20 p-4 rounded-lg sticky top-0 z-10 ${
+              isTabsVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 -translate-y-full pointer-events-none'
+            }`}
           >
-            <h2 className="text-3xl font-boska font-bold text-forest mb-6">
-              Comparativa de Paquetes
-            </h2>
-            <p className="text-forest/80 mb-8">
-              Selecciona el paquete que mejor se adapte a tus necesidades. Todos incluyen el espacio de Quinta El Refugio y la infraestructura necesaria para tu evento.
-            </p>
-            <WeddingPackageComparison 
-              packageData={weddingPackageData} 
-              onSelectPackage={handleSelectPackage}
-            />
-          </section>
+            <div className="max-w-4xl mx-auto flex flex-col sm:flex-row justify-center gap-4">
+              <button 
+                onClick={() => {
+                  setActiveSection('comparison');
+                  // Scroll to content wrapper
+                  if (contentWrapperRef.current) {
+                    contentWrapperRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className={`px-6 py-3 rounded-full text-forest font-medium transition-colors ${
+                  activeSection === 'comparison' 
+                    ? 'bg-white shadow-md border-2 border-peach' 
+                    : 'bg-white hover:bg-peach/20'
+                }`}
+              >
+                <span className="flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
+                  </svg>
+                  Ver Comparativa de Paquetes
+                </span>
+              </button>
+              <button 
+                onClick={() => {
+                  setActiveSection('calculator');
+                  // Scroll to content wrapper
+                  if (contentWrapperRef.current) {
+                    contentWrapperRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className={`px-6 py-3 rounded-full text-forest font-medium transition-colors ${
+                  activeSection === 'calculator' 
+                    ? 'bg-white shadow-md border-2 border-peach' 
+                    : 'bg-white hover:bg-peach/20'
+                }`}
+              >
+                <span className="flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-3 3a1 1 0 100 2h.01a1 1 0 100-2H10zm-4 1a1 1 0 011-1h.01a1 1 0 110 2H7a1 1 0 01-1-1zm1-4a1 1 0 100 2h.01a1 1 0 100-2H7zm2 1a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zm4-4a1 1 0 100 2h.01a1 1 0 100-2H13zM9 9a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zM7 8a1 1 0 000 2h.01a1 1 0 000-2H7z" clipRule="evenodd" />
+                  </svg>
+                  Calcular Presupuesto
+                </span>
+              </button>
+            </div>
+          </div>
 
-          {/* Calculator section */}
-          <section 
-            id="calculator-section"
-            style={{ display: activeSection === 'calculator' ? 'block' : 'none' }}
-          >
-            <h2 className="text-3xl font-boska font-bold text-forest mb-6">
-              Calculadora de Presupuesto
-            </h2>
-            <p className="text-forest/80 mb-8">
-              Personaliza tu paquete seleccionando el número de invitados y adicionales opcionales.
-            </p>
-            <WeddingCalculator packageData={weddingPackageData} />
-          </section>
+          {/* Content container with smooth height transition */}
+          <div ref={contentWrapperRef} className="relative">
+            {/* Comparison section */}
+            <section 
+              className={`transition-opacity duration-300 ${
+                activeSection === 'comparison' ? 'opacity-100' : 'opacity-0 absolute inset-0 pointer-events-none'
+              }`}
+            >
+              <h2 className="text-3xl font-boska font-bold text-forest mb-6">
+                Comparativa de Paquetes
+              </h2>
+              <p className="text-forest/80 mb-8">
+                Selecciona el paquete que mejor se adapte a tus necesidades. Todos incluyen el espacio de Quinta El Refugio y la infraestructura necesaria para tu evento.
+              </p>
+              <WeddingPackageComparison 
+                packageData={weddingPackageData} 
+                onSelectPackage={handleSelectPackage}
+              />
+            </section>
 
-          <section className="mt-16">
+            {/* Calculator section */}
+            <section 
+              id="calculator-section"
+              className={`transition-opacity duration-300 ${
+                activeSection === 'calculator' ? 'opacity-100' : 'opacity-0 absolute inset-0 pointer-events-none'
+              }`}
+            >
+              <h2 className="text-3xl font-boska font-bold text-forest mb-6">
+                Calculadora de Presupuesto
+              </h2>
+              <p className="text-forest/80 mb-8">
+                Personaliza tu paquete seleccionando el número de invitados y adicionales opcionales.
+              </p>
+              <WeddingCalculator packageData={weddingPackageData} />
+            </section>
+          </div>
+
+          <section className="mt-16" ref={testimonialsRef}>
             <h2 className="text-3xl font-boska font-bold text-forest mb-6">
               Lo que dicen nuestros clientes
             </h2>

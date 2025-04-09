@@ -13,18 +13,44 @@ interface FormData {
   guestCount: string;
   message: string;
   productInterest: string[];
+  weddingPackage?: string;
+  estimatedBudget?: string;
+  addons?: string;
 }
 
-export const ContactForm: React.FC = () => {
+interface ContactFormProps {
+  initialPackage?: string;
+  initialGuests?: string;
+  initialAddons?: string;
+  initialBudget?: string;
+}
+
+export const ContactForm: React.FC<ContactFormProps> = ({
+  initialPackage,
+  initialGuests,
+  initialAddons,
+  initialBudget
+}) => {
+  // Create initial message based on wedding calculator data if available
+  const initialMessage = initialPackage 
+    ? `Estoy interesado en el paquete de boda "${initialPackage}" para ${initialGuests || ''} invitados.\n` +
+      (initialAddons ? `Adicionales seleccionados: ${initialAddons}\n` : '') +
+      (initialBudget ? `Presupuesto estimado: $${Number(initialBudget).toLocaleString('es-MX')}\n\n` : '') +
+      'Por favor, envíenme una cotización detallada.'
+    : '';
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
-    eventType: '',
+    eventType: initialPackage ? 'Boda' : '',
     eventDate: '',
-    guestCount: '',
-    message: '',
-    productInterest: [],
+    guestCount: initialGuests || '',
+    message: initialMessage,
+    productInterest: initialPackage ? ['Carpas', 'Pistas de baile'] : [],
+    weddingPackage: initialPackage || '',
+    estimatedBudget: initialBudget || '',
+    addons: initialAddons || '',
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -103,6 +129,39 @@ export const ContactForm: React.FC = () => {
           {submitError && (
             <div className="bg-red-50 text-red-800 p-4 rounded-lg mb-6">
               {submitError}
+            </div>
+          )}
+          
+          {/* Wedding Package Info (if available) */}
+          {initialPackage && (
+            <div className="mb-6 bg-peach/10 p-4 rounded-lg border border-peach/20">
+              <h3 className="font-boska text-lg font-bold text-forest mb-2">
+                Información de tu paquete de boda
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <p className="font-medium text-forest">Paquete seleccionado:</p>
+                  <p className="text-forest/80">{initialPackage}</p>
+                </div>
+                {initialGuests && (
+                  <div>
+                    <p className="font-medium text-forest">Número de invitados:</p>
+                    <p className="text-forest/80">{initialGuests}</p>
+                  </div>
+                )}
+                {initialAddons && (
+                  <div className="col-span-2">
+                    <p className="font-medium text-forest">Adicionales seleccionados:</p>
+                    <p className="text-forest/80">{initialAddons}</p>
+                  </div>
+                )}
+                {initialBudget && (
+                  <div className="col-span-2">
+                    <p className="font-medium text-forest">Presupuesto estimado:</p>
+                    <p className="text-forest/80">${initialBudget ? parseInt(initialBudget).toLocaleString('es-MX') : 0}</p>
+                  </div>
+                )}
+              </div>
             </div>
           )}
           

@@ -7,7 +7,16 @@ export const metadata: Metadata = {
   description: 'Contáctanos para más información sobre nuestros productos y servicios para eventos.',
 };
 
-export default function ContactPage() {
+interface ContactPageProps {
+  searchParams?: {
+    package?: string;
+    guests?: string;
+    addons?: string;
+    budget?: string;
+  };
+}
+
+export default function ContactPage({ searchParams }: ContactPageProps) {
   return (
     <>
       {/* Page Header */}
@@ -84,7 +93,12 @@ export default function ContactPage() {
             
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <ContactForm />
+              <ContactForm 
+                initialPackage={searchParams?.package} 
+                initialGuests={searchParams?.guests} 
+                initialAddons={searchParams?.addons}
+                initialBudget={searchParams?.budget}
+              />
             </div>
           </div>
         </div>
