@@ -32,8 +32,8 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <div className={cardClasses[variant]}>
-      {image && (
-        <div className="aspect-[4/3] relative">
+      <div className="aspect-[4/3] relative">
+        {image ? (
           <Image 
             src={image.src} 
             alt={image.alt}
@@ -41,8 +41,12 @@ export const Card: React.FC<CardProps> = ({
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
           />
-        </div>
-      )}
+        ) : (
+          <div className="w-full h-full bg-teal/20 flex items-center justify-center text-forest/60">
+            {title || 'Imagen no disponible'}
+          </div>
+        )}
+      </div>
       <div className="p-4 md:p-6">
         <h3 className="font-boska text-xl text-forest mb-2">{title}</h3>
         <p className="text-forest/80 mb-4 line-clamp-3">{content}</p>

@@ -20,17 +20,28 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className="bg-cream rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md group">
-      {images && images.length > 0 && (
-        <div className="aspect-[4/3] relative overflow-hidden">
+      <div className="aspect-[4/3] relative overflow-hidden">
+        {images && images.length > 0 ? (
           <Image 
-            src={images[0]} 
+            src={images[0].startsWith('/images/placeholders/') ? images[0] : 
+                 images[0].startsWith('/images/') ? '/images/placeholders/products/placeholder.svg' : images[0]}
             alt={name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
-        </div>
-      )}
+        ) : (
+          <div className="w-full h-full bg-forest/5 flex items-center justify-center">
+            <Image 
+              src="/images/placeholders/products/placeholder.svg"
+              alt={name || 'Producto'}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+              className="object-contain"
+            />
+          </div>
+        )}
+      </div>
       <div className="p-4 md:p-6">
         <div className="flex justify-between items-start mb-2">
           <h3 className="font-boska text-xl text-forest">{name}</h3>

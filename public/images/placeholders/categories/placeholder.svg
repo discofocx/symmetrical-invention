@@ -1,0 +1,9 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#E5E9E0" />
+  <rect x="90" y="70" width="220" height="160" rx="8" fill="#F4B995" fill-opacity="0.2" stroke="#365E37" stroke-width="2"/>
+  <rect x="105" y="90" width="190" height="100" rx="4" fill="#F4B995" fill-opacity="0.1" stroke="#365E37" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M200 60V80M150 110H130M270 110H250M200 210V230" stroke="#365E37" stroke-width="2" stroke-linecap="round"/>
+  <path d="M170 150L155 180H185L170 150Z" fill="#F4B995"/>
+  <path d="M230 140L210 180H250L230 140Z" fill="#F4B995"/>
+  <text x="200" y="202" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#365E37">ALTIVENTO</text>
+</svg>

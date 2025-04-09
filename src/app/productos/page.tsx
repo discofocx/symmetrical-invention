@@ -40,15 +40,22 @@ export default function ProductsPage() {
                   <div className="aspect-[16/9] relative">
                     {category.featuredImage ? (
                       <Image
-                        src={category.featuredImage}
+                        src={category.featuredImage.startsWith('/images/placeholders/') ? category.featuredImage : 
+                             category.featuredImage.startsWith('/images/') ? '/images/placeholders/categories/placeholder.svg' : category.featuredImage}
                         alt={category.name}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="w-full h-full bg-forest/10 flex items-center justify-center">
-                        <span className="text-forest/30">{category.name}</span>
+                      <div className="w-full h-full bg-forest/5 flex items-center justify-center">
+                        <Image 
+                          src="/images/placeholders/categories/placeholder.svg"
+                          alt={category.name}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-contain"
+                        />
                       </div>
                     )}
                   </div>

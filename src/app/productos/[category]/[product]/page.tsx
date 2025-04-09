@@ -75,15 +75,22 @@ export default function ProductPage({ params }: ProductPageProps) {
               <div className="aspect-[4/3] relative bg-forest/5 rounded-lg mb-4">
                 {product.images && product.images.length > 0 ? (
                   <Image
-                    src={product.images[0]}
+                    src={product.images[0].startsWith('/images/placeholders/') ? product.images[0] : 
+                         product.images[0].startsWith('/images/') ? '/images/placeholders/products/placeholder.svg' : product.images[0]}
                     alt={product.name}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover rounded-lg"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-forest/30">
-                    Imagen no disponible
+                  <div className="w-full h-full flex items-center justify-center text-forest/30 bg-forest/5 rounded-lg">
+                    <Image 
+                      src="/images/placeholders/products/placeholder.svg"
+                      alt={product.name}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-contain rounded-lg"
+                    />
                   </div>
                 )}
               </div>
@@ -95,7 +102,8 @@ export default function ProductPage({ params }: ProductPageProps) {
                       className="aspect-square relative bg-forest/5 rounded-lg"
                     >
                       <Image
-                        src={image}
+                        src={image.startsWith('/images/placeholders/') ? image : 
+                             image.startsWith('/images/') ? '/images/placeholders/products/placeholder.svg' : image}
                         alt={`${product.name} - Vista ${index + 2}`}
                         fill
                         sizes="(max-width: 1024px) 25vw, 12.5vw"
