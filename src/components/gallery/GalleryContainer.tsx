@@ -1,6 +1,6 @@
 'use client';
 // src/components/gallery/GalleryContainer.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { GallerySections } from './GallerySections';
 import { GalleryPage } from './GalleryPage';
 import { GalleryItem, GallerySection, GalleryCategory } from '@/types/gallery';

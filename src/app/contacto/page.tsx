@@ -7,13 +7,14 @@ export const metadata: Metadata = {
   description: 'Contáctanos para más información sobre nuestros productos y servicios para eventos.',
 };
 
-interface ContactPageProps {
-  searchParams?: {
+type ContactPageProps = {
+  params: Record<string, never>;
+  searchParams: {
     package?: string;
     guests?: string;
     addons?: string;
     budget?: string;
-  };
+  }
 }
 
 export default function ContactPage({ searchParams }: ContactPageProps) {

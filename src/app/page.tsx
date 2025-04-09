@@ -1,15 +1,63 @@
 // src/app/page.tsx (expanded)
 import Link from 'next/link';
-import Image from 'next/image';
 import { Card } from '@/components/ui/Card';
 import { FeaturedGallery } from '@/components/gallery/FeaturedGallery';
 import { getProductCategories } from '@/lib/content/products';
 import { getFeaturedGalleryItems } from '@/lib/content/gallery';
+import { HeroSlider, HeroSlide } from '@/components/ui/HeroSlider';
 
 export default function Home() {
   // This would typically be fetched from the backend
   const categories = getProductCategories();
   const featuredGalleryItems = getFeaturedGalleryItems(4);
+  
+  // Hero slider slides
+  const heroSlides: HeroSlide[] = [
+    {
+      title: "Estructuras memorables para eventos inolvidables",
+      description: "Más de 30 años creando espacios perfectos para eventos sociales y corporativos.",
+      image: {
+        src: "/images/placeholders/hero/placeholder.svg",
+        alt: "Estructura para evento corporativo"
+      },
+      ctaPrimary: {
+        text: "Explorar Productos",
+        href: "/productos"
+      },
+      ctaSecondary: {
+        text: "Contactar",
+        href: "/contacto"
+      }
+    },
+    {
+      title: "Carpas y templetes para bodas de ensueño",
+      description: "Diseñamos espacios mágicos para el día más especial de tu vida.",
+      image: {
+        src: "/images/placeholders/hero/placeholder.svg",
+        alt: "Carpa para boda"
+      },
+      ctaPrimary: {
+        text: "Paquetes de Boda",
+        href: "/bodas"
+      },
+      ctaSecondary: {
+        text: "Ver Galería",
+        href: "/galeria"
+      }
+    },
+    {
+      title: "Eventos corporativos a la medida",
+      description: "Soluciones completas para conferencias, lanzamientos y eventos empresariales.",
+      image: {
+        src: "/images/placeholders/hero/placeholder.svg",
+        alt: "Evento corporativo"
+      },
+      ctaPrimary: {
+        text: "Solicitar Cotización",
+        href: "/contacto"
+      }
+    }
+  ];
   
   // Sample testimonials
   const testimonials = [
@@ -27,42 +75,10 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section with Slider */}
       <section className="bg-linear-45/oklch from-peach via-sand to-cream py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-8 md:mb-0">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-boska font-bold text-forest mb-4">
-                Estructuras memorables para eventos inolvidables
-              </h1>
-              <p className="text-lg mb-6">
-                Más de 30 años creando espacios perfectos para eventos sociales y corporativos.
-              </p>
-              <div className="flex space-x-4">
-                <Link 
-                  href="/productos"
-                  className="bg-peach text-forest px-6 py-3 rounded-full font-medium transition-colors hover:bg-peach/90"
-                >
-                  Explorar Productos
-                </Link>
-                <Link 
-                  href="/contacto"
-                  className="bg-transparent border-2 border-forest text-forest px-6 py-3 rounded-full font-medium transition-colors hover:bg-forest/5"
-                >
-                  Contactar
-                </Link>
-              </div>
-            </div>
-            <div className="md:w-1/2">
-              {/* Placeholder for hero image */}
-              <div className="aspect-[4/3] bg-forest/10 rounded-lg relative">
-                {/* We'd use a real image in production */}
-                <div className="absolute inset-0 flex items-center justify-center text-forest/30 text-xl">
-                  Imagen Hero
-                </div>
-              </div>
-            </div>
-          </div>
+          <HeroSlider slides={heroSlides} autoplayInterval={7000} />
         </div>
       </section>
       
@@ -172,7 +188,7 @@ export default function Home() {
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-cream p-6 rounded-lg shadow-sm">
                 <blockquote className="font-boska text-lg md:text-xl text-forest italic mb-4">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </blockquote>
                 <div className="flex flex-col">
                   <span className="font-medium text-teal">{testimonial.author}</span>

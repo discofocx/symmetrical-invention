@@ -35,7 +35,8 @@ export const Card: React.FC<CardProps> = ({
       <div className="aspect-[4/3] relative">
         {image ? (
           <Image 
-            src={image.src} 
+            src={image.src.startsWith('/images/placeholders/') ? image.src : 
+                 image.src.startsWith('/images/') ? '/images/placeholders/categories/placeholder.svg' : image.src} 
             alt={image.alt}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"

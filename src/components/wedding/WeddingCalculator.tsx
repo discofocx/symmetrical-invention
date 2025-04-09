@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import type { WeddingPackageData, CalculatorState, CalculationResult, WeddingAddOn } from '@/types/wedding-packages-types';
+import type { WeddingPackageData, CalculatorState, CalculationResult } from '@/types/wedding-packages-types';
 import { formatPrice } from '@/lib/utils/formatting';
 import Link from 'next/link';
 

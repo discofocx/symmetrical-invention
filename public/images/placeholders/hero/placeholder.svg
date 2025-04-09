@@ -1,0 +1,8 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#F5F0E8"/>
+  <path d="M400 200 L500 350 L300 350 Z" fill="#3F5449" fill-opacity="0.3"/>
+  <rect x="250" y="225" width="300" height="150" rx="10" stroke="#E9B38F" stroke-width="4" stroke-dasharray="10 5" fill="none"/>
+  <text x="400" y="315" font-family="Arial" font-size="24" fill="#3F5449" text-anchor="middle">Imagen Hero</text>
+  <circle cx="400" cy="400" r="50" stroke="#3F5449" stroke-width="2" fill="none"/>
+  <path d="M375 400 L425 400 M400 375 L400 425" stroke="#E9B38F" stroke-width="4"/>
+</svg>

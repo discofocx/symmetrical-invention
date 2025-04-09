@@ -277,7 +277,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white/5 p-6 rounded-lg">
               <blockquote className="mb-4 text-lg font-boska italic">
-                "Elegimos Altivento para nuestra boda y fue una decisión acertada. Desde la asesoría inicial hasta el desmontaje, todo fue perfecto. La carpa quedó espectacular y nuestros invitados no paraban de elogiarla."
+                &quot;Elegimos Altivento para nuestra boda y fue una decisión acertada. Desde la asesoría inicial hasta el desmontaje, todo fue perfecto. La carpa quedó espectacular y nuestros invitados no paraban de elogiarla.&quot;
               </blockquote>
               <div className="flex items-center">
                 <div className="w-10 h-10 bg-peach/20 rounded-full mr-3"></div>
@@ -290,7 +290,7 @@ export default function AboutPage() {
             
             <div className="bg-white/5 p-6 rounded-lg">
               <blockquote className="mb-4 text-lg font-boska italic">
-                "Como organizador de eventos corporativos, he trabajado con muchos proveedores, pero Altivento destaca por su profesionalismo y calidad. Siempre cumplen con los tiempos y las instalaciones son impecables."
+                &quot;Como organizador de eventos corporativos, he trabajado con muchos proveedores, pero Altivento destaca por su profesionalismo y calidad. Siempre cumplen con los tiempos y las instalaciones son impecables.&quot;
               </blockquote>
               <div className="flex items-center">
                 <div className="w-10 h-10 bg-peach/20 rounded-full mr-3"></div>

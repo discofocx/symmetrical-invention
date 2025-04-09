@@ -1,7 +1,6 @@
 // src/components/gallery/GalleryGrid.tsx
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { GalleryItem } from '@/types/gallery';
 
 interface GalleryGridProps {

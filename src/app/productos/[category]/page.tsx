@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { ProductGrid } from '@/components/products/ProductGrid';
 import { getCategoryBySlug, getProductsByCategory } from '@/lib/content/products';
 
@@ -41,9 +42,9 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       <section className="bg-forest text-cream py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center mb-4">
-            <a href="/productos" className="text-cream/80 hover:text-cream transition-colors">
+            <Link href="/productos" className="text-cream/80 hover:text-cream transition-colors">
               Productos
-            </a>
+            </Link>
             <span className="mx-2 text-cream/50">/</span>
             <span>{category.name}</span>
           </div>
@@ -69,12 +70,12 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               <p className="text-forest/80 mb-6">
                 No hay productos disponibles en esta categoría en este momento.
               </p>
-              <a 
+              <Link 
                 href="/productos"
                 className="bg-peach text-forest px-4 py-2 rounded-full font-medium transition-colors hover:bg-peach/90"
               >
                 Ver todas las categorías
-              </a>
+              </Link>
             </div>
           )}
         </div>
@@ -140,12 +141,12 @@ export default function CategoryPage({ params }: CategoryPageProps) {
            Contáctanos para una cotización personalizada basada en tus necesidades específicas.
          </p>
          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-           <a 
+           <Link 
              href="/contacto"
              className="bg-forest text-cream px-6 py-3 rounded-full font-medium transition-colors hover:bg-forest/90"
            >
              Solicitar Cotización
-           </a>
+           </Link>
            <a 
              href="https://wa.me/524421234567?text=Hola,%20estoy%20interesado%20en%20sus%20productos%20de%20la%20categoría%20de%20carpas."
              target="_blank"

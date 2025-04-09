@@ -58,14 +58,14 @@ export const FAQSearch: React.FC<FAQSearchProps> = ({ initialFaqs }) => {
           {results.length > 0 ? (
             <div>
               <h3 className="text-xl font-boska font-medium text-forest mb-4">
-                {results.length} {results.length === 1 ? 'resultado' : 'resultados'} para "{query}"
+                {results.length} {results.length === 1 ? 'resultado' : 'resultados'} para &quot;{query}&quot;
               </h3>
               <FAQAccordion items={results} initialOpenIndex={0} />
             </div>
           ) : (
             <div className="text-center py-8 bg-sand/20 rounded-lg">
               <h3 className="text-xl font-boska font-medium text-forest mb-2">
-                No se encontraron resultados para "{query}"
+                No se encontraron resultados para &quot;{query}&quot;
               </h3>
               <p className="text-forest/70">
                 Intenta con diferentes palabras o contacta con nosotros para preguntas específicas.

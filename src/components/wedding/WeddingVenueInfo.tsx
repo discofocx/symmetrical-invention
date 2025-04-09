@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import type { VenueInfo } from '@/types/wedding-packages-types';
 import { formatPrice } from '@/lib/utils/formatting';
 
@@ -14,9 +15,11 @@ export default function WeddingVenueInfo({ venue }: WeddingVenueInfoProps) {
       <div className="md:flex">
         <div className="md:w-1/2">
           {venue.image ? (
-            <img 
+            <Image 
               src={venue.image} 
               alt={venue.name} 
+              width={500}
+              height={300}
               className="w-full h-full object-cover"
             />
           ) : (

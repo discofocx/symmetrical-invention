@@ -16,7 +16,7 @@ export default function WeddingPackagesPage() {
   
   // Set initial state values for server rendering
   const [activeSection, setActiveSection] = useState<'comparison' | 'calculator'>('comparison');
-  const [selectedPackage, setSelectedPackage] = useState(weddingPackageData.packages[0].id);
+  const [, setSelectedPackage] = useState(weddingPackageData.packages[0].id);
   const [isTabsVisible, setIsTabsVisible] = useState(true);
   
   // Set the mounted flag after initial render on client

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 // Testimonial data type
 interface Testimonial {
@@ -53,10 +54,12 @@ export default function WeddingTestimonials() {
             <div className="mt-auto">
               <div className="flex items-center">
                 {testimonial.image ? (
-                  <img 
+                  <Image 
                     src={testimonial.image} 
                     alt={testimonial.author} 
-                    className="w-12 h-12 rounded-full mr-4"
+                    width={48}
+                    height={48}
+                    className="rounded-full mr-4"
                   />
                 ) : (
                   <div className="w-12 h-12 rounded-full bg-peach/20 flex items-center justify-center mr-4">
