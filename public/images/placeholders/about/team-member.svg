@@ -1,0 +1,19 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#E5E9E0" />
+  
+  <!-- Background elements -->
+  <rect x="150" y="80" width="100" height="100" rx="50" fill="#F4B995" fill-opacity="0.3"/>
+  
+  <!-- Person silhouette -->
+  <circle cx="200" cy="130" r="30" fill="#365E37" fill-opacity="0.2"/>
+  <rect x="170" y="160" width="60" height="100" rx="20" fill="#365E37" fill-opacity="0.2"/>
+  
+  <!-- Decorative elements -->
+  <rect x="50" y="300" width="300" height="2" fill="#365E37" fill-opacity="0.1"/>
+  <rect x="100" y="310" width="200" height="2" fill="#365E37" fill-opacity="0.1"/>
+  <rect x="150" y="320" width="100" height="2" fill="#365E37" fill-opacity="0.1"/>
+  
+  <!-- Text placeholder -->
+  <rect x="100" y="340" width="200" height="30" rx="5" fill="#F4B995" fill-opacity="0.3"/>
+  <text x="200" y="360" text-anchor="middle" font-family="Arial" font-size="14" fill="#365E37">ALTIVENTO</text>
+</svg>

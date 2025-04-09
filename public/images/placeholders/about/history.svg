@@ -1,0 +1,30 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#E5E9E0" />
+  
+  <!-- Timeline -->
+  <line x1="150" y1="200" x2="450" y2="200" stroke="#365E37" stroke-width="4" stroke-dasharray="8 8"/>
+  
+  <!-- Timeline elements -->
+  <circle cx="150" cy="200" r="20" fill="#F4B995" fill-opacity="0.5"/>
+  <text x="150" y="204" text-anchor="middle" font-family="Arial" font-size="12" fill="#365E37">1990</text>
+  
+  <circle cx="250" cy="200" r="20" fill="#F4B995" fill-opacity="0.5"/>
+  <text x="250" y="204" text-anchor="middle" font-family="Arial" font-size="12" fill="#365E37">2000</text>
+  
+  <circle cx="350" cy="200" r="20" fill="#F4B995" fill-opacity="0.5"/>
+  <text x="350" y="204" text-anchor="middle" font-family="Arial" font-size="12" fill="#365E37">2010</text>
+  
+  <circle cx="450" cy="200" r="20" fill="#F4B995" fill-opacity="0.5"/>
+  <text x="450" y="204" text-anchor="middle" font-family="Arial" font-size="12" fill="#365E37">2020</text>
+  
+  <!-- Small tents above timeline -->
+  <path d="M125 140L150 100L175 140H125Z" fill="#365E37" fill-opacity="0.2"/>
+  <path d="M225 140L250 100L275 140H225Z" fill="#365E37" fill-opacity="0.2"/>
+  <path d="M325 140L350 100L375 140H325Z" fill="#365E37" fill-opacity="0.2"/>
+  <path d="M425 140L450 100L475 140H425Z" fill="#365E37" fill-opacity="0.2"/>
+  
+  <!-- Text at bottom -->
+  <rect x="150" y="300" width="300" height="50" rx="8" fill="#F4B995" fill-opacity="0.2"/>
+  <text x="300" y="325" text-anchor="middle" font-family="Arial" font-size="14" fill="#365E37">NUESTRA HISTORIA</text>
+  <text x="300" y="345" text-anchor="middle" font-family="Arial" font-size="10" fill="#365E37">Más de 30 años creando eventos memorables</text>
+</svg>
