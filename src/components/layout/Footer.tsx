@@ -11,7 +11,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="font-boska text-xl mb-4">Altivento</h3>
+            <h3 className="font-boska font-bold text-xl mb-4">ALTIVENTO</h3>
             <p className="mb-4">
               Más de 30 años creando estructuras memorables para eventos sociales y corporativos.
             </p>
