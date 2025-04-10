@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
+import { OptimizedImage } from './OptimizedImage';
 import Link from 'next/link';
 
 export interface HeroSlide {
@@ -153,33 +153,15 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                 </div>
                 <div className="md:w-1/2">
                   <div className="aspect-[4/3] bg-forest/10 rounded-lg relative overflow-hidden">
-                    {slide.image.src.startsWith('/images/placeholders/') ? (
-                      <Image 
-                        src={slide.image.src}
-                        alt={slide.image.alt}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    ) : slide.image.src.startsWith('/images/') ? (
-                      <div className="absolute inset-0 flex items-center justify-center text-forest/30 text-xl">
-                        <Image 
-                          src="/images/placeholders/hero/placeholder.svg"
-                          alt={slide.image.alt}
-                          fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                          className="object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <Image 
-                        src={slide.image.src}
-                        alt={slide.image.alt}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    )}
+                    <OptimizedImage 
+                      src={slide.image.src}
+                      alt={slide.image.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                      className="object-cover"
+                      fallbackSrc="/images/placeholders/hero/placeholder.svg"
+                      priority={index === 0} // Only prioritize the first slide
+                    />
                   </div>
                 </div>
               </div>

@@ -149,7 +149,7 @@ export function createMetadata({
       url,
       images: [
         {
-          url: image || (defaultMetadata.openGraph?.images as any)[0].url,
+          url: image || (defaultMetadata.openGraph?.images?.[0] as { url: string })?.url || `${baseUrl}/images/og-image.jpg`,
           width: 1200,
           height: 630,
           alt: title || siteConfig.name

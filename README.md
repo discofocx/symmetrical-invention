@@ -1,4 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Altivento - Website
+
+This is the corporate website for Altivento, a company specializing in event structures and rentals. Built with [Next.js](https://nextjs.org) and the latest frontend technologies.
+
+## Project Status
+
+### Phase 1 (Foundation)
+- ✅ Site architecture and structure
+- ✅ Core UI components
+- ✅ Responsive design
+- ✅ Basic content management 
+- ✅ SEO implementation
+  - Metadata configuration
+  - Structured data
+  - OpenGraph and social tags
+- ✅ Performance optimization
+  - Optimized font loading with next/font
+  - Image optimization with responsive sizing
+  - JavaScript optimization and code splitting
+  - Core Web Vitals monitoring
+  - Content delivery optimization
+- ✅ Contact form with validation
+- ⏳ Testing & bug fixing
+- ⏳ Product catalog
+
+### Phase 2 (Enhanced Features)
+- ⏳ Wedding planning tools
+- ⏳ Interactive gallery
+- ⏳ Dynamic pricing calculator
+- ⏳ Event inspiration section
 
 ## Getting Started
 

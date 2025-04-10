@@ -2,8 +2,11 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
+import { WebVitalsTracking } from '@/components/layout/WebVitalsTracking';
+import { PreloadResources } from '@/components/layout/PreloadResources';
 import { defaultMetadata } from '@/config/metadata';
 import { OrganizationSchema, LocalBusinessSchema, WebsiteSchema } from '@/components/structured-data';
+import { boska, switzer } from '@/lib/utils/fonts';
 import './globals.css';
 
 // Export site metadata
@@ -23,12 +26,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${boska.variable} ${switzer.variable}`}>
       <body className="min-h-screen bg-cream text-forest font-switzer flex flex-col">
         {/* Structured data for rich search results */}
         <OrganizationSchema />
         <LocalBusinessSchema />
         <WebsiteSchema />
+        <WebVitalsTracking />
+        <PreloadResources />
         
         <Header />
         <main className="flex-grow">{children}</main>
