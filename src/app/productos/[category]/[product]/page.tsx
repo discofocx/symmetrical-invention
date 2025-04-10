@@ -3,7 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ProductCard } from '@/components/products/ProductCard';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { getCategoryBySlug, getProductBySlug, getRelatedProducts } from '@/lib/content/products';
+import { siteConfig } from '@/config/site';
 
 interface ProductPageProps {
   params: {
@@ -187,16 +189,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 >
                   Solicitar Cotización
                 </Link>
-                <a
-                  href={`https://wa.me/524421234567?text=Hola,%20estoy%20interesado%20en%20${encodeURIComponent(
-                    product.name
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <WhatsAppButton
+                  fixed={false}
+                  message={`Hola, estoy interesado en ${product.name}`}
                   className="bg-transparent border-2 border-forest text-forest px-6 py-3 rounded-full font-medium transition-colors hover:bg-forest/5 text-center"
                 >
                   Contactar por WhatsApp
-                </a>
+                </WhatsAppButton>
               </div>
             </div>
           </div>

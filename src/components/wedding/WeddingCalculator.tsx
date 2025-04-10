@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import type { WeddingPackageData, CalculatorState, CalculationResult } from '@/types/wedding-packages-types';
 import { formatPrice } from '@/lib/utils/formatting';
 import Link from 'next/link';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
+import { siteConfig } from '@/config/site';
 
 interface WeddingCalculatorProps {
   packageData: WeddingPackageData;
@@ -368,14 +370,13 @@ export default function WeddingCalculator({ packageData }: WeddingCalculatorProp
               >
                 Solicitar Cotización Personalizada
               </Link>
-              <a 
-                href={`https://wa.me/524421234567?text=Hola,%20estoy%20interesado%20en%20el%20paquete%20${selectedPackage?.name}%20para%20${calculatorState.guestCount}%20invitados.%20El%20presupuesto%20estimado%20es%20de%20${formatPrice(calculationResult.totalPrice)}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppButton
+                fixed={false}
+                message={`Hola, estoy interesado en el paquete ${selectedPackage?.name} para ${calculatorState.guestCount} invitados. El presupuesto estimado es de ${formatPrice(calculationResult.totalPrice)}`}
                 className="bg-transparent border border-forest text-forest px-6 py-3 rounded-full font-medium hover:bg-forest/5 transition-colors block w-full text-center"
               >
                 Contactar por WhatsApp
-              </a>
+              </WhatsAppButton>
             </div>
             
             <div className="mt-6 text-center">

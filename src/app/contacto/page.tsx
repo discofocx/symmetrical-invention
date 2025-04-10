@@ -1,6 +1,7 @@
 // src/app/contacto/page.tsx
 import { Metadata } from 'next';
 import { ContactForm } from '@/components/forms/ContactForm';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
@@ -75,18 +76,18 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                   <div>
                     <h3 className="font-boska text-lg mb-2">Redes Sociales</h3>
                     <div className="flex space-x-4">
-                      <a href="#" className="text-forest hover:text-peach transition-colors">
+                      <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="text-forest hover:text-peach transition-colors">
                         <span className="sr-only">Facebook</span>
                         <div className="w-8 h-8 bg-forest/10 rounded-full flex items-center justify-center">F</div>
                       </a>
-                      <a href="#" className="text-forest hover:text-peach transition-colors">
+                      <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-forest hover:text-peach transition-colors">
                         <span className="sr-only">Instagram</span>
                         <div className="w-8 h-8 bg-forest/10 rounded-full flex items-center justify-center">I</div>
                       </a>
-                      <a href="#" className="text-forest hover:text-peach transition-colors">
+                      <WhatsAppButton fixed={false} className="text-forest hover:text-peach transition-colors">
                         <span className="sr-only">WhatsApp</span>
                         <div className="w-8 h-8 bg-forest/10 rounded-full flex items-center justify-center">W</div>
-                      </a>
+                      </WhatsAppButton>
                     </div>
                   </div>
                 </div>

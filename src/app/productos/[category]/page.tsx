@@ -2,7 +2,9 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ProductGrid } from '@/components/products/ProductGrid';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { getCategoryBySlug, getProductsByCategory } from '@/lib/content/products';
+import { siteConfig } from '@/config/site';
 
 interface CategoryPageProps {
   params: {
@@ -154,14 +156,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
            >
              Solicitar Cotización
            </Link>
-           <a 
-             href="https://wa.me/524421234567?text=Hola,%20estoy%20interesado%20en%20sus%20productos%20de%20la%20categoría%20de%20carpas."
-             target="_blank"
-             rel="noopener noreferrer"
+           <WhatsAppButton
+             fixed={false}
+             message={`Hola, estoy interesado en sus productos de la categoría de ${category.name}.`}
              className="bg-transparent border-2 border-forest text-forest px-6 py-3 rounded-full font-medium transition-colors hover:bg-forest/5"
            >
              Contactar por WhatsApp
-           </a>
+           </WhatsAppButton>
          </div>
        </div>
      </section>
