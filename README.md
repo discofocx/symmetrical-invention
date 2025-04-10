@@ -2,6 +2,23 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### Environment Setup
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```
+# Email configuration
+EMAIL_USER=your-gmail-account@gmail.com
+EMAIL_PASSWORD=your-gmail-app-password
+NOTIFICATION_EMAIL=email-to-receive-notifications@example.com
+
+# KV Store configuration is automatically handled by Vercel
+```
+
+For Gmail, you need to use an App Password rather than your regular password. You can generate one in your Google Account settings.
+
+### Running the Development Server
+
 First, run the development server:
 
 ```bash

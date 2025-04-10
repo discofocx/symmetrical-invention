@@ -79,12 +79,41 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     setIsSubmitting(true);
     setSubmitError(null);
     
+    // Create API submission data (including honeypot for spam protection)
+    const submissionData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      eventType: formData.eventType,
+      eventDate: formData.eventDate,
+      productInterest: formData.productInterest.join(', '),
+      guestCount: formData.guestCount,
+      // Include wedding data if available
+      ...(formData.weddingPackage && { weddingPackage: formData.weddingPackage }),
+      ...(formData.estimatedBudget && { estimatedBudget: formData.estimatedBudget }),
+      ...(formData.addons && { addons: formData.addons }),
+      // Honeypot field for spam detection (should remain empty)
+      honeypot: '',
+    };
+    
     try {
-      // In a real implementation, this would send data to an API endpoint
-      // For now, we'll simulate a successful submission after a delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Send data to the API endpoint
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
       
-      console.log('Form submitted:', formData);
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.message || 'Error al enviar el formulario');
+      }
+      
+      console.log('Form submitted successfully:', result);
       setSubmitSuccess(true);
       
       // Reset form after successful submission
@@ -98,8 +127,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         message: '',
         productInterest: [],
       });
-    } catch (error) {
-      setSubmitError('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Hubo un error al enviar el formulario';
+      setSubmitError(errorMessage || 'Por favor, intenta de nuevo.');
       console.error('Form submission error:', error);
     } finally {
       setIsSubmitting(false);

@@ -1,6 +1,7 @@
 // src/app/contacto/page.tsx
 import { Metadata } from 'next';
 import { ContactForm } from '@/components/forms/ContactForm';
+import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
   title: 'Contacto - Altivento',
@@ -45,23 +46,21 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
                   <div>
                     <h3 className="font-boska text-lg mb-2">Dirección</h3>
                     <address className="not-italic">
-                      <p>Avenida Principal #123</p>
-                      <p>Col. Centro</p>
-                      <p>Querétaro, Qro. CP 76000</p>
+                      <p>Salto de Tzararacua 112</p>
+                      <p>Real de Juriquilla</p>
+                      <p>Querétaro, Qro. CP 76226</p>
                       <p>México</p>
                     </address>
                   </div>
                   
                   <div>
                     <h3 className="font-boska text-lg mb-2">Teléfono</h3>
-                    <p><a href="tel:+524421234567" className="hover:text-peach transition-colors">(442) 123-4567</a></p>
-                    <p><a href="tel:+524429876543" className="hover:text-peach transition-colors">(442) 987-6543</a></p>
+                    <p><a href={`tel:${siteConfig.contact.phone}`} className="hover:text-peach transition-colors">{siteConfig.contact.phone}</a></p>
                   </div>
                   
                   <div>
                     <h3 className="font-boska text-lg mb-2">Email</h3>
-                    <p><a href="mailto:info@altivento.com" className="hover:text-peach transition-colors">info@altivento.com</a></p>
-                    <p><a href="mailto:ventas@altivento.com" className="hover:text-peach transition-colors">ventas@altivento.com</a></p>
+                    <p><a href={`mailto:${siteConfig.contact.email}`} className="hover:text-peach transition-colors">{siteConfig.contact.email}</a></p>
                   </div>
                   
                   <div>
