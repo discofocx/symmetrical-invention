@@ -18,6 +18,9 @@ export const defaultMetadata: Metadata = {
   },
   description: siteConfig.description,
   
+  // Set metadataBase for absolute URLs
+  metadataBase: new URL(baseUrl),
+  
   // Viewport is now configured separately
 
   // Social/OpenGraph metadata
@@ -29,11 +32,11 @@ export const defaultMetadata: Metadata = {
       template: `%s | ${siteConfig.name}`
     },
     description: siteConfig.description,
-    url: baseUrl,
+    url: '/',
     locale: 'es_MX',
     images: [
       {
-        url: `${baseUrl}/images/og-image.jpg`,
+        url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} - ${siteConfig.description}`
@@ -49,7 +52,7 @@ export const defaultMetadata: Metadata = {
       template: `%s | ${siteConfig.name}`
     },
     description: siteConfig.description,
-    images: [`${baseUrl}/images/og-image.jpg`],
+    images: ['/images/og-image.jpg'],
   },
 
   // Essential meta tags
@@ -121,13 +124,13 @@ export function createMetadata({
   title?: string;
   description?: string;
   keywords?: string[];
-  image?: string;
-  path?: string;
+  image?: string; // Should be relative path starting with "/"
+  path?: string;  // Should be relative path starting with "/"
   noIndex?: boolean;
 }): Metadata {
-  const url = `${baseUrl}${path}`;
   
   return {
+    metadataBase: new URL(baseUrl),
     ...(title && { 
       title: title,
     }),
@@ -146,10 +149,10 @@ export function createMetadata({
       ...(description && { 
         description: description,
       }),
-      url,
+      url: path,
       images: [
         {
-          url: image || (defaultMetadata.openGraph?.images?.[0] as { url: string })?.url || `${baseUrl}/images/og-image.jpg`,
+          url: image || (defaultMetadata.openGraph?.images?.[0] as { url: string })?.url || '/images/og-image.jpg',
           width: 1200,
           height: 630,
           alt: title || siteConfig.name
@@ -169,7 +172,7 @@ export function createMetadata({
     },
     
     alternates: {
-      canonical: url,
+      canonical: path,
     },
     
     robots: noIndex ? {
