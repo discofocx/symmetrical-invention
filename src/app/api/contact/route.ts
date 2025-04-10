@@ -79,8 +79,8 @@ export async function POST(request: Request) {
     
     await transporter.sendMail({
       from: `"Contacto ${siteConfig.name}" <${siteConfig.email.formSubmission.from}>`,
-      to: process.env.NOTIFICATION_EMAIL || siteConfig.email.formSubmission.to,
-      cc: process.env.CC_EMAIL || siteConfig.email.formSubmission.cc,
+      to: siteConfig.email.formSubmission.to,
+      cc: siteConfig.email.formSubmission.cc,
       replyTo: validatedData.data.email,
       subject: `Nueva Solicitud de Contacto - ${siteConfig.name}`,
       html: createEmailTemplate(validatedData.data),
