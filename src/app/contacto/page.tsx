@@ -18,7 +18,9 @@ type ContactPageProps = {
   }
 }
 
-export default function ContactPage({ searchParams }: ContactPageProps) {
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  // We need to use the Promise.resolve to ensure searchParams is awaited
+  const searchParamsCopy = await Promise.resolve(searchParams);
   return (
     <>
       {/* Page Header */}
@@ -94,10 +96,10 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <ContactForm 
-                initialPackage={searchParams?.package} 
-                initialGuests={searchParams?.guests} 
-                initialAddons={searchParams?.addons}
-                initialBudget={searchParams?.budget}
+                initialPackage={searchParamsCopy?.package} 
+                initialGuests={searchParamsCopy?.guests} 
+                initialAddons={searchParamsCopy?.addons}
+                initialBudget={searchParamsCopy?.budget}
               />
             </div>
           </div>

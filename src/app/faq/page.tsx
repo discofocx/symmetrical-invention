@@ -11,14 +11,16 @@ export const metadata: Metadata = {
   description: 'Respuestas a las preguntas más comunes sobre nuestros servicios de carpas, pistas de baile y más para tu evento.',
 };
 
-export default function FAQPage({
+export default async function FAQPage({
   searchParams,
 }: {
   searchParams?: { category?: string };
 }) {
+  // We need to use the Promise.resolve to ensure searchParams is awaited
+  const searchParamsCopy = await Promise.resolve(searchParams);
   const categories = getFAQCategories();
   const allFaqs = getAllFAQItems();
-  const defaultCategory = searchParams?.category || 'general';
+  const defaultCategory = searchParamsCopy?.category || 'general';
 
   return (
     <>

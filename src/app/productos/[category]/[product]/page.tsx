@@ -13,7 +13,10 @@ interface ProductPageProps {
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = getProductBySlug(params.product);
+  const paramsCopy = await Promise.resolve(params);
+  const productSlug = paramsCopy.product;
+  
+  const product = getProductBySlug(productSlug);
   
   if (!product) {
     return {
@@ -27,20 +30,25 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   };
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params }: ProductPageProps) {
+  // We need to use the Promise.resolve to ensure params is awaited
+  const paramsCopy = await Promise.resolve(params);
+  const productSlug = paramsCopy.product;
+  const categorySlug = paramsCopy.category;
+  
   // Use our resolver to find the product
-  const product = getProductBySlug(params.product);
+  const product = getProductBySlug(productSlug);
   
   if (!product) {
-    console.error(`Product not found: ${params.product}`);
+    console.error(`Product not found: ${productSlug}`);
     notFound();
   }
   
   // Ensure we have the correct category
-  const category = getCategoryBySlug(params.category);
+  const category = getCategoryBySlug(categorySlug);
   
   if (!category) {
-    console.error(`Category not found: ${params.category}`);
+    console.error(`Category not found: ${categorySlug}`);
     notFound();
   }
   
