@@ -5,6 +5,22 @@ import { FeaturedGallery } from '@/components/gallery/FeaturedGallery';
 import { getProductCategories } from '@/lib/content/products';
 import { getFeaturedGalleryItems } from '@/lib/content/gallery';
 import { HeroSlider, HeroSlide } from '@/components/ui/HeroSlider';
+import { createMetadata } from '@/config/metadata';
+import { EventServiceSchema } from '@/components/structured-data';
+
+// Export metadata for this page
+export const metadata = createMetadata({
+  title: 'Estructuras Memorables para Eventos - Carpas, Pistas y Entarimados',
+  description: 'Más de 30 años creando espacios perfectos para eventos sociales y corporativos. Renta de carpas, pistas de baile y entarimados en Querétaro.',
+  keywords: [
+    'renta de carpas', 
+    'carpas para eventos', 
+    'pistas de baile', 
+    'eventos Querétaro', 
+    'carpas para bodas'
+  ],
+  path: '/'
+});
 
 export default function Home() {
   // This would typically be fetched from the backend
@@ -75,6 +91,9 @@ export default function Home() {
 
   return (
     <>
+      {/* Structured data for this page */}
+      <EventServiceSchema />
+      
       {/* Hero Section with Slider */}
       <section className="bg-linear-45/oklch from-peach via-sand to-cream py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
