@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { ProductGrid } from '@/components/products/ProductGrid';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { getCategoryBySlug, getProductsByCategory } from '@/lib/content/products';
-import { siteConfig } from '@/config/site';
 
 interface CategoryPageProps {
   params: {

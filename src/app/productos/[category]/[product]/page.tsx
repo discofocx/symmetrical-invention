@@ -5,7 +5,6 @@ import { notFound } from 'next/navigation';
 import { ProductCard } from '@/components/products/ProductCard';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { getCategoryBySlug, getProductBySlug, getRelatedProducts } from '@/lib/content/products';
-import { siteConfig } from '@/config/site';
 
 interface ProductPageProps {
   params: {

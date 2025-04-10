@@ -4,7 +4,6 @@ import type { WeddingPackageData, CalculatorState, CalculationResult } from '@/t
 import { formatPrice } from '@/lib/utils/formatting';
 import Link from 'next/link';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
-import { siteConfig } from '@/config/site';
 
 interface WeddingCalculatorProps {
   packageData: WeddingPackageData;
