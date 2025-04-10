@@ -2,15 +2,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { siteConfig } from '@/config/site';
 
 interface WhatsAppButtonProps {
-  phoneNumber: string;
+  phoneNumber?: string;
   message?: string;
 }
 
 export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
-  phoneNumber,
-  message = "Hola, estoy interesado en sus servicios para un evento."
+  phoneNumber = siteConfig.contact.whatsapp,
+  message = siteConfig.whatsapp.defaultMessage
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 

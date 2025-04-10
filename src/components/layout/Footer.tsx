@@ -1,6 +1,7 @@
 // src/components/layout/Footer.tsx
 import Link from 'next/link';
 import { slugify } from '@/lib/content/products';
+import { siteConfig } from '@/config/site';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,13 +14,25 @@ export const Footer = () => {
           <div>
             <h3 className="font-boska font-bold text-xl mb-4">ALTIVENTO</h3>
             <p className="mb-4">
-              Más de 30 años creando estructuras memorables para eventos sociales y corporativos.
+              {siteConfig.description}
             </p>
             <div className="flex space-x-4">
-              {/* Social media links would go here */}
-              <span className="w-8 h-8 bg-peach rounded-full"></span>
-              <span className="w-8 h-8 bg-peach rounded-full"></span>
-              <span className="w-8 h-8 bg-peach rounded-full"></span>
+              {/* Social media links */}
+              {siteConfig.social.facebook && (
+                <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-peach rounded-full flex items-center justify-center">
+                  <span className="sr-only">Facebook</span>
+                </a>
+              )}
+              {siteConfig.social.instagram && (
+                <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-peach rounded-full flex items-center justify-center">
+                  <span className="sr-only">Instagram</span>
+                </a>
+              )}
+              {siteConfig.social.youtube && (
+                <a href={siteConfig.social.youtube} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-peach rounded-full flex items-center justify-center">
+                  <span className="sr-only">YouTube</span>
+                </a>
+              )}
             </div>
           </div>
 
@@ -51,9 +64,9 @@ export const Footer = () => {
           <div>
             <h3 className="font-boska text-xl mb-4">Contacto</h3>
             <address className="not-italic">
-              <p className="mb-2">Querétaro, México</p>
-              <p className="mb-2">Tel: (442) 123-4567</p>
-              <p className="mb-2">Email: hola@altivento.mx</p>
+              <p className="mb-2">{siteConfig.contact.address}</p>
+              <p className="mb-2">Tel: {siteConfig.contact.phone}</p>
+              <p className="mb-2">Email: {siteConfig.contact.email}</p>
             </address>
             <Link 
               href="/contacto" 
@@ -65,7 +78,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-cream/20 mt-8 pt-8 text-center text-sm">
-          <p>&copy; {currentYear} Altivento. Todos los derechos reservados.</p>
+          <p>&copy; {currentYear} {siteConfig.name}. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
