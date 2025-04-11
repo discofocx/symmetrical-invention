@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ProductCard } from '@/components/products/ProductCard';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { getCategoryBySlug, getProductBySlug, getRelatedProducts } from '@/lib/content/products';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 
 interface ProductPageProps {
   params: {
@@ -16,15 +16,15 @@ interface ProductPageProps {
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const paramsCopy = await Promise.resolve(params);
   const productSlug = paramsCopy.product;
-  
+
   const product = getProductBySlug(productSlug);
-  
+
   if (!product) {
     return {
       title: 'Producto no encontrado - Altivento',
     };
   }
-  
+
   return {
     title: `${product.name} - Altivento`,
     description: product.description,
@@ -36,26 +36,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const paramsCopy = await Promise.resolve(params);
   const productSlug = paramsCopy.product;
   const categorySlug = paramsCopy.category;
-  
+
   // Use our resolver to find the product
   const product = getProductBySlug(productSlug);
-  
+
   if (!product) {
     console.error(`Product not found: ${productSlug}`);
     notFound();
   }
-  
+
   // Ensure we have the correct category
   const category = getCategoryBySlug(categorySlug);
-  
+
   if (!category) {
     console.error(`Category not found: ${categorySlug}`);
     notFound();
   }
-  
+
   // Get the related products
   const relatedProducts = getRelatedProducts(product.id, 4);
-  
+
   return (
     <>
       {/* Breadcrumb */}
@@ -82,26 +82,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
             {/* Product Images */}
             <div>
               <div className="aspect-[4/3] relative bg-forest/5 rounded-lg mb-4">
-                {product.images && product.images.length > 0 ? (
-                  <Image
-                    src={product.images[0].startsWith('/images/placeholders/') ? product.images[0] : 
-                         product.images[0].startsWith('/images/') ? '/images/placeholders/products/placeholder.svg' : product.images[0]}
-                    alt={product.name}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover rounded-lg"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-forest/30 bg-forest/5 rounded-lg">
-                    <Image 
-                      src="/images/placeholders/products/placeholder.svg"
-                      alt={product.name}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-contain rounded-lg"
-                    />
-                  </div>
-                )}
+                <OptimizedImage
+                  src={product.images && product.images.length > 0 ? product.images[0] : ''}
+                  alt={product.name}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover rounded-lg"
+                  imageType="product"
+                  priority={true}
+                />
               </div>
               {product.images && product.images.length > 1 && (
                 <div className="grid grid-cols-4 gap-4">
@@ -110,13 +99,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
                       key={index}
                       className="aspect-square relative bg-forest/5 rounded-lg"
                     >
-                      <Image
-                        src={image.startsWith('/images/placeholders/') ? image : 
-                             image.startsWith('/images/') ? '/images/placeholders/products/placeholder.svg' : image}
+                      <OptimizedImage
+                        src={image}
                         alt={`${product.name} - Vista ${index + 2}`}
                         fill
                         sizes="(max-width: 1024px) 25vw, 12.5vw"
                         className="object-cover rounded-lg"
+                        imageType="product"
                       />
                     </div>
                   ))}

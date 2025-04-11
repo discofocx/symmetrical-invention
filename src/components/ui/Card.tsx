@@ -1,7 +1,7 @@
 // src/components/ui/Card.tsx
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 
 interface CardProps {
   title: string;
@@ -34,13 +34,13 @@ export const Card: React.FC<CardProps> = ({
     <div className={cardClasses[variant]}>
       <div className="aspect-[4/3] relative">
         {image ? (
-          <Image 
-            src={image.src.startsWith('/images/placeholders/') ? image.src : 
-                 image.src.startsWith('/images/') ? '/images/placeholders/categories/placeholder.svg' : image.src} 
+          <OptimizedImage
+            src={image.src}
             alt={image.alt}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+            imageType="category"
           />
         ) : (
           <div className="w-full h-full bg-teal/20 flex items-center justify-center text-forest/60">
@@ -53,7 +53,7 @@ export const Card: React.FC<CardProps> = ({
         <p className="text-forest/80 mb-4 line-clamp-3">{content}</p>
         {cta && (
           <div className="mt-auto">
-            <Link 
+            <Link
               href={cta.href}
               className="font-medium text-peach hover:text-peach/80 transition-colors"
             >
