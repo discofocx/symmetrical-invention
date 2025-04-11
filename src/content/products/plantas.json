@@ -3,7 +3,7 @@
       "id": "planta-45kva",
       "name": "Planta de luz de 45 KVA",
       "description": "Planta de luz profesional de 45 KVA, ideal para eventos medianos. Incluye cable de 30m y centro de carga para una distribución eléctrica segura y eficiente.",
-      "images": ["/images/plantas/45kva-1.jpg", "/images/plantas/45kva-2.jpg"],
+      "images": ["/images/products/plantas/planta-45-kva/01.jpg", "/images/products/plantas/planta-45-kva/02.jpg"],
       "category": "Plantas de Luz",
       "specifications": {
         "potencia": "45 KVA",
@@ -29,7 +29,7 @@
    "id": "planta-70kva",
    "name": "Planta de luz de 70 KVA",
    "description": "Planta de luz profesional de 70 KVA para eventos grandes con mayores necesidades eléctricas. Incluye cable de 30m y centro de carga para una distribución eléctrica segura y eficiente.",
-   "images": ["/images/plantas/70kva-1.jpg", "/images/plantas/70kva-2.jpg"],
+   "images": ["/images/products/plantas/planta-70-kva/01.jpg", "/images/products/plantas/planta-70-kva/02.jpg"],
    "category": "Plantas de Luz",
    "specifications": {
      "potencia": "70 KVA",

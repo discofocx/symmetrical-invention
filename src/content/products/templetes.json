@@ -3,7 +3,7 @@
       "id": "templete-30cm",
       "name": "Templete de 30 cm de altura",
       "description": "Templete profesional de 30 cm de altura, ideal para presentaciones, discursos o áreas ligeramente elevadas en eventos.",
-      "images": ["/images/templetes/30cm-1.jpg", "/images/templetes/30cm-2.jpg"],
+      "images": ["/images/products/templetes/templete-30cm/01.jpg", "/images/products/templetes/templete-30cm/02.jpg"],
       "category": "Templetes",
       "specifications": {
         "altura": "30 cm",
@@ -27,7 +27,7 @@
       "id": "templete-50cm",
       "name": "Templete de 50 cm de altura",
       "description": "Templete profesional de 50 cm de altura, perfecto para presentaciones más visibles o áreas destacadas en eventos medianos.",
-      "images": ["/images/templetes/50cm-1.jpg", "/images/templetes/50cm-2.jpg"],
+      "images": ["/images/products/templetes/templete-50cm/01.jpg", "/images/products/templetes/templete-50cm/02.jpg"],
       "category": "Templetes",
       "specifications": {
         "altura": "50 cm",
@@ -51,7 +51,7 @@
       "id": "templete-70cm",
       "name": "Templete de 70 cm de altura",
       "description": "Templete profesional de 70 cm de altura, ideal para presentaciones destacadas y eventos donde se requiere buena visibilidad.",
-      "images": ["/images/templetes/70cm-1.jpg", "/images/templetes/70cm-2.jpg"],
+      "images": ["/images/products/templetes/templete-70cm/01.jpg", "/images/products/templetes/templete-70cm/02.jpg"],
       "category": "Templetes",
       "specifications": {
         "altura": "70 cm",
@@ -75,7 +75,7 @@
       "id": "templete-100cm",
       "name": "Templete de 100 cm de altura",
       "description": "Templete profesional de 100 cm de altura, perfecto para escenarios principales y presentaciones donde la visibilidad es crucial.",
-      "images": ["/images/templetes/100cm-1.jpg", "/images/templetes/100cm-2.jpg"],
+      "images": ["/images/products/templetes/templete-1m/01.jpg", "/images/products/templetes/templete-1m/02.jpg"],
       "category": "Templetes",
       "specifications": {
         "altura": "100 cm",
@@ -99,7 +99,7 @@
       "id": "templete-120cm",
       "name": "Templete de 120 cm de altura",
       "description": "Templete profesional de 120 cm de altura, ideal para escenarios principales en eventos grandes donde la visibilidad es fundamental.",
-      "images": ["/images/templetes/120cm-1.jpg", "/images/templetes/120cm-2.jpg"],
+      "images": ["/images/products/templetes/templete-120cm/01.jpg", "/images/products/templetes/templete-120cm/02.jpg"],
       "category": "Templetes",
       "specifications": {
         "altura": "120 cm",
@@ -123,7 +123,7 @@
       "id": "templete-150cm",
       "name": "Templete de 150 cm de altura",
       "description": "Templete profesional de 150 cm de altura, diseñado para escenarios principales en eventos de gran escala con necesidades específicas de visibilidad.",
-      "images": ["/images/templetes/150cm-1.jpg", "/images/templetes/150cm-2.jpg"],
+      "images": ["/images/products/templetes/templete-15m/01.jpg", "/images/products/templetes/templete-15m/02.jpg"],
       "category": "Templetes",
       "specifications": {
         "altura": "150 cm",
@@ -147,7 +147,7 @@
       "id": "estrado-novios",
       "name": "Estrado para novios o quinceañera",
       "description": "Estrado especial diseñado para novios o quinceañeras, con acabados elegantes y características específicas para estos eventos especiales.",
-      "images": ["/images/templetes/estrado-novios-1.jpg", "/images/templetes/estrado-novios-2.jpg"],
+      "images": ["/images/products/templetes/estrado/01.jpg", "/images/products/templetes/estrado/02.jpg"],
       "category": "Templetes",
       "specifications": {
         "altura": "Variable según necesidad",

@@ -3,7 +3,7 @@
       "id": "pista-laminado",
       "name": "Pista de piso laminado",
       "description": "Pista de baile con acabado profesional en madera laminada, ideal para eventos elegantes y formales. Proporciona una superficie perfecta para todo tipo de baile.",
-      "images": ["/images/pistas/laminado-1.jpg", "/images/pistas/laminado-2.jpg"],
+      "images": ["/images/products/pistas/pista-laminada/01.jpg", "/images/products/pistas/pista-laminada/02.jpg"],
       "category": "Pistas de Baile",
       "specifications": {
         "material": "Madera laminada",
@@ -27,7 +27,7 @@
       "id": "pista-charol",
       "name": "Pista de charol",
       "description": "Pista de baile con acabado brillante tipo charol que añade un toque de distinción y elegancia. Ideal para eventos de gala y bodas elegantes.",
-      "images": ["/images/pistas/charol-1.jpg", "/images/pistas/charol-2.jpg"],
+      "images": ["/images/products/pistas/pista-charol-negro/01.jpg", "/images/products/pistas/pista-charol-negro/02.jpg"],
       "category": "Pistas de Baile",
       "specifications": {
         "material": "Charol sintético",
@@ -51,7 +51,7 @@
       "id": "pista-pintada",
       "name": "Pista pintada (1 color)",
       "description": "Pista de baile con acabado pintado en un solo color, permitiendo personalizar la estética del evento. Versátil y adaptable a cualquier temática.",
-      "images": ["/images/pistas/pintada-1.jpg", "/images/pistas/pintada-2.jpg"],
+      "images": ["/images/products/pistas/pista-pintada/01.jpg", "/images/products/pistas/pista-pintada/02.jpg"],
       "category": "Pistas de Baile",
       "specifications": {
         "material": "Madera con acabado pintado",
@@ -75,7 +75,7 @@
       "id": "pista-diseno-personalizado",
       "name": "Pista con diseño personalizado",
       "description": "Pista de baile con diseño y gráficos personalizados, ideal para bodas, eventos corporativos o celebraciones especiales donde se busca un elemento único y memorable.",
-      "images": ["/images/pistas/personalizada-1.jpg", "/images/pistas/personalizada-2.jpg"],
+      "images": ["/images/products/pistas/pista-diseno-personalizado/01.jpg", "/images/products/pistas/pista-diseno-personalizado/02.jpg"],
       "category": "Pistas de Baile",
       "specifications": {
         "material": "Madera con impresión UV",
