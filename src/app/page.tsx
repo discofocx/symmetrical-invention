@@ -7,6 +7,7 @@ import { getFeaturedGalleryItems } from '@/lib/content/gallery';
 import { HeroSlider, HeroSlide } from '@/components/ui/HeroSlider';
 import { createMetadata } from '@/config/metadata';
 import { EventServiceSchema } from '@/components/structured-data';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 
 // Export metadata for this page
 export const metadata = createMetadata({
@@ -33,7 +34,7 @@ export default function Home() {
       title: "Estructuras memorables para eventos inolvidables",
       description: "Más de 30 años creando espacios perfectos para eventos sociales y corporativos.",
       image: {
-        src: "/images/placeholders/hero/placeholder.svg",
+        src: "/images/hero/home/01.jpg",
         alt: "Estructura para evento corporativo"
       },
       ctaPrimary: {
@@ -49,7 +50,7 @@ export default function Home() {
       title: "Carpas y templetes para bodas de ensueño",
       description: "Diseñamos espacios mágicos para el día más especial de tu vida.",
       image: {
-        src: "/images/placeholders/hero/placeholder.svg",
+        src: "/images/hero/home/02.jpg",
         alt: "Carpa para boda"
       },
       ctaPrimary: {
@@ -65,7 +66,7 @@ export default function Home() {
       title: "Eventos corporativos a la medida",
       description: "Soluciones completas para conferencias, lanzamientos y eventos empresariales.",
       image: {
-        src: "/images/placeholders/hero/placeholder.svg",
+        src: "/images/hero/home/03.jpg",
         alt: "Evento corporativo"
       },
       ctaPrimary: {
@@ -165,9 +166,14 @@ export default function Home() {
             <div className="lg:w-1/2">
               {/* Placeholder for wedding image */}
               <div className="aspect-[4/3] bg-forest/10 rounded-lg relative">
-                <div className="absolute inset-0 flex items-center justify-center text-forest/30 text-xl">
-                  Imagen de Boda
-                </div>
+                <OptimizedImage
+                  src="/images/hero/home/02.jpg"
+                  alt="Imagen de Boda"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                  className="object-cover rounded-lg"
+                  imageType="general"
+                />
               </div>
             </div>
           </div>
