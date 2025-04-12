@@ -13,7 +13,24 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
-    domains: ['picsum.photos', 'images.unsplash.com', 'placehold.co']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos'
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co'
+      },
+      {
+        protocol: 'https',
+        hostname: 'altivento.mx'
+      }
+    ]
   },
   // Improve performance with incremental static regeneration
   staticPageGenerationTimeout: 120,
