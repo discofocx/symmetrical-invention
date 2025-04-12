@@ -1,8 +1,8 @@
 // src/app/productos/page.tsx
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { getProductCategories } from '@/lib/content/products';
+import { CategoriesGrid } from '@/components/products/CategoriesGrid';
 
 export const metadata: Metadata = {
   title: 'Productos y Servicios - Altivento',
@@ -29,50 +29,7 @@ export default function ProductsPage() {
       {/* Categories Grid */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category) => (
-              <Link 
-                key={category.id}
-                href={`/productos/${category.slug}`}
-                className="group"
-              >
-                <div className="bg-cream rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md h-full">
-                  <div className="aspect-[16/9] relative">
-                    {category.featuredImage ? (
-                      <Image
-                        src={category.featuredImage.startsWith('/images/placeholders/') ? category.featuredImage : 
-                             category.featuredImage.startsWith('/images/') ? '/images/placeholders/categories/placeholder.svg' : category.featuredImage}
-                        alt={category.name}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-forest/5 flex items-center justify-center">
-                        <Image 
-                          src="/images/placeholders/categories/placeholder.svg"
-                          alt={category.name}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-contain"
-                        />
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h2 className="font-boska text-2xl text-forest mb-2">{category.name}</h2>
-                    <p className="text-forest/80 mb-4">{category.description}</p>
-                    <span className="font-medium text-peach group-hover:text-peach/80 transition-colors flex items-center">
-                      Explorar opciones
-                      <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <CategoriesGrid categories={categories} columns={3} />
         </div>
       </section>
 
@@ -128,13 +85,13 @@ export default function ProductsPage() {
             Nuestro equipo está listo para asesorarte y encontrar las mejores opciones para tu evento.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link 
+            <Link
               href="/contacto"
               className="bg-forest text-cream px-6 py-3 rounded-full font-medium transition-colors hover:bg-forest/90"
             >
               Contactar Ahora
             </Link>
-            <Link 
+            <Link
               href="/faq"
               className="bg-transparent border-2 border-forest text-forest px-6 py-3 rounded-full font-medium transition-colors hover:bg-forest/5"
             >

@@ -1,19 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
+import type { ReportHandler } from 'web-vitals';
 
 /**
  * Log web vitals to the console in development or to an analytics endpoint in production
  * 
  * @param metric Web Vitals metric object
  */
-export function reportWebVitals(metric: {
-  id: string;
-  name: string;
-  startTime: number;
-  value: number;
-  label: 'web-vital' | 'custom';
-}) {
+export const reportWebVitals: ReportHandler = (metric) => {
   // Log to console in development
   if (process.env.NODE_ENV === 'development') {
     console.log(metric);
@@ -33,7 +28,7 @@ export function reportWebVitals(metric: {
     headers: { 'Content-Type': 'application/json' },
   });
   */
-}
+};
 
 /**
  * Next.js 14 App Router web vitals track helper
@@ -43,16 +38,19 @@ export function useWebVitalsReport() {
   useEffect(() => {
     // Only run in the browser
     if (typeof window !== 'undefined') {
-      // Check for web vitals support
-      if ('onCLS' in window) {
-        import('web-vitals').then(({ onCLS, onFID, onLCP, onTTFB, onINP }) => {
+      // Dynamically import web-vitals
+      import('web-vitals')
+        .then(({ onCLS, onFID, onLCP, onTTFB, onINP }) => {
+          // Register all the metrics
           onCLS(reportWebVitals);
           onFID(reportWebVitals);
           onLCP(reportWebVitals);
           onTTFB(reportWebVitals);
           onINP(reportWebVitals);
+        })
+        .catch((error) => {
+          console.error('Error importing web-vitals:', error);
         });
-      }
     }
   }, []);
 }

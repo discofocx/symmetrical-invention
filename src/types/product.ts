@@ -1,5 +1,3 @@
-// src/types/product.ts
-
 /**
  * Base product interface with common properties across all product types
  */
@@ -8,13 +6,25 @@ export interface Product {
   name: string;
   description: string;
   images: string[];
-  category: string;
-  specifications: Record<string, string | number>;
+  category: ProductCategoryType;
+  specifications: BaseSpecifications;
   pricing?: PricingInfo;
   features?: string[];
   availableOptions?: ProductOption[];
   relatedProducts?: string[]; // IDs of related products
 }
+
+/**
+ * All possible product category identifiers
+ */
+export type ProductCategoryType = 
+  | 'Carpas' 
+  | 'Pistas de Baile' 
+  | 'Templetes' 
+  | 'Entarimados' 
+  | 'Graderías' 
+  | 'Plantas de Luz' 
+  | 'Servicios Especiales';
 
 /**
  * Specific pricing information that may vary by product
@@ -37,6 +47,10 @@ export interface ProductOption {
   id: string;
   name: string;
   description?: string;
+  /**
+   * Price adjustment can be either a fixed amount or a function to calculate based on base price
+   * Note: Using functions here may cause issues with serialization
+   */
   priceAdjustment: number | ((basePrice: number) => number);
   imageUrl?: string;
 }
@@ -55,6 +69,15 @@ export interface ProductCategory {
 }
 
 /**
+ * Base specifications interface with common measurement properties
+ */
+export interface BaseSpecifications {
+  material?: string;
+  color?: string;
+  setupTime?: string;
+}
+
+/**
  * Tent-specific product interface
  */
 export interface TentProduct extends Product {
@@ -65,7 +88,7 @@ export interface TentProduct extends Product {
 /**
  * Specifications specific to tents
  */
-export interface TentSpecifications extends Record<string, string | number> {
+export interface TentSpecifications extends BaseSpecifications {
   width: number | string; // Width in meters or range
   length?: number | string; // Length in meters (may be variable)
   height: number | string; // Height in meters
@@ -87,7 +110,7 @@ export interface DanceFloorProduct extends Product {
 /**
  * Specifications specific to dance floors
  */
-export interface DanceFloorSpecifications extends Record<string, string | number> {
+export interface DanceFloorSpecifications extends BaseSpecifications {
   material: string; // Floor material
   color: string; // Color or finish
   moduleSize?: string; // Size of individual modules
@@ -108,12 +131,12 @@ export interface StageProduct extends Product {
 /**
  * Specifications specific to stages and platforms
  */
-export interface StageSpecifications extends Record<string, string | number> {
-  altura?: string | number; // Height
+export interface StageSpecifications extends BaseSpecifications {
+  height?: number | string; // Height (translated from altura)
   material: string; // Construction material
-  capacidad?: string | number; // Weight capacity
-  acabado: string; // Finish type
-  tamaño?: string; // Size information
+  capacity?: number | string; // Weight capacity (translated from capacidad)
+  finish: string; // Finish type (translated from acabado)
+  size?: string; // Size information (translated from tamaño)
 }
 
 /**
@@ -127,11 +150,11 @@ export interface BleachersProduct extends Product {
 /**
  * Specifications specific to bleachers
  */
-export interface BleachersSpecifications extends Record<string, string | number> {
-  capacidad: string | number; // Capacity (people)
-  niveles: string | number; // Number of levels
+export interface BleachersSpecifications extends BaseSpecifications {
+  capacity: number | string; // Capacity (people)
+  levels: number | string; // Number of levels
   material: string; // Construction material
-  dimensiones: string; // Dimensions information
+  dimensions: string; // Dimensions information
 }
 
 /**
@@ -145,12 +168,12 @@ export interface PowerGeneratorProduct extends Product {
 /**
  * Specifications specific to power generators
  */
-export interface PowerGeneratorSpecifications extends Record<string, string | number> {
-  potencia: string; // Power output
-  combustible: string; // Fuel type
-  autonomía: string; // Operational time
-  'nivel de ruido'?: string; // Noise level
-  incluye: string; // Included accessories
+export interface PowerGeneratorSpecifications extends BaseSpecifications {
+  power: string; // Power output (translated from potencia)
+  fuelType: string; // Fuel type (translated from combustible)
+  operationalTime: string; // Operational time (translated from autonomía)
+  noiseLevel?: string; // Noise level
+  includes: string; // Included accessories (translated from incluye)
 }
 
 /**
@@ -164,11 +187,11 @@ export interface SpecialServiceProduct extends Product {
 /**
  * Specifications specific to special services
  */
-export interface SpecialServiceSpecifications extends Record<string, string | number> {
+export interface SpecialServiceSpecifications extends BaseSpecifications {
   material: string; // Construction material
-  acabado: string; // Finish type
-  capacidad?: string | number; // Weight capacity
-  instalación: string; // Installation information
+  finish: string; // Finish type (translated from acabado)
+  capacity?: number | string; // Weight capacity
+  installation: string; // Installation information (translated from instalación)
   setupTime: string; // Setup time
 }
 
@@ -176,7 +199,7 @@ export interface SpecialServiceSpecifications extends Record<string, string | nu
  * Product filter parameters for search and filtering
  */
 export interface ProductFilterParams {
-  category?: string;
+  category?: ProductCategoryType;
   priceMin?: number;
   priceMax?: number;
   features?: string[];

@@ -6,13 +6,14 @@ const nextConfig: NextConfig = {
     // !! WARN !!
     // Ignoring type checking during build for now
     // Make sure to fix the type errors soon
-    ignoreBuildErrors: true
+    ignoreBuildErrors: false
   },
   // Image optimization settings
   images: {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 60
+    minimumCacheTTL: 60,
+    domains: ['picsum.photos', 'images.unsplash.com', 'placehold.co']
   },
   // Improve performance with incremental static regeneration
   staticPageGenerationTimeout: 120,

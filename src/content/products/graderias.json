@@ -3,7 +3,7 @@
       "id": "graderia-fotografia",
       "name": "Gradería para fotografía",
       "description": "Gradería especialmente diseñada para fotografía grupal, con capacidad para 40 personas distribuidas en diferentes niveles para una visibilidad óptima en las fotografías.",
-      "images": ["/images/graderias/fotografia-1.jpg", "/images/graderias/fotografia-2.jpg"],
+      "images": ["/images/products/graderias/graderias-fotografia/01.jpg", "/images/products/graderias/graderias-fotografia/02.jpg"],
       "category": "Graderías",
       "specifications": {
         "capacidad": "40 personas por módulo",
@@ -27,7 +27,7 @@
       "id": "graderia-espectadores",
       "name": "Gradería para espectadores",
       "description": "Gradería profesional para espectadores en eventos deportivos, presentaciones o espectáculos, con capacidad para 25 personas por módulo en una disposición cómoda y segura.",
-      "images": ["/images/graderias/espectadores-1.jpg", "/images/graderias/espectadores-2.jpg"],
+      "images": ["/images/products/graderias/graderias-espectadores/01.jpg", "/images/products/graderias/graderias-espectadores/02.jpg"],
       "category": "Graderías",
       "specifications": {
         "capacidad": "25 personas por módulo",

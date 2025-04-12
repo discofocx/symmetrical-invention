@@ -1,0 +1,20 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#E5E9E0" />
+  <rect x="100" y="50" width="400" height="300" rx="8" fill="#F4B995" fill-opacity="0.2" stroke="#365E37" stroke-width="2"/>
+  
+  <!-- Tent silhouettes -->
+  <path d="M150 250L200 150L250 250H150Z" fill="#365E37" fill-opacity="0.2"/>
+  <path d="M265 250L315 170L365 250H265Z" fill="#365E37" fill-opacity="0.2"/>
+  <path d="M380 250L430 150L480 250H380Z" fill="#365E37" fill-opacity="0.2"/>
+  
+  <!-- People silhouettes -->
+  <circle cx="180" cy="230" r="10" fill="#365E37" fill-opacity="0.3"/>
+  <circle cx="220" cy="230" r="10" fill="#365E37" fill-opacity="0.3"/>
+  <circle cx="315" cy="230" r="10" fill="#365E37" fill-opacity="0.3"/>
+  <circle cx="410" cy="230" r="10" fill="#365E37" fill-opacity="0.3"/>
+  <circle cx="450" cy="230" r="10" fill="#365E37" fill-opacity="0.3"/>
+  
+  <!-- Text -->
+  <rect x="150" y="270" width="300" height="40" rx="4" fill="#F4B995" fill-opacity="0.3"/>
+  <text x="300" y="295" text-anchor="middle" font-family="Arial" font-size="16" fill="#365E37">ALTIVENTO - DESDE 1990</text>
+</svg>

@@ -3,7 +3,7 @@
     "id": "carpa-plafon-liso-blanco-4m",
     "name": "Carpa con plafón liso blanco (4m altura)",
     "description": "Carpa elegante con plafón liso blanco, ideal para bodas y eventos formales. Altura estándar de 4 metros que proporciona amplitud y comodidad.",
-    "images": ["/images/carpas/plafon-liso-blanco-1.jpg", "/images/carpas/plafon-liso-blanco-2.jpg"],
+    "images": ["/images/products/carpas/carpa-plafon-liso-blanco-4m/01.jpg", "/images/products/carpas/carpa-plafon-liso-blanco-4m/02.jpg"],
     "category": "Carpas",
     "specifications": {
       "width": "10-20m",
@@ -28,7 +28,7 @@
     "id": "carpa-plafon-liso-blanco-5m",
     "name": "Carpa con plafón liso blanco (5m altura)",
     "description": "Carpa elegante con plafón liso blanco y mayor altura, perfecta para eventos que requieren mayor amplitud vertical o instalaciones especiales.",
-    "images": ["/images/carpas/plafon-liso-blanco-alto-1.jpg", "/images/carpas/plafon-liso-blanco-alto-2.jpg"],
+    "images": ["/images/products/carpas/carpa-plafon-liso-blanco-5m/01.jpg", "/images/products/carpas/carpa-plafon-liso-blanco-5m/02.jpg"],
     "category": "Carpas",
     "specifications": {
       "width": "10-20m",
@@ -53,7 +53,7 @@
     "id": "carpa-plafon-liso-negro-4m",
     "name": "Carpa con plafón liso negro (4m altura)",
     "description": "Carpa moderna con plafón liso negro, ideal para eventos nocturnos, conciertos y fiestas temáticas que requieren un ambiente más oscuro o sofisticado.",
-    "images": ["/images/carpas/plafon-liso-negro-1.jpg", "/images/carpas/plafon-liso-negro-2.jpg"],
+    "images": ["/images/products/carpas/carpa-plafon-liso-negro-4m/01.jpg", "/images/products/carpas/carpa-plafon-liso-negro-4m/02.jpg"],
     "category": "Carpas",
     "specifications": {
       "width": "10-20m",
@@ -78,7 +78,7 @@
     "id": "carpa-plafon-liso-negro-5m",
     "name": "Carpa con plafón liso negro (5m altura)",
     "description": "Carpa moderna con plafón liso negro y mayor altura, perfecta para eventos que requieren un ambiente sofisticado y mayor espacio vertical para instalaciones especiales.",
-    "images": ["/images/carpas/plafon-liso-negro-alto-1.jpg", "/images/carpas/plafon-liso-negro-alto-2.jpg"],
+    "images": ["/images/products/carpas/carpa-plafon-liso-negro-5m/01.jpg", "/images/products/carpas/carpa-plafon-liso-negro-5m/02.jpg"],
     "category": "Carpas",
     "specifications": {
       "width": "10-20m",
@@ -103,7 +103,7 @@
     "id": "carpa-alemana-plafon-v-4m",
     "name": "Carpa alemana con plafón en V plisado (4m altura)",
     "description": "Carpa de estilo alemán con elegante plafón plisado en V, disponible en colores blanco, negro o ivory. Ideal para eventos de alta gama y bodas.",
-    "images": ["/images/carpas/plafon-v-plisado-1.jpg", "/images/carpas/plafon-v-plisado-2.jpg"],
+    "images": ["/images/products/carpas/carpa-alemana-plafon-v-4m/01.jpg", "/images/products/carpas/carpa-alemana-plafon-v-4m/02.jpg"],
     "category": "Carpas",
     "specifications": {
       "width": "10-20m",
@@ -128,7 +128,7 @@
     "id": "carpa-alemana-plafon-v-5m",
     "name": "Carpa alemana con plafón en V plisado (5m altura)",
     "description": "Carpa de estilo alemán con elegante plafón plisado en V y mayor altura. Disponible en colores blanco, negro o ivory. Perfecta para eventos de gran escala.",
-    "images": ["/images/carpas/plafon-v-plisado-alto-1.jpg", "/images/carpas/plafon-v-plisado-alto-2.jpg"],
+    "images": ["/images/products/carpas/carpa-alemana-plafon-v-5m/01.jpg", "/images/products/carpas/carpa-alemana-plafon-v-5m/02.jpg"],
     "category": "Carpas",
     "specifications": {
       "width": "10-20m",
@@ -153,7 +153,7 @@
     "id": "carpa-plafon-olas-ivory",
     "name": "Carpa con plafón en olas ivory (5m altura)",
     "description": "Carpa elegante con plafón en forma de olas en color ivory, creando un ambiente cálido y acogedor con un toque distintivo. Solo disponible en altura de 5 metros.",
-    "images": ["/images/carpas/plafon-olas-1.jpg", "/images/carpas/plafon-olas-2.jpg"],
+    "images": ["/images/products/carpas/carpa-plafon-olas-ivory/01.jpg", "/images/products/carpas/carpa-plafon-olas-ivory/02.jpg"],
     "category": "Carpas",
     "specifications": {
       "width": "10-20m",
@@ -178,7 +178,7 @@
     "id": "carpa-plafon-boton",
     "name": "Carpa con plafón de botón (5m altura)",
     "description": "Carpa premium con plafón de botón disponible en diferentes colores. Este diseño clásico añade un toque de lujo y sofisticación a cualquier evento. Solo disponible en altura de 5 metros.",
-    "images": ["/images/carpas/plafon-boton-1.jpg", "/images/carpas/plafon-boton-2.jpg"],
+    "images": ["/images/products/carpas/carpa-plafon-boton/01.jpg", "/images/products/carpas/carpa-plafon-boton/02.jpg"],
     "category": "Carpas",
     "specifications": {
       "width": "10-20m",
@@ -203,7 +203,7 @@
     "id": "carpa-transparente",
     "name": "Carpa transparente (5m altura)",
     "description": "Carpa con techo y paredes transparentes que permiten disfrutar del entorno natural o vistas nocturnas mientras se mantiene la protección contra los elementos. Solo disponible en altura de 5 metros.",
-    "images": ["/images/carpas/transparente-1.jpg", "/images/carpas/transparente-2.jpg"],
+    "images": ["/images/products/carpas/carpa-transparente/01.jpg", "/images/products/carpas/carpa-transparente/02.jpg"],
     "category": "Carpas",
     "specifications": {
       "width": "10-20m",

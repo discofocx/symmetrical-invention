@@ -3,7 +3,7 @@
       "id": "tapado-alberca-pintado",
       "name": "Tapado de alberca - Acabado pintado",
       "description": "Servicio profesional de tapado de albercas con acabado pintado, permitiendo aprovechar el espacio de la piscina para su evento. Solución segura y estética.",
-      "images": ["/images/especiales/alberca-pintado-1.jpg", "/images/especiales/alberca-pintado-2.jpg"],
+      "images": ["/images/products/especiales/tapado-de-albercas/01.jpg", "/images/products/especiales/tapado-de-albercas/02.jpg"],
       "category": "Servicios Especiales",
       "specifications": {
         "material": "Estructura metálica con cubierta de madera",
@@ -28,7 +28,7 @@
       "id": "tapado-alberca-charol",
       "name": "Tapado de alberca - Acabado en charol",
       "description": "Servicio premium de tapado de albercas con acabado en charol, ideal para eventos elegantes. Transforma el espacio de la alberca en una superficie brillante y distintiva.",
-      "images": ["/images/especiales/alberca-charol-1.jpg", "/images/especiales/alberca-charol-2.jpg"],
+      "images": ["/images/products/especiales/tapado-de-albercas/03-charol.jpg", "/images/products/especiales/tapado-de-albercas/04-charol.jpg"],
       "category": "Servicios Especiales",
       "specifications": {
         "material": "Estructura metálica con cubierta especial",

@@ -1,8 +1,8 @@
 'use client';
 // src/components/gallery/GalleryModal.tsx
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { GalleryItem } from '@/types/gallery';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 
 interface GalleryModalProps {
   item: GalleryItem | null;
@@ -24,15 +24,15 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
   hasPrevious = false
 }) => {
   const [isMounted, setIsMounted] = useState(false);
-  
+
   // Prevent hydration mismatch by rendering modal only after component has mounted
   useEffect(() => {
     setIsMounted(true);
-    
+
     // Add keydown event listener for navigation
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isOpen) return;
-      
+
       if (e.key === 'Escape') {
         onClose();
       } else if (e.key === 'ArrowRight' && hasNext && onNext) {
@@ -41,24 +41,24 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
         onPrevious();
       }
     };
-    
+
     document.addEventListener('keydown', handleKeyDown);
-    
+
     // Handle body scroll lock
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     }
-    
+
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
   }, [isOpen, onClose, hasNext, hasPrevious, onNext, onPrevious]);
-  
+
   if (!isMounted || !isOpen || !item) {
     return null;
   }
-  
+
   return (
     <div className="fixed inset-0 z-50 bg-forest/90 flex items-center justify-center p-4">
       <div className="absolute top-4 right-4 z-10">
@@ -72,29 +72,23 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
           </svg>
         </button>
       </div>
-      
+
       <div className="w-full max-w-5xl">
         {/* Gallery content */}
         <div className="flex flex-col md:flex-row">
           {/* Image */}
           <div className="md:w-2/3 relative">
             <div className="aspect-[4/3] relative overflow-hidden bg-forest/20 rounded-t-lg md:rounded-l-lg md:rounded-tr-none">
-              {/* Placeholder for image */}
-              {item.imageSrc.startsWith('/images/') ? (
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-cream text-lg">Imagen: {item.title}</span>
-                </div>
-              ) : (
-                <Image
-                  src={item.imageSrc}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 66vw"
-                  className="object-contain"
-                />
-              )}
+              <OptimizedImage
+                src={item.imageSrc}
+                alt={item.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 66vw"
+                className="object-contain"
+                imageType="gallery"
+              />
             </div>
-            
+
             {/* Navigation arrows */}
             <div className="absolute inset-y-0 left-0 flex items-center">
               {hasPrevious && (
@@ -109,7 +103,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
                 </button>
               )}
             </div>
-            
+
             <div className="absolute inset-y-0 right-0 flex items-center">
               {hasNext && (
                 <button
@@ -124,32 +118,32 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
               )}
             </div>
           </div>
-          
+
           {/* Details */}
           <div className="md:w-1/3 bg-cream p-6 rounded-b-lg md:rounded-r-lg md:rounded-bl-none">
             <h3 className="font-boska text-2xl text-forest mb-3">{item.title}</h3>
             <p className="text-forest/80 mb-4">{item.description}</p>
-            
+
             <div className="space-y-3 border-t border-forest/10 pt-4">
               {item.category && (
                 <div className="flex items-start">
                   <span className="text-forest/70 font-medium w-24">Categoría:</span>
                   <span className="text-forest">
-                    {Array.isArray(item.category) 
+                    {Array.isArray(item.category)
                       ? item.category.map(c => capitalizeFirstLetter(c)).join(', ')
                       : capitalizeFirstLetter(item.category)
                     }
                   </span>
                 </div>
               )}
-              
+
               {item.date && (
                 <div className="flex items-start">
                   <span className="text-forest/70 font-medium w-24">Fecha:</span>
                   <span className="text-forest">{formatDate(item.date)}</span>
                 </div>
               )}
-              
+
               {item.location && (
                 <div className="flex items-start">
                   <span className="text-forest/70 font-medium w-24">Ubicación:</span>
@@ -157,7 +151,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
                 </div>
               )}
             </div>
-            
+
             {item.tags && item.tags.length > 0 && (
               <div className="mt-5">
                 <h4 className="text-sm text-forest/70 font-medium mb-2">Elementos:</h4>

@@ -1,22 +1,23 @@
 // src/app/page.tsx (expanded)
 import Link from 'next/link';
-import { Card } from '@/components/ui/Card';
 import { FeaturedGallery } from '@/components/gallery/FeaturedGallery';
+import { CategoriesGrid } from '@/components/products/CategoriesGrid';
 import { getProductCategories } from '@/lib/content/products';
 import { getFeaturedGalleryItems } from '@/lib/content/gallery';
 import { HeroSlider, HeroSlide } from '@/components/ui/HeroSlider';
 import { createMetadata } from '@/config/metadata';
 import { EventServiceSchema } from '@/components/structured-data';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 
 // Export metadata for this page
 export const metadata = createMetadata({
   title: 'Estructuras Memorables para Eventos - Carpas, Pistas y Entarimados',
   description: 'Más de 30 años creando espacios perfectos para eventos sociales y corporativos. Renta de carpas, pistas de baile y entarimados en Querétaro.',
   keywords: [
-    'renta de carpas', 
-    'carpas para eventos', 
-    'pistas de baile', 
-    'eventos Querétaro', 
+    'renta de carpas',
+    'carpas para eventos',
+    'pistas de baile',
+    'eventos Querétaro',
     'carpas para bodas'
   ],
   path: '/'
@@ -26,14 +27,14 @@ export default function Home() {
   // This would typically be fetched from the backend
   const categories = getProductCategories();
   const featuredGalleryItems = getFeaturedGalleryItems(4);
-  
+
   // Hero slider slides
   const heroSlides: HeroSlide[] = [
     {
       title: "Estructuras memorables para eventos inolvidables",
       description: "Más de 30 años creando espacios perfectos para eventos sociales y corporativos.",
       image: {
-        src: "/images/placeholders/hero/placeholder.svg",
+        src: "/images/hero/home/01.jpg",
         alt: "Estructura para evento corporativo"
       },
       ctaPrimary: {
@@ -49,7 +50,7 @@ export default function Home() {
       title: "Carpas y templetes para bodas de ensueño",
       description: "Diseñamos espacios mágicos para el día más especial de tu vida.",
       image: {
-        src: "/images/placeholders/hero/placeholder.svg",
+        src: "/images/hero/home/02.jpg",
         alt: "Carpa para boda"
       },
       ctaPrimary: {
@@ -65,7 +66,7 @@ export default function Home() {
       title: "Eventos corporativos a la medida",
       description: "Soluciones completas para conferencias, lanzamientos y eventos empresariales.",
       image: {
-        src: "/images/placeholders/hero/placeholder.svg",
+        src: "/images/hero/home/03.jpg",
         alt: "Evento corporativo"
       },
       ctaPrimary: {
@@ -74,7 +75,7 @@ export default function Home() {
       }
     }
   ];
-  
+
   // Sample testimonials
   const testimonials = [
     {
@@ -93,14 +94,14 @@ export default function Home() {
     <>
       {/* Structured data for this page */}
       <EventServiceSchema />
-      
+
       {/* Hero Section with Slider */}
       <section className="bg-linear-45/oklch from-peach via-sand to-cream py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <HeroSlider slides={heroSlides} autoplayInterval={7000} />
         </div>
       </section>
-      
+
       {/* Product Categories Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -112,28 +113,11 @@ export default function Home() {
               Ofrecemos soluciones completas para todo tipo de eventos, desde carpas elegantes hasta pistas de baile personalizadas.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.slice(0, 6).map((category) => (
-              <Card
-                key={category.id}
-                title={category.name}
-                content={category.description}
-                image={{ 
-                  src: category.featuredImage || '/images/placeholder.jpg', 
-                  alt: category.name 
-                }}
-                cta={{ 
-                  text: 'Ver opciones', 
-                  href: `/productos/${category.slug}` 
-                }}
-                variant={category.featured ? 'featured' : 'default'}
-              />
-            ))}
-          </div>
-          
+
+          <CategoriesGrid categories={categories.slice(0, 6)} columns={3} />
+
           <div className="text-center mt-12">
-            <Link 
+            <Link
               href="/productos"
               className="bg-forest text-cream px-6 py-3 rounded-full font-medium transition-colors hover:bg-forest/90"
             >
@@ -142,7 +126,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
       {/* Wedding Packages Highlight */}
       <section className="py-16 bg-sand/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -172,7 +156,7 @@ export default function Home() {
                   <span>Iluminación arquitectónica</span>
                 </li>
               </ul>
-              <Link 
+              <Link
                 href="/bodas"
                 className="bg-peach text-forest px-6 py-3 rounded-full font-medium transition-colors hover:bg-peach/90"
               >
@@ -182,15 +166,20 @@ export default function Home() {
             <div className="lg:w-1/2">
               {/* Placeholder for wedding image */}
               <div className="aspect-[4/3] bg-forest/10 rounded-lg relative">
-                <div className="absolute inset-0 flex items-center justify-center text-forest/30 text-xl">
-                  Imagen de Boda
-                </div>
+                <OptimizedImage
+                  src="/images/hero/home/02.jpg"
+                  alt="Imagen de Boda"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                  className="object-cover rounded-lg"
+                  imageType="general"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
-      
+
       {/* Testimonials Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -202,7 +191,7 @@ export default function Home() {
               Hemos ayudado a crear eventos memorables para cientos de clientes satisfechos.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-cream p-6 rounded-lg shadow-sm">
@@ -216,9 +205,9 @@ export default function Home() {
               </div>
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
-            <Link 
+            <Link
               href="/galeria"
               className="bg-transparent border-2 border-forest text-forest px-6 py-3 rounded-full font-medium transition-colors hover:bg-forest/5"
             >
@@ -227,14 +216,14 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
       {/* Featured Gallery Section */}
       <FeaturedGallery
         items={featuredGalleryItems}
         title="Proyectos Destacados"
         description="Explora algunos de nuestros trabajos más recientes y emblemáticos."
       />
-      
+
       {/* CTA Section */}
       <section className="py-16 bg-forest text-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -245,13 +234,13 @@ export default function Home() {
             Contáctanos hoy para una cotización personalizada y descubre cómo podemos transformar tu visión en realidad.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link 
+            <Link
               href="/contacto"
               className="bg-peach text-forest px-6 py-3 rounded-full font-medium transition-colors hover:bg-peach/90"
             >
               Solicitar Cotización
             </Link>
-            <a 
+            <a
               href="https://wa.me/524421234567?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20para%20un%20evento."
               className="bg-transparent border-2 border-cream text-cream px-6 py-3 rounded-full font-medium transition-colors hover:bg-cream/10"
               target="_blank"

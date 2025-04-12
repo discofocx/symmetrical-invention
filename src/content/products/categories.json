@@ -3,7 +3,7 @@
     "id": "carpas",
     "name": "Carpas",
     "description": "Carpas disponibles en varios tamaños y estilos para todo tipo de eventos, con opciones de plafón liso, alemanas, en olas y transparentes.",
-    "featuredImage": "/images/carpas/featured.jpg",
+    "featuredImage": "/images/categories/carpas.jpg",
     "slug": "carpas",
     "featured": true
   },
@@ -11,7 +11,7 @@
     "id": "pistas",
     "name": "Pistas de Baile",
     "description": "Pistas de baile profesionales en diferentes materiales: laminado, charol, pintadas y con diseños personalizados.",
-    "featuredImage": "/images/pistas/featured.jpg",
+    "featuredImage": "/images/categories/pistas.jpg",
     "slug": "pistas",
     "featured": true
   },
@@ -19,7 +19,7 @@
     "id": "entarimados",
     "name": "Entarimados",
     "description": "Entarimados con acabado profesional, nivelados al piso y con opciones de personalización.",
-    "featuredImage": "/images/entarimados/featured.jpg",
+    "featuredImage": "/images/categories/entarimados.jpg",
     "slug": "entarimados",
     "featured": false
   },
@@ -27,7 +27,7 @@
     "id": "templetes",
     "name": "Templetes",
     "description": "Templetes en diversas alturas para escenarios, presentaciones y eventos especiales.",
-    "featuredImage": "/images/templetes/featured.jpg",
+    "featuredImage": "/images/categories/templetes.jpg",
     "slug": "templetes",
     "featured": false
   },
@@ -35,7 +35,7 @@
     "id": "graderias",
     "name": "Graderías",
     "description": "Graderías modulares para espectadores y fotografía con capacidad variable.",
-    "featuredImage": "/images/graderias/featured.jpg",
+    "featuredImage": "/images/categories/graderias.jpg",
     "slug": "graderias",
     "featured": false
   },
@@ -43,7 +43,7 @@
     "id": "plantas",
     "name": "Plantas de Luz",
     "description": "Plantas de luz profesionales para asegurar el suministro eléctrico en cualquier evento.",
-    "featuredImage": "/images/plantas/featured.jpg",
+    "featuredImage": "/images/categories/plantas.jpg",
     "slug": "plantas",
     "featured": false
   },
@@ -51,7 +51,7 @@
     "id": "especiales",
     "name": "Servicios Especiales",
     "description": "Soluciones especializadas como tapado de albercas y otras adaptaciones a la medida.",
-    "featuredImage": "/images/especiales/featured.jpg",
+    "featuredImage": "/images/categories/especiales.jpg",
     "slug": "especiales",
     "featured": false
   }
