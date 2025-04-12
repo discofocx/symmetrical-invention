@@ -1,4 +1,5 @@
 import React from 'react';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 
 // Feature data type
 interface Feature {
@@ -64,19 +65,19 @@ interface HighlightImage {
 const highlightImages: HighlightImage[] = [
   {
     id: '1',
-    src: '/images/wedding-highlight-1.jpg', // These would be actual image paths in a real implementation
+    src: '/images/bodas/atardecer.jpg', // These would be actual image paths in a real implementation
     alt: 'Carpa transparente al atardecer',
     caption: 'Carpa transparente con iluminación'
   },
   {
     id: '2',
-    src: '/images/wedding-highlight-2.jpg',
+    src: '/images/bodas/iluminacion-2.jpeg',
     alt: 'Montaje de boda con iluminación especial',
-    caption: 'Iluminación arquitectónica'
+    caption: 'Iluminación especial'
   },
   {
     id: '3',
-    src: '/images/wedding-highlight-3.jpg',
+    src: '/images/bodas/pista.jpg',
     alt: 'Pista de baile personalizada',
     caption: 'Pista de baile con diseño'
   }
@@ -111,13 +112,15 @@ export default function WeddingFeaturesHighlight() {
             >
               {/* In a real implementation, use Next.js Image component for optimized images */}
               <div className="aspect-[4/3] bg-teal/20 flex items-center justify-center">
-                <span className="text-teal">{image.alt}</span>
-                {/* This would be the actual image: */}
-                {/* <img 
-                  src={image.src} 
-                  alt={image.alt} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                /> */}
+                {/* <span className="text-teal">{image.alt}</span> */}
+                <OptimizedImage
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  imageType="general"
+                />
               </div>
               
               {image.caption && (

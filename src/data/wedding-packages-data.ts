@@ -5,6 +5,7 @@ export const weddingPackageData: WeddingPackageData = {
     name: "Quinta El Refugio",
     price: 20000,
     description: "Un hermoso espacio para celebrar tu boda, con amplios jardines y vistas panorámicas. Ubicado a solo 15 minutos del centro de Querétaro.",
+    image: "/images/bodas/laquinta.webp",
     features: [
       "Uso exclusivo del jardín principal (capacidad hasta 500 personas)",
       "Estacionamiento privado para 80 vehículos",

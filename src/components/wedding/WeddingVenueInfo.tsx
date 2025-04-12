@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 import type { VenueInfo } from '@/types/wedding-packages-types';
 import { formatPrice } from '@/lib/utils/formatting';
 
@@ -15,12 +15,12 @@ export default function WeddingVenueInfo({ venue }: WeddingVenueInfoProps) {
       <div className="md:flex">
         <div className="md:w-1/2">
           {venue.image ? (
-            <Image 
+            <OptimizedImage 
               src={venue.image} 
               alt={venue.name} 
-              width={500}
-              height={300}
+              fill
               className="w-full h-full object-cover"
+              imageType="general"
             />
           ) : (
             <div className="bg-teal/20 w-full h-full min-h-60 flex items-center justify-center">
