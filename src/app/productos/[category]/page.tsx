@@ -6,13 +6,14 @@ import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { getCategoryBySlug, getProductsByCategory } from '@/lib/content/products';
 
 interface CategoryPageProps {
-  params: {
+  params: Promise<{
     category: string;
-  }
+  }>;
+  searchParams: Promise<Record<string, string>>;
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-  const paramsCopy = await Promise.resolve(params);
+  const paramsCopy = await params;
   const categorySlug = paramsCopy.category;
   
   const category = getCategoryBySlug(categorySlug);
@@ -30,8 +31,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  // We need to use the Promise.resolve to ensure params is awaited
-  const paramsCopy = await Promise.resolve(params);
+  const paramsCopy = await params;
   const categorySlug = paramsCopy.category;
   
   // Use our resolver to find the category

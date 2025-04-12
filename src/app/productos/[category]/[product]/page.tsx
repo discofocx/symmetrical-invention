@@ -7,14 +7,15 @@ import { getCategoryBySlug, getProductBySlug, getRelatedProducts } from '@/lib/c
 import { OptimizedImage } from '@/components/ui/OptimizedImage';
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     category: string;
     product: string;
-  }
+  }>;
+  searchParams: Promise<Record<string, string>>;
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const paramsCopy = await Promise.resolve(params);
+  const paramsCopy = await params;
   const productSlug = paramsCopy.product;
 
   const product = getProductBySlug(productSlug);
@@ -32,8 +33,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  // We need to use the Promise.resolve to ensure params is awaited
-  const paramsCopy = await Promise.resolve(params);
+  const paramsCopy = await params;
   const productSlug = paramsCopy.product;
   const categorySlug = paramsCopy.category;
 

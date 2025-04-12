@@ -9,6 +9,13 @@ import { siteConfig } from './site';
 // Base URL for the site (used for canonical URLs and OG images)
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://altivento.mx';
 
+// Helper function to safely get OG image URL
+// function getOGImageUrl(image: string | { url: string } | undefined): string {
+//   if (typeof image === 'string') return image;
+//   if (typeof image === 'object' && image?.url) return image.url;
+//   return '/images/og-image.jpg';
+// }
+
 // Default metadata values used across the site
 export const defaultMetadata: Metadata = {
   // Basic metadata
@@ -124,10 +131,25 @@ export function createMetadata({
   title?: string;
   description?: string;
   keywords?: string[];
-  image?: string; // Should be relative path starting with "/"
-  path?: string;  // Should be relative path starting with "/"
+  image?: string;
+  path?: string;
   noIndex?: boolean;
 }): Metadata {
+  
+  // Get the base URL from environment or default
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://altivento.mx';
+  
+  // Ensure image paths are absolute
+  const imageUrl = image 
+    ? (image.startsWith('http') ? image : `${baseUrl}${image}`)
+    : `${baseUrl}/images/og-image.jpg`;
+  
+  const ogImage = {
+    url: imageUrl,
+    width: 1200,
+    height: 630,
+    alt: title || siteConfig.name
+  };
   
   return {
     metadataBase: new URL(baseUrl),
@@ -149,15 +171,8 @@ export function createMetadata({
       ...(description && { 
         description: description,
       }),
-      url: path,
-      images: [
-        {
-          url: image || (defaultMetadata.openGraph?.images?.[0] as { url: string })?.url || '/images/og-image.jpg',
-          width: 1200,
-          height: 630,
-          alt: title || siteConfig.name
-        }
-      ]
+      url: path ? `${baseUrl}${path}` : baseUrl,
+      images: [ogImage]
     },
     
     twitter: {
@@ -168,7 +183,7 @@ export function createMetadata({
       ...(description && { 
         description: description,
       }),
-      images: [image || (defaultMetadata.twitter?.images as string[])[0]],
+      images: [imageUrl],
     },
     
     alternates: {

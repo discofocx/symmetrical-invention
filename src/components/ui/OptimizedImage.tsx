@@ -72,25 +72,25 @@ export function OptimizedImage(props: OptimizedImageProps) {
 
   // Add any remaining props that are safe for the Image component
   // We need to be careful with TypeScript here
-  const safeProps = { ...restProps } as any;
+  const safeProps = { ...restProps } as Record<string, unknown>;
   // Remove our custom props that aren't part of the Image component
   if ('imageType' in safeProps) delete safeProps.imageType;
   if ('fallbackSrc' in safeProps) delete safeProps.fallbackSrc;
 
   // Safely merge the remaining props
   Object.keys(safeProps).forEach(key => {
-    (imageProps as any)[key] = safeProps[key];
+    (imageProps as Record<string, unknown>)[key] = safeProps[key];
   });
 
   // If not using fill, just return the Image component directly
   if (!fill) {
-    return <Image {...imageProps} />;
+    return <Image {...imageProps} alt={alt || ''} />;
   }
 
   // If using fill, wrap it in a container with position relative
   return (
     <div className="relative w-full h-full overflow-hidden">
-      <Image {...imageProps} />
+      <Image {...imageProps} alt={alt || ''} />
 
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-forest/5">

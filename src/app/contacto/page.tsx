@@ -9,19 +9,23 @@ export const metadata: Metadata = {
   description: 'Contáctanos para más información sobre nuestros productos y servicios para eventos.',
 };
 
-type ContactPageProps = {
-  params: Record<string, never>;
-  searchParams: {
-    package?: string;
-    guests?: string;
-    addons?: string;
-    budget?: string;
-  }
+interface SearchParams {
+  package?: string;
+  guests?: string;
+  addons?: string;
+  budget?: string;
 }
 
-export default async function ContactPage({ searchParams }: ContactPageProps) {
-  // We need to use the Promise.resolve to ensure searchParams is awaited
-  const searchParamsCopy = await Promise.resolve(searchParams);
+interface ContactPageProps {
+  params: Promise<Record<string, string>>;
+  searchParams: Promise<SearchParams>;
+}
+
+export default async function ContactPage({
+  searchParams
+}: ContactPageProps) {
+  const resolvedSearchParams = await searchParams;
+
   return (
     <>
       {/* Page Header */}
@@ -44,7 +48,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             <div className="lg:col-span-1">
               <div className="bg-cream rounded-lg shadow-sm p-6 md:p-8">
                 <h2 className="text-2xl font-boska font-bold text-forest mb-6">Información de Contacto</h2>
-                
+
                 <div className="space-y-6">
                   <div>
                     <h3 className="font-boska text-lg mb-2">Dirección</h3>
@@ -55,24 +59,24 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                       <p>México</p>
                     </address>
                   </div>
-                  
+
                   <div>
                     <h3 className="font-boska text-lg mb-2">Teléfono</h3>
                     <p><a href={`tel:${siteConfig.contact.phone}`} className="hover:text-peach transition-colors">{siteConfig.contact.phone}</a></p>
                   </div>
-                  
+
                   <div>
                     <h3 className="font-boska text-lg mb-2">Email</h3>
                     <p><a href={`mailto:${siteConfig.contact.email}`} className="hover:text-peach transition-colors">{siteConfig.contact.email}</a></p>
                   </div>
-                  
+
                   <div>
                     <h3 className="font-boska text-lg mb-2">Horario de Atención</h3>
                     <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
                     <p>Sábados: 10:00 AM - 2:00 PM</p>
                     <p>Domingos: Cerrado</p>
                   </div>
-                  
+
                   <div>
                     <h3 className="font-boska text-lg mb-2">Redes Sociales</h3>
                     <div className="flex space-x-4">
@@ -93,20 +97,20 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 </div>
               </div>
             </div>
-            
+
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <ContactForm 
-                initialPackage={searchParamsCopy?.package} 
-                initialGuests={searchParamsCopy?.guests} 
-                initialAddons={searchParamsCopy?.addons}
-                initialBudget={searchParamsCopy?.budget}
+              <ContactForm
+                initialPackage={resolvedSearchParams?.package}
+                initialGuests={resolvedSearchParams?.guests}
+                initialAddons={resolvedSearchParams?.addons}
+                initialBudget={resolvedSearchParams?.budget}
               />
             </div>
           </div>
         </div>
       </section>
-      
+
       {/* Map Section (Placeholder) */}
       <section className="py-12 bg-sand/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

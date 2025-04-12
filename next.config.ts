@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     // !! WARN !!
     // Ignoring type checking during build for now
     // Make sure to fix the type errors soon
-    ignoreBuildErrors: true
+    ignoreBuildErrors: false
   },
   // Image optimization settings
   images: {

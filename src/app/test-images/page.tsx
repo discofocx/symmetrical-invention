@@ -165,7 +165,7 @@ export default function TestImagesPage() {
         <div className="bg-cream rounded-lg overflow-hidden shadow-sm p-6 prose max-w-none">
           <h3>OptimizedImage Component</h3>
           <p>
-            The <code>OptimizedImage</code> component is a wrapper around Next.js's <code>Image</code> component that provides additional features:
+            The <code>OptimizedImage</code> component is a wrapper around Next.js&apos;s <code>Image</code> component that provides additional features:
           </p>
           <ul>
             <li>Consistent fallback handling for different image types</li>
@@ -202,7 +202,7 @@ export default function TestImagesPage() {
           <p className="text-sm text-forest/70">Note: When using <code>fill</code>, the parent container must have <code>position: relative</code> and defined dimensions.</p>
 
           <h4>Additional Props</h4>
-          <p>In addition to all the props from Next.js's Image component, OptimizedImage accepts:</p>
+          <p>In addition to all the props from Next.js&apos;s Image component, OptimizedImage accepts:</p>
           <table className="w-full">
             <thead>
               <tr>
@@ -216,7 +216,7 @@ export default function TestImagesPage() {
               <tr>
                 <td><code>imageType</code></td>
                 <td>string</td>
-                <td>'general'</td>
+                <td>&apos;general&apos;</td>
                 <td>Type of image (product, category, hero, gallery, about, general)</td>
               </tr>
               <tr>

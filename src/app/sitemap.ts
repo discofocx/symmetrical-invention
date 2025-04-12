@@ -71,9 +71,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Get all products for dynamic routes
   const products = getAllProducts();
   const productPages = products.map((product) => {
-    const category = categories.find((cat) => cat.id === product.categoryId);
+    const category = categories.find((cat) => cat.id === product.category);
     return {
-      url: `${baseUrl}/productos/${category?.slug}/${product.slug}`,
+      url: `${baseUrl}/productos/${category?.slug}/${product.id}`,
       lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
