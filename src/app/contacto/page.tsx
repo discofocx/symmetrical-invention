@@ -1,12 +1,18 @@
 // src/app/contacto/page.tsx
-import { Metadata } from 'next';
-import { ContactForm } from '@/components/forms/ContactForm';
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
-import { siteConfig } from '@/config/site';
+import { Metadata } from "next";
+import { ContactForm } from "@/components/forms/ContactForm";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  WhatsAppIcon,
+} from "@/components/ui/icons/SocialIcons";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: 'Contacto - Altivento',
-  description: 'Contáctanos para más información sobre nuestros productos y servicios para eventos.',
+  title: "Contacto - Altivento",
+  description:
+    "Contáctanos para más información sobre nuestros productos y servicios para eventos.",
 };
 
 interface SearchParams {
@@ -21,9 +27,7 @@ interface ContactPageProps {
   searchParams: Promise<SearchParams>;
 }
 
-export default async function ContactPage({
-  searchParams
-}: ContactPageProps) {
+export default async function ContactPage({ searchParams }: ContactPageProps) {
   const resolvedSearchParams = await searchParams;
 
   return (
@@ -35,7 +39,8 @@ export default async function ContactPage({
             Contacto
           </h1>
           <p className="text-lg max-w-3xl">
-            Estamos aquí para ayudarte a crear el evento perfecto. Contáctanos para más información o para solicitar una cotización personalizada.
+            Estamos aquí para ayudarte a crear el evento perfecto. Contáctanos
+            para más información o para solicitar una cotización personalizada.
           </p>
         </div>
       </section>
@@ -47,7 +52,9 @@ export default async function ContactPage({
             {/* Contact Info */}
             <div className="lg:col-span-1">
               <div className="bg-cream rounded-lg shadow-sm p-6 md:p-8">
-                <h2 className="text-2xl font-boska font-bold text-forest mb-6">Información de Contacto</h2>
+                <h2 className="text-2xl font-boska font-bold text-forest mb-6">
+                  Información de Contacto
+                </h2>
 
                 <div className="space-y-6">
                   <div>
@@ -62,16 +69,32 @@ export default async function ContactPage({
 
                   <div>
                     <h3 className="font-boska text-lg mb-2">Teléfono</h3>
-                    <p><a href={`tel:${siteConfig.contact.phone}`} className="hover:text-peach transition-colors">{siteConfig.contact.phone}</a></p>
+                    <p>
+                      <a
+                        href={`tel:${siteConfig.contact.phone}`}
+                        className="hover:text-peach transition-colors"
+                      >
+                        {siteConfig.contact.phone}
+                      </a>
+                    </p>
                   </div>
 
                   <div>
                     <h3 className="font-boska text-lg mb-2">Email</h3>
-                    <p><a href={`mailto:${siteConfig.contact.email}`} className="hover:text-peach transition-colors">{siteConfig.contact.email}</a></p>
+                    <p>
+                      <a
+                        href={`mailto:${siteConfig.contact.email}`}
+                        className="hover:text-peach transition-colors"
+                      >
+                        {siteConfig.contact.email}
+                      </a>
+                    </p>
                   </div>
 
                   <div>
-                    <h3 className="font-boska text-lg mb-2">Horario de Atención</h3>
+                    <h3 className="font-boska text-lg mb-2">
+                      Horario de Atención
+                    </h3>
                     <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
                     <p>Sábados: 10:00 AM - 2:00 PM</p>
                     <p>Domingos: Cerrado</p>
@@ -80,17 +103,36 @@ export default async function ContactPage({
                   <div>
                     <h3 className="font-boska text-lg mb-2">Redes Sociales</h3>
                     <div className="flex space-x-4">
-                      <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="text-forest hover:text-peach transition-colors">
+                      <a
+                        href={siteConfig.social.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-forest hover:text-peach transition-colors"
+                      >
                         <span className="sr-only">Facebook</span>
-                        <div className="w-8 h-8 bg-forest/10 rounded-full flex items-center justify-center">F</div>
+                        <div className="w-8 h-8 bg-forest/10 rounded-full flex items-center justify-center p-2">
+                          <FacebookIcon />
+                        </div>
                       </a>
-                      <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-forest hover:text-peach transition-colors">
+                      <a
+                        href={siteConfig.social.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-forest hover:text-peach transition-colors"
+                      >
                         <span className="sr-only">Instagram</span>
-                        <div className="w-8 h-8 bg-forest/10 rounded-full flex items-center justify-center">I</div>
+                        <div className="w-8 h-8 bg-forest/10 rounded-full flex items-center justify-center p-2">
+                          <InstagramIcon />
+                        </div>
                       </a>
-                      <WhatsAppButton fixed={false} className="text-forest hover:text-peach transition-colors">
+                      <WhatsAppButton
+                        fixed={false}
+                        className="text-forest hover:text-peach transition-colors"
+                      >
                         <span className="sr-only">WhatsApp</span>
-                        <div className="w-8 h-8 bg-forest/10 rounded-full flex items-center justify-center">W</div>
+                        <div className="w-8 h-8 bg-forest/10 rounded-full flex items-center justify-center p-2">
+                          <WhatsAppIcon />
+                        </div>
                       </WhatsAppButton>
                     </div>
                   </div>
@@ -114,7 +156,9 @@ export default async function ContactPage({
       {/* Map Section (Placeholder) */}
       <section className="py-12 bg-sand/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-boska font-bold text-forest mb-6 text-center">Nuestra Ubicación</h2>
+          <h2 className="text-2xl font-boska font-bold text-forest mb-6 text-center">
+            Nuestra Ubicación
+          </h2>
           <div className="aspect-[21/9] bg-forest/10 rounded-lg relative">
             <div className="absolute inset-0 flex items-center justify-center text-forest/30 text-xl">
               Mapa de ubicación (Aquí iría un mapa interactivo)
