@@ -32,7 +32,7 @@ export default function WeddingVenueInfo({ venue }: WeddingVenueInfoProps) {
           <div className="flex justify-between items-start mb-4">
             <h2 className="text-2xl font-bold text-forest">{venue.name}</h2>
             <div className="bg-peach/10 px-3 py-1 rounded text-forest font-medium">
-              {formatPrice(venue.price)}
+              Desde {formatPrice(venue.basePrice)}
             </div>
           </div>
           
@@ -47,7 +47,7 @@ export default function WeddingVenueInfo({ venue }: WeddingVenueInfoProps) {
           
           <div className="mt-6">
             <p className="text-sm text-forest/70 italic">
-              El costo del espacio es fijo y se suma al paquete de infraestructura seleccionado.
+              Precio base para 150 invitados. ${venue.pricePerExtraPax} MXN por cada invitado adicional.
             </p>
           </div>
         </div>

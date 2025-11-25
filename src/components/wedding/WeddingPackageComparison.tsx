@@ -19,6 +19,13 @@ export default function WeddingPackageComparison({
     return pkg ? pkg.basePrice["150"] : 0;
   };
 
+  // Get the total price including venue for 150 guests
+  const getTotalPriceFor150 = (packageId: string) => {
+    const packagePrice = getBasePrice(packageId);
+    const venuePrice = packageData.venue.basePrice; // 150 guests = base price
+    return packagePrice + venuePrice;
+  };
+
   // Pre-process the feature data to ensure consistency
   const baseFeatureCount = packageData.packages[0].features.length;
   
@@ -45,13 +52,15 @@ export default function WeddingPackageComparison({
         <tbody>
           {/* Price row */}
           <tr className="border-b border-gray-200">
-            <td className="py-4 px-6 font-medium text-forest">Precio base (150 invitados)</td>
+            <td className="py-4 px-6 font-medium text-forest">Precio total (150 invitados)</td>
             {packageData.packages.map(pkg => (
               <td key={pkg.id} className="py-4 px-6">
-                <div className="font-bold text-lg text-forest">
-                  {formatPrice(getBasePrice(pkg.id))}
+                <div className="font-bold text-xl text-forest">
+                  {formatPrice(getTotalPriceFor150(pkg.id))}
                 </div>
-                <div className="text-sm text-forest/70">+ {formatPrice(packageData.venue.price)} del espacio</div>
+                <div className="text-xs text-forest/60 mt-1">
+                  Infraestructura + Quinta El Refugio
+                </div>
               </td>
             ))}
           </tr>
