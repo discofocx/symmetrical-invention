@@ -3,7 +3,9 @@ import { WeddingPackageData } from "@/types/wedding-packages-types";
 export const weddingPackageData: WeddingPackageData = {
   venue: {
     name: "Quinta El Refugio",
-    price: 20000,
+    basePrice: 20000, // Precio base por 150 pax
+    basePax: 150,
+    pricePerExtraPax: 50, // $50 MXN por cada invitado adicional
     description: "Un hermoso espacio para celebrar tu boda, con amplios jardines y vistas panorámicas. Ubicado a solo 15 minutos del centro de Querétaro.",
     image: "/images/bodas/laquinta.webp",
     features: [
@@ -26,7 +28,7 @@ export const weddingPackageData: WeddingPackageData = {
         "Carpa 15×15m, plafón liso blanco (4m altura)",
         "Pista 25m² (5×5m) pintada a un tono",
         "Estrado para novios 2.44×3.66m",
-        "Planta de luz 70 KVA",
+        "Planta de luz 45 KVA",
         // Premium features - empty placeholders
         "-",
         "-",
@@ -36,13 +38,13 @@ export const weddingPackageData: WeddingPackageData = {
         "-"
       ],
       basePrice: {
-        "150": 23000,
-        "200": 26000,
-        "250": 29000,
-        "300": 32000,
-        "350": 35000,
-        "400": 38000,
-        "450": 41000
+        "150": 25000, // + 2000 MXN
+        "200": 28000,
+        "250": 31000,
+        "300": 34000,
+        "350": 37000,
+        "400": 40000,
+        "450": 43000
       }
     },
     {
@@ -51,10 +53,10 @@ export const weddingPackageData: WeddingPackageData = {
       description: "Paquete mejorado con opciones de personalización y mayor comodidad para tus invitados.",
       features: [
         // Core features - upgraded versions
-        "Carpa Alemana 15×20m, plafón plisado en V (blanco, negro o ivory)",
-        "Pista 30m² (4.88×6.10m) en charol, laminado o duela",
-        "Estrado para novios 2.44×3.66m",
-        "Planta de luz 70 KVA",
+        "Carpa Alemana 15×20m, plafón plisado en V (blanco, negro o ivory)", // 25,500
+        "Pista 30m² (4.88×6.10m) en charol, laminado o duela", // 4,500
+        "Estrado para novios 2.44×3.66m", 
+        "Planta de luz 45 KVA",
         // Premium features - empty placeholders
         "-",
         "-",
@@ -64,13 +66,13 @@ export const weddingPackageData: WeddingPackageData = {
         "-"
       ],
       basePrice: {
-        "150": 37000,
-        "200": 41000,
-        "250": 45000,
-        "300": 49000,
-        "350": 53000,
-        "400": 57000,
-        "450": 61000
+        "150": 39000, // + 2000 mxn
+        "200": 43000,
+        "250": 47000,
+        "300": 51000,
+        "350": 55000,
+        "400": 59000,
+        "450": 63000
       }
     },
     {
@@ -80,25 +82,25 @@ export const weddingPackageData: WeddingPackageData = {
       features: [
         // Core features - upgraded versions
         "Carpa 15×20m, 5m altura, transparente con botón y olas",
-        "Pista 30m² (4.88×6.10m) con diseño personalizado",
-        "Estrado para novios con diseño personalizado",
-        "Planta de luz 70 KVA",
+        "Pista 30m² (4.88×6.10m) con diseño personalizado", // 10000
+        "Estrado para novios con diseño personalizado", // 3800
+        "Planta de luz 45 KVA", // 5000
         // Premium features - added in this tier
-        "Barra con diseño personalizado",
-        "Estrado para DJ",
+        "Barra con diseño personalizado", // 2000
+        "Estrado para DJ", //
         // Luxury features - empty placeholders
         "-",
         "-",
         "-"
       ],
       basePrice: {
-        "150": 55200,
-        "200": 60200,
-        "250": 65200,
-        "300": 70200,
-        "350": 75200,
-        "400": 80200,
-        "450": 85200
+        "150": 57000,
+        "200": 62000,
+        "250": 67000,
+        "300": 72000,
+        "350": 77000,
+        "400": 82000,
+        "450": 87000
       }
     },
     {
@@ -107,17 +109,16 @@ export const weddingPackageData: WeddingPackageData = {
       description: "La experiencia más completa y lujosa, con detalles exclusivos para una celebración verdaderamente extraordinaria.",
       features: [
         // Core features - luxurious versions
-        "Carpa 15×20m, botón, iluminación arquitectónica en postes",
-        "Pista 30m² (4.88×6.10m) con diseño personalizado premium",
-        "Estrado para novios con lienzos de tela diagonales",
-        "Planta de luz 70 KVA",
+        "Carpa 15×20m, botón, iluminación arquitectónica en postes", // 38000
+        "Pista 30m² (4.88×6.10m) con diseño personalizado premium", // 10000
+        "Estrado para novios con lienzos de tela diagonales", // 5300
+        "Planta de luz 45 KVA", // 5000
         // Premium features - upgraded versions
-        "Barra con diseño personalizado premium",
-        "Estrado para DJ con iluminación",
+        "Barra con diseño personalizado premium", // 2000
+        "Estrado para DJ", // 1800
         // Luxury features - exclusive to this tier
-        "Jardín flotante con iluminación retro",
-        "Iluminación de área de cóctel con focos retro",
-        "Decoración floral en áreas selectas"
+        "Jardín flotante con iluminación retro", // 12000
+        "Iluminación de área de cóctel con focos retro", // 3000
       ],
       basePrice: {
         "150": 80000,
@@ -141,33 +142,27 @@ export const weddingPackageData: WeddingPackageData = {
     {
       id: "faroles",
       name: "Conjunto de faroles decorativos",
-      description: "12 faroles decorativos para exterior con velas LED para iluminar caminos y áreas de jardín.",
+      description: "10 faroles decorativos dentro de la carpa.",
       price: 7500
     },
     {
       id: "jardin-flotante",
       name: "Jardín flotante con iluminación",
       description: "Instalación floral suspendida con iluminación integrada para crear un ambiente mágico sobre la pista de baile o área de comedor.",
-      price: 15000
+      price: 12000
     },
     {
       id: "back-telas",
       name: "Back de telas para fotografías",
       description: "Fondo decorativo de telas para área de fotografías o estrado, disponible en varios colores para complementar la paleta de tu evento.",
-      price: 8000
+      price: 6000
     },
     {
       id: "area-lounge",
       name: "Área lounge exterior",
-      description: "Montaje de área lounge con 3 salas, mesas de centro, y sombrillas para exterior. Ideal para crear un espacio de descanso para tus invitados.",
+      description: "Montaje de área lounge con 2 salas y mesas de centro, 4 periqueras, y 2 sombrillas para exterior. Ideal para crear un espacio de descanso para tus invitados.",
       price: 12000
     },
-    {
-      id: "tapete-ceremonial",
-      name: "Tapete ceremonial",
-      description: "Elegante pasillo alfombrado de 15m de largo para tu ceremonia, disponible en blanco, rojo o beige.",
-      price: 4500
-    }
   ],
   
   guestCountOptions: [150, 200, 250, 300, 350, 400, 450]

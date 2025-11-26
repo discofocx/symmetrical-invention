@@ -18,7 +18,9 @@ export interface WeddingPackage {
   
   export interface VenueInfo {
     name: string;
-    price: number;
+    basePrice: number; // Base price for minimum guest count
+    basePax: number; // Minimum guest count for base price
+    pricePerExtraPax: number; // Price per additional guest above basePax
     description: string;
     features: string[];
     image?: string;

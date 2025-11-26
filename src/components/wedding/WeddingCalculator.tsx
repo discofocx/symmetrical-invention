@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import type { WeddingPackageData, CalculatorState, CalculationResult } from '@/types/wedding-packages-types';
 import { formatPrice } from '@/lib/utils/formatting';
 import Link from 'next/link';
@@ -12,6 +12,16 @@ interface WeddingCalculatorProps {
 export default function WeddingCalculator({ packageData }: WeddingCalculatorProps) {
   // For client-side hydration, use a ref to track if component is mounted
   const isMounted = React.useRef(false);
+
+  // Helper function to calculate venue price based on guest count
+  const calculateVenuePrice = useCallback((guestCount: number): number => {
+    const { basePrice, basePax, pricePerExtraPax } = packageData.venue;
+    if (guestCount <= basePax) {
+      return basePrice;
+    }
+    const extraGuests = guestCount - basePax;
+    return basePrice + (extraGuests * pricePerExtraPax);
+  }, [packageData.venue]);
   
   const [calculatorState, setCalculatorState] = useState<CalculatorState>({
     selectedPackage: packageData.packages[0].id,
@@ -48,14 +58,15 @@ export default function WeddingCalculator({ packageData }: WeddingCalculatorProp
         const addOn = packageData.addOns.find(item => item.id === addOnId);
         return total + (addOn ? addOn.price : 0);
       }, 0);
-      
-      const totalPrice = packagePrice + packageData.venue.price + addOnsPrice;
-      
+
+      const venuePrice = calculateVenuePrice(calculatorState.guestCount);
+      const totalPrice = packagePrice + venuePrice + addOnsPrice;
+
       // Delay the update slightly to avoid hydration mismatch
       setTimeout(() => {
         setCalculationResult({
           packagePrice,
-          venuePrice: packageData.venue.price,
+          venuePrice,
           addOnsPrice,
           totalPrice
         });
@@ -78,24 +89,25 @@ export default function WeddingCalculator({ packageData }: WeddingCalculatorProp
     const selectedPackage = packageData.packages.find(pkg => pkg.id === calculatorState.selectedPackage);
     const guestCountKey = calculatorState.guestCount.toString();
     
-    const packagePrice = selectedPackage 
-      ? selectedPackage.basePrice[guestCountKey] || 0 
+    const packagePrice = selectedPackage
+      ? selectedPackage.basePrice[guestCountKey] || 0
       : 0;
-    
+
     const addOnsPrice = calculatorState.selectedAddOns.reduce((total, addOnId) => {
       const addOn = packageData.addOns.find(item => item.id === addOnId);
       return total + (addOn ? addOn.price : 0);
     }, 0);
-    
-    const totalPrice = packagePrice + packageData.venue.price + addOnsPrice;
-    
+
+    const venuePrice = calculateVenuePrice(calculatorState.guestCount);
+    const totalPrice = packagePrice + venuePrice + addOnsPrice;
+
     setCalculationResult({
       packagePrice,
-      venuePrice: packageData.venue.price,
+      venuePrice,
       addOnsPrice,
       totalPrice
     });
-  }, [calculatorState, packageData]);
+  }, [calculatorState, packageData, calculateVenuePrice]);
 
   // Handle package selection
   const handlePackageChange = (packageId: string) => {
@@ -342,7 +354,9 @@ export default function WeddingCalculator({ packageData }: WeddingCalculatorProp
               </div>
               <div className="flex justify-between text-forest mb-2">
                 <span>Quinta El Refugio:</span>
-                <span className="font-medium">{formatPrice(calculationResult.venuePrice)}</span>
+                <span className={`font-medium ${isAnimating ? 'text-peach transition-colors duration-500' : 'text-forest'}`}>
+                  {formatPrice(calculationResult.venuePrice)}
+                </span>
               </div>
               {calculationResult.addOnsPrice > 0 && (
                 <div className="flex justify-between text-forest mb-2">
