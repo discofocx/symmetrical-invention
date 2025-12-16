@@ -1,8 +1,15 @@
 // src/components/forms/ContactForm.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
+import {
+  validateName,
+  validateEmail,
+  validateMexicanPhone,
+  validateMessage,
+  validateContactForm,
+} from '@/lib/validation/contact-form';
 
 interface FormData {
   name: string;
@@ -17,6 +24,16 @@ interface FormData {
   estimatedBudget?: string;
   addons?: string;
 }
+
+interface HoneypotFields {
+  website: string;
+  company: string;
+  faxNumber: string;
+}
+
+// Rate limiting constants
+const RATE_LIMIT_KEY = 'altivento_contact_last_submit';
+const RATE_LIMIT_DURATION = 60000; // 60 seconds
 
 interface ContactFormProps {
   initialPackage?: string;
@@ -56,10 +73,93 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // Validation state
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  // Honeypot fields (spam prevention)
+  const [honeypotFields, setHoneypotFields] = useState<HoneypotFields>({
+    website: '',
+    company: '',
+    faxNumber: '',
+  });
+
+  // Timing-based spam detection
+  const [formLoadTime] = useState<number>(Date.now());
+
+  // Rate limiting state
+  const [rateLimited, setRateLimited] = useState(false);
+  const [rateLimitCountdown, setRateLimitCountdown] = useState(0);
+
+  // Check rate limit on mount and update countdown
+  useEffect(() => {
+    const checkRateLimit = () => {
+      try {
+        const lastSubmit = localStorage.getItem(RATE_LIMIT_KEY);
+        if (lastSubmit) {
+          const elapsed = Date.now() - parseInt(lastSubmit, 10);
+          if (elapsed < RATE_LIMIT_DURATION) {
+            setRateLimited(true);
+            setRateLimitCountdown(Math.ceil((RATE_LIMIT_DURATION - elapsed) / 1000));
+            return true;
+          }
+        }
+        setRateLimited(false);
+        setRateLimitCountdown(0);
+        return false;
+      } catch {
+        // localStorage not available (private browsing)
+        return false;
+      }
+    };
+
+    checkRateLimit();
+
+    const interval = setInterval(() => {
+      if (rateLimited) {
+        checkRateLimit();
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [rateLimited]);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (fieldErrors[name]) {
+      setFieldErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
+  };
+
+  // Validate field on blur
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    let error: string | null = null;
+
+    switch (name) {
+      case 'name':
+        error = validateName(value);
+        break;
+      case 'email':
+        error = validateEmail(value);
+        break;
+      case 'phone':
+        error = validateMexicanPhone(value);
+        break;
+      case 'message':
+        error = validateMessage(value);
+        break;
+    }
+
+    if (error) {
+      setFieldErrors(prev => ({ ...prev, [name]: error }));
+    }
   };
   
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,10 +176,34 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Check rate limit
+    if (rateLimited) {
+      setSubmitError(`Por favor espera ${rateLimitCountdown} segundos antes de enviar otro mensaje.`);
+      return;
+    }
+
+    // Validate all fields before submission
+    const errors = validateContactForm({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    });
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      setSubmitError('Por favor, corrige los errores en el formulario.');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError(null);
-    
-    // Create API submission data (including honeypot for spam protection)
+
+    // Calculate time spent filling the form
+    const fillTime = Date.now() - formLoadTime;
+
+    // Create API submission data (including honeypot and timing for spam protection)
     const submissionData = {
       name: formData.name,
       email: formData.email,
@@ -93,8 +217,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       ...(formData.weddingPackage && { weddingPackage: formData.weddingPackage }),
       ...(formData.estimatedBudget && { estimatedBudget: formData.estimatedBudget }),
       ...(formData.addons && { addons: formData.addons }),
-      // Honeypot field for spam detection (should remain empty)
+      // Honeypot fields for spam detection (should remain empty)
       honeypot: '',
+      website: honeypotFields.website,
+      company: honeypotFields.company,
+      faxNumber: honeypotFields.faxNumber,
+      // Timing data for spam detection
+      _timing: fillTime,
     };
     
     try {
@@ -115,7 +244,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       
       console.log('Form submitted successfully:', result);
       setSubmitSuccess(true);
-      
+
+      // Set rate limit
+      try {
+        localStorage.setItem(RATE_LIMIT_KEY, Date.now().toString());
+        setRateLimited(true);
+        setRateLimitCountdown(60);
+      } catch {
+        // localStorage not available
+      }
+
       // Reset form after successful submission
       setFormData({
         name: '',
@@ -127,6 +265,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         message: '',
         productInterest: [],
       });
+      setFieldErrors({});
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : 'Hubo un error al enviar el formulario';
       setSubmitError(errorMessage || 'Por favor, intenta de nuevo.');
@@ -206,11 +345,17 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 required
-                className="w-full px-4 py-2 border border-forest/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-peach/50"
+                className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-peach/50 ${
+                  fieldErrors.name ? 'border-red-500' : 'border-forest/20'
+                }`}
               />
+              {fieldErrors.name && (
+                <p className="mt-1 text-sm text-red-600">{fieldErrors.name}</p>
+              )}
             </div>
-            
+
             <div>
               <label htmlFor="email" className="block mb-2 font-medium">
                 Correo electrónico <span className="text-peach">*</span>
@@ -221,11 +366,17 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 required
-                className="w-full px-4 py-2 border border-forest/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-peach/50"
+                className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-peach/50 ${
+                  fieldErrors.email ? 'border-red-500' : 'border-forest/20'
+                }`}
               />
+              {fieldErrors.email && (
+                <p className="mt-1 text-sm text-red-600">{fieldErrors.email}</p>
+              )}
             </div>
-            
+
             <div>
               <label htmlFor="phone" className="block mb-2 font-medium">
                 Teléfono <span className="text-peach">*</span>
@@ -236,9 +387,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 required
-                className="w-full px-4 py-2 border border-forest/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-peach/50"
+                placeholder="10 dígitos"
+                className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-peach/50 ${
+                  fieldErrors.phone ? 'border-red-500' : 'border-forest/20'
+                }`}
               />
+              {fieldErrors.phone && (
+                <p className="mt-1 text-sm text-red-600">{fieldErrors.phone}</p>
+              )}
             </div>
             
             <div>
@@ -372,22 +530,79 @@ export const ContactForm: React.FC<ContactFormProps> = ({
              name="message"
              value={formData.message}
              onChange={handleChange}
+             onBlur={handleBlur}
              required
              rows={5}
-             className="w-full px-4 py-2 border border-forest/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-peach/50"
+             className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-peach/50 ${
+               fieldErrors.message ? 'border-red-500' : 'border-forest/20'
+             }`}
              placeholder="Cuéntanos más detalles sobre tu evento y tus necesidades específicas"
            ></textarea>
+           {fieldErrors.message && (
+             <p className="mt-1 text-sm text-red-600">{fieldErrors.message}</p>
+           )}
          </div>
-         
+
+         {/* Honeypot fields - hidden from users, visible to bots */}
+         <div style={{ display: 'none' }} aria-hidden="true">
+           <label htmlFor="website">Website</label>
+           <input
+             type="text"
+             id="website"
+             name="website"
+             value={honeypotFields.website}
+             onChange={(e) => setHoneypotFields(prev => ({ ...prev, website: e.target.value }))}
+             tabIndex={-1}
+             autoComplete="off"
+           />
+         </div>
+         <div
+           style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}
+           aria-hidden="true"
+         >
+           <label htmlFor="company">Company</label>
+           <input
+             type="text"
+             id="company"
+             name="company"
+             value={honeypotFields.company}
+             onChange={(e) => setHoneypotFields(prev => ({ ...prev, company: e.target.value }))}
+             tabIndex={-1}
+             autoComplete="off"
+           />
+         </div>
+         <div
+           style={{ width: 0, height: 0, overflow: 'hidden', position: 'absolute' }}
+           aria-hidden="true"
+         >
+           <input
+             type="text"
+             name="fax_number"
+             value={honeypotFields.faxNumber}
+             onChange={(e) => setHoneypotFields(prev => ({ ...prev, faxNumber: e.target.value }))}
+             tabIndex={-1}
+             autoComplete="off"
+           />
+         </div>
+
          <div className="text-center">
-           <Button 
+           <Button
              type="submit"
              variant="primary"
              size="lg"
-             disabled={isSubmitting}
+             disabled={isSubmitting || rateLimited}
            >
-             {isSubmitting ? 'Enviando...' : 'Enviar Solicitud'}
+             {isSubmitting
+               ? 'Enviando...'
+               : rateLimited
+                 ? `Espera ${rateLimitCountdown}s`
+                 : 'Enviar Solicitud'}
            </Button>
+           {rateLimited && (
+             <p className="mt-2 text-sm text-forest/60">
+               Por favor espera antes de enviar otro mensaje
+             </p>
+           )}
          </div>
        </form>
      )}

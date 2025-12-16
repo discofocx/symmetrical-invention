@@ -3,20 +3,77 @@ import { z } from 'zod';
 import nodemailer from 'nodemailer';
 import { kv } from '@vercel/kv';
 import { siteConfig } from '@/config/site';
+import {
+  PATTERNS,
+  VALIDATION_MESSAGES,
+  normalizePhone,
+  containsUrl,
+  countUrls,
+} from '@/lib/validation/contact-form';
 
-// Define contact form schema with Zod
+// Minimum time (ms) expected to fill the form - faster submissions are likely bots
+const MIN_FILL_TIME_MS = 3000;
+
+// Define contact form schema with enhanced validation
 const contactFormSchema = z.object({
-  name: z.string().min(2, { message: 'El nombre debe tener al menos 2 caracteres' }),
-  email: z.string().email({ message: 'Correo electrónico inválido' }),
-  phone: z.string().min(10, { message: 'El teléfono es requerido' }),
-  message: z.string().min(10, { message: 'El mensaje debe tener al menos 10 caracteres' }),
+  name: z.string()
+    .min(2, { message: VALIDATION_MESSAGES.name.min })
+    .max(100, { message: VALIDATION_MESSAGES.name.max })
+    .regex(PATTERNS.name, { message: VALIDATION_MESSAGES.name.format })
+    .refine(val => !containsUrl(val), { message: VALIDATION_MESSAGES.name.noUrl })
+    .refine(val => val.trim().includes(' '), { message: VALIDATION_MESSAGES.name.fullName }),
+  email: z.string()
+    .email({ message: VALIDATION_MESSAGES.email.invalid })
+    .max(254, { message: 'Correo electrónico demasiado largo' }),
+  phone: z.string()
+    .transform(val => normalizePhone(val))
+    .refine(
+      val => val.length === 10 || (val.length === 12 && val.startsWith('52')),
+      { message: VALIDATION_MESSAGES.phone.invalid }
+    ),
+  message: z.string()
+    .min(10, { message: VALIDATION_MESSAGES.message.min })
+    .max(2000, { message: VALIDATION_MESSAGES.message.max })
+    .refine(val => countUrls(val) <= 2, { message: VALIDATION_MESSAGES.message.tooManyUrls }),
   eventType: z.string().optional(),
   eventDate: z.string().optional(),
+  guestCount: z.string().optional(),
+  productInterest: z.string().optional(),
+  weddingPackage: z.string().optional(),
+  estimatedBudget: z.string().optional(),
+  addons: z.string().optional(),
+  // Honeypot fields (should remain empty)
   honeypot: z.string().optional(),
+  website: z.string().optional(),
+  company: z.string().optional(),
+  faxNumber: z.string().optional(),
+  // Timing data
+  _timing: z.number().optional(),
 });
 
 // Type definition based on schema
 type ContactFormData = z.infer<typeof contactFormSchema>;
+
+/**
+ * Detect spam submissions based on honeypot fields and timing
+ * Returns true if the submission appears to be spam
+ */
+function detectSpam(data: Record<string, unknown>): boolean {
+  // Check honeypot fields - any filled field indicates a bot
+  if (data.honeypot || data.website || data.company || data.faxNumber) {
+    console.log('Spam detected: honeypot field filled');
+    return true;
+  }
+
+  // Check timing - forms filled too quickly are likely bots
+  const timing = data._timing as number | undefined;
+  if (timing !== undefined && timing < MIN_FILL_TIME_MS) {
+    console.log(`Spam detected: form filled too quickly (${timing}ms)`);
+    return true;
+  }
+
+  return false;
+}
 
 // Email configuration
 const createTransporter = () => {
@@ -34,13 +91,13 @@ export async function POST(request: Request) {
   try {
     // Get form data from request
     const formData = await request.json();
-    
-    // Check honeypot field for spam detection
-    if (formData.honeypot) {
-      // Return success response but don't process (spam bot detected)
+
+    // Check for spam (honeypot fields, timing-based detection)
+    // Return fake success to not alert the bot
+    if (detectSpam(formData)) {
       return NextResponse.json({ success: true, message: 'Formulario enviado exitosamente' });
     }
-    
+
     // Validate form data
     const validatedData = contactFormSchema.safeParse(formData);
     
